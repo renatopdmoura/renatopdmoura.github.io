@@ -10,9 +10,6 @@
 }
 
 @media only screen and(min-width: 768px){
-	body{
-		background-color: #f44;
-	}
 	.col-1{width: 8.33%;}
 	.col-2{width: 16.66%;}
 	.col-3{width: 25%;}
@@ -28,9 +25,6 @@
 }
 
 @media only screen and(min-width: 600px){
-	body{
-		background-color: #f44;
-	}
 	.col-s-1{width: 8.33%;}
 	.col-s-2{width: 16.66%;}
 	.col-s-3{width: 25%;}
@@ -47,7 +41,7 @@
 
 
 [class*="col-"]{
-	width:  100%;
+	/*width:  100%;*/
 	float: left;
 	padding: 15px;
 	border:  1px solid red;
