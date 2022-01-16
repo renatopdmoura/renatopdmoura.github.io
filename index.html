@@ -14,7 +14,7 @@
 </head>
 <body>
 
-<header id="main-header" class="col-2">
+<header id="main-header" class="col-12">
 	<div class="col-2">
 		<h1 id="main-title">Pura - Biblioteca Gráfica</h1>
 	</div>
