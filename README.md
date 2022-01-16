@@ -1,4 +1,4 @@
-<!-- <!DOCTYPE html>	 -->
+<!-- <!DOCTYPE html> -->
 <html>
 <head>
 	<meta charset="UTF-8">
@@ -9,10 +9,10 @@
 	<link rel="stylesheet" href="stylesheet.css" type="text/css">
 	<title>Pura | Wiki</title>
 </head>
-<body class="col-12">
-	
+<body>
+
 <header class="col-s-12 col-12 main-header">
-	<h1 class="col-s-12 col-8 main-tile">Pura - Biblioteca Gráfica</h1>
+	<h1 class="col-s-12 col-8 main-title">Pura - Biblioteca Gráfica</h1>
 	<nav class="col-s-12 row main-menu">
 		<ul>
 			<li class="item-menu"><a href="#" accesskey="a" class="link-menu">Apresentação</a></li>
@@ -22,7 +22,7 @@
 	</nav>
 </header>
 
-<section class="presentation" class="col-s-12 col-12">
+<section class="col-s-12 presentation">
 	<h1>O que é Pura</h1>
 	<p>Pura é um conjunto de arquivos programados em C++ que fornecem uma série de recursos pertencentes ao pipeline de renderização gráfica. 
 	Definem as seguintes caracteriticas:</p>
@@ -52,13 +52,13 @@
 
 	<h2>Tecnologias</h2>
 	<ul>
-		<li class="technologies">OpenGL</li>
-		<li class="technologies">SDL</li>
-		<li class="technologies">FreeType</li>
+		<li class="tech-item">OpenGL</li>
+		<li class="tech-item">SDL</li>
+		<li class="tech-item">FreeType</li>
 	</ul>
 </section>
 
-<footer class="col-12">
+<footer class="col-s-12 col-12">
 		<h3>Copyright Coffee Soul Labs</h3>
 </footer>
 

@@ -10,7 +10,7 @@
 }
 
 body{
-	background-color: #456;
+	background-color: #fff;
 	font-family:  Arial, sans-serif;
 }
 
@@ -18,49 +18,45 @@ footer{
 	background-color: #111;
 	color: #fff;
 	text-align: center;
-	width:  100%;
-	padding: 10px;
 }
 
 /*---Main header and menu---*/
 
 .main-header{
-	width:  100%;
-	background-color:  #868
+	background-color: #868
 }
 
 .main-title{
 	font-family: Humnst777;
-	font-size: 32px;
-	color: #000;
-	padding: 13.5px;
+	font-size: 48px;
+	color: #fff;
 }
 
 .main-menu{
-	margin-top: -20px;
+	/*background-color: #333;*/
 }
 
-a.link-menu{
+.link-menu{
 	color: #000;
 }
 
-a.link-menu:link{
+.link-menu:link{
 	text-decoration: none;
 }
 
-a.link-menu:visited{
+.link-menu:visited{
 	text-decoration: none;
 }
 
-a.link-menu:hover{
+.link-menu:hover{
 	color: #777;
 }
 
-a.link-menu:active{
+.link-menu:active{
 	text-decoration: none;
 }
 
-li.item-menu{
+.item-menu{
 	display: inline;
 	list-style-type: none;
 	float:  left;
@@ -69,17 +65,17 @@ li.item-menu{
 	padding: 20px;
 }
 
-li.technologies{
+.tech-item{
 	display: inline-block;
-	width: 200px;
 	list-style-type: none;
+	padding: 10px;
+	font-family: Humnst777;
 }
 
 /*--Main section---*/
 
 .presentation{
 	background-color: #eee;
-	padding:  10px;
 }
 
 /*---Responsive---*/
@@ -92,12 +88,15 @@ li.technologies{
 
 [class*="col-"]{
 	float: left;
-	padding: 15px;	
-	border:  1px solid #ff00ff;
+	padding: 12px;
+	/*border:  1px solid #f00;*/
 }
 
 /*For desktop*/
 @media only screen and (min-width: 768px){
+	.tech-item{
+		font-size: 32px;
+	}
 	.col-1{width: 8.33%;}
 	.col-2{width: 16.66%;}
 	.col-3{width: 25%;}
@@ -109,10 +108,13 @@ li.technologies{
 	.col-9{width: 75%;}
 	.col-10{width: 83.33%;}
 	.col-11{width: 91.66%;}
-	.col-12{width: 100%;}
+	.col-12{width: 100.0%;}
 }
 /*For small mobile*/
 @media only screen and (max-width: 768px){
+	.tech-item{
+		font-size: 24px;
+	}
 	.col-s-1{width: 8.33%;}
 	.col-s-2{width: 16.66%;}
 	.col-s-3{width: 25%;}
@@ -124,5 +126,5 @@ li.technologies{
 	.col-s-9{width: 75%;}
 	.col-s-10{width: 83.33%;}
 	.col-s-11{width: 91.66%;}
-	.col-s-12{width: 100%;}
+	.col-s-12{width: 100.0%;}
 }
