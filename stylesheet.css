@@ -56,6 +56,8 @@ footer{
 	text-decoration: none;
 }
 
+/*---Index page---*/
+
 .item-menu{
 	display: inline;
 	list-style-type: none;
@@ -76,6 +78,28 @@ footer{
 
 .presentation{
 	background-color: #eee;
+}
+
+/*---_byNameList---*/
+
+#ref-class-list{
+	background-color:  #fff;
+	border-right:  1px solid #ccc;
+	padding:  10px;
+}
+
+#ref-class-list h1{
+	font-family: Humnst777;
+	font-size: 28px;
+}
+
+#ref-class-list h2{
+	font-family: Humnst777;
+	font-size: 24px;
+}
+
+#ref-description{
+	background-color: #fff;
 }
 
 /*---Responsive---*/
