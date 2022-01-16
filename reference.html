@@ -7,6 +7,7 @@
 	<meta name="author" content="Renato Moura">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="stylesheet.css" type="text/css">
+	<script type="text/javascript" src="javascript.js"></script>
 	<title>Pura | Referência de biblioteca</title>
 </head>
 <body>
@@ -28,9 +29,8 @@
 	<h2>Funções</h2>
 	<ul>
 		<h3>
-			<li><a href="#">genShaders<a></li>
-			<li><a href="#">genProgramShader</a></li>
-			<li><a href="#">genProgramShader<a></li>
+			<li><button onclick="switch_article(0)">genProgramShader</button></li>
+			<li><button onclick="switch_article(1)">genProgramShader</button></li>
 			<li><a href="#">genProgramShaders</a></li>
 			<li><a href="#">genGeometryBuffer</a></li>
 			<li><a href="#">sharedUniforms</a></li>
@@ -66,43 +66,12 @@
 </section>
 
 <section id="ref-description" class="col-s-12 col-9 row">
-	<p> Descrição</p>
+	<article id="0">
+	</article>
+	<article id="1">
+	</article>
 </section>
 
 </ul>
 </body>
 </html>
-
-		<!-- <li><a href="#">genShaders()</a></li>
-		<li><a href="#">static uint genProgramShader(std::string vs_path, std::string fs_path)</a></li>
-		<li><a href="#">static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</a></li>
-		<li><a href="#">static void genProgramShaders()</a></li>
-		<li><a href="#">static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</a></li>
-		<li><a href="#">static void sharedUniforms(mat4<float>& matrix, vec3<float>& cameraPos, Sun* sun, std::vector<PointLight>* pointLightArray, std::vector<SpotLight>* spotLightArray = NULL)</a></li>
-		<li><a href="#">static void sharedUniforms(mat4<float>& viewProj, vec3<float>& cameraPos, bool update = true)</a></li>
-		<li><a href="#">void setUniform1b(std::string, bool value)</a></li>
-		<li><a href="#">void setUniform1f(std::string, float value)</a></li>
-		<li><a href="#">void setUniform1f(std::string name, float* value)</a></li>
-		<li><a href="#">void setUniform3f(std::string, vec3f value)</a></li>
-		<li><a href="#">void setUniform3f(std::string, vec3f* value)</a></li>
-		<li><a href="#">void setUniformMat4f(std::string name, mat4<float>* value)</a></li>
-		<li><a href="#">void addTexture(const char* texPath, const char* uniformName, uint texUnit, uint profile = DEFAULT_PROFILE, uint* parmWidth = NULL, uint* parmHeight = NULL)</a></li>
-		<li><a href="#">void addTexture(uint& texID, const char* uniformName, uint texUnit, uint uniformType = 0)</a></li>
-		<li><a href="#">void initUnifSampler2D()</a></li>
-		<li><a href="#">void initUnifSamplerCubemap()</a></li>
-		<li><a href="#">void initUnif1b()</a></li>
-		<li><a href="#">void initUnif1f()</a></li>
-		<li><a href="#">void initUnif3f()</a></li>
-		<li><a href="#">void initUnifMat4f()</a></li>
-		<li><a href="#">void setProgram(uint& prog)</a></li>
-		<li><a href="#">uint& getProgram()</a></li>
-		<li><a href="#">uniform1b& getUniform1b(uint index)</a></li>
-		<li><a href="#">uniform1f& getUniform1f(uint index)</a></li>
-		<li><a href="#">uniform3f& getUniform3f(uint index)</a></li>
-		<li><a href="#">uniformMat4f& getUniformMat4f(uint index)</a></li>
-		<li><a href="#">int searchUniformSampler2D(std::string name)</a></li>
-		<li><a href="#">int searchUniform1b(std::string name)</a></li>
-		<li><a href="#">int searchUniform1f(std::string name)</a></li>
-		<li><a href="#">int searchUniform3f(std::string name)</a></li>
-		<li><a href="#">int searchUniformMat4f(std::string name)</a></li>
-		<li><a href="#">void info()</a></li> -->
