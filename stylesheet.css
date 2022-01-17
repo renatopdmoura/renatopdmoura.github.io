@@ -159,7 +159,7 @@ footer{
 	.col-12{width: 100.0%;}
 }
 
-@media only screen and (max-width: 1024px){
+@media only screen and (max-width: 1200px){
 	.main-title{
 		font-size: 48px;
 	}
