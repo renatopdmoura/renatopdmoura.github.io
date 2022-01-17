@@ -23,7 +23,7 @@ footer{
 /*---Main header and menu---*/
 
 .main-header{
-	background-color: #868
+	background-color: #868;
 }
 
 .main-title{
@@ -127,11 +127,11 @@ footer{
 [class*="col-"]{
 	float: left;
 	padding: 12px;
-	/*border:  1px solid #f00;*/
+	border:  1px solid #f00;
 }
 
 /*For desktop*/
-@media only screen and (min-width: 768px){
+@media only screen and (min-width: 1200px){
 	.main-title{
 		font-size: 48px;
 	}
@@ -158,8 +158,37 @@ footer{
 	.col-11{width: 91.66%;}
 	.col-12{width: 100.0%;}
 }
-/*For small mobile*/
-@media only screen and (max-width: 768px){
+
+@media only screen and (max-width: 1024px){
+	.main-title{
+		font-size: 48px;
+	}
+	.item-menu{
+		font-size: 32px;
+		padding: 20px;
+	}
+	.tech-item{
+		font-size: 32px;
+	}
+	#ref-class-list{
+		/*border-right:  1px solid #ccc;*/
+	}
+	.col-l-1{width: 8.33%;}
+	.col-l-2{width: 16.66%;}
+	.col-l-3{width: 25%;}
+	.col-l-4{width: 33.33%;}
+	.col-l-5{width: 41.66%;}
+	.col-l-6{width: 50%;}
+	.col-l-7{width: 58.33%;}
+	.col-l-8{width: 66.66%;}
+	.col-l-9{width: 75%;}
+	.col-l-10{width: 83.33%;}
+	.col-l-11{width: 91.66%;}
+	.col-l-12{width: 100.0%;}
+}
+
+/*For mobile*/
+@media only screen and (max-width: 600px){
 	.main-title{
 		font-size: 32px;
 	}
