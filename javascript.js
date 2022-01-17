@@ -7,8 +7,8 @@ function catch_text(id){
 
 function clear_text(){
 	var item_count = document.getElementById("func-list").childElementCount;
-	for(var i = 0; i < item_count + 1; i++){
-		document.getElementById(i).innerHTML = "";
+	for(var i = 1; i < item_count + 1; i++){
+		document.getElementById('mobile-view-' + i).innerHTML = "";
 	}
 }
 
@@ -16,13 +16,13 @@ function switch_article(id){
 	clear_text();
 	switch(id){		
 		case 1:
-			document.getElementById(id).innerHTML = catch_text(id);
+			document.getElementById('mobile-view-' + id).innerHTML = catch_text(id);
 			break;
 		case 2:
-			document.getElementById(id).innerHTML = catch_text(id);
+			document.getElementById('mobile-view-' + id).innerHTML = catch_text(id);
 			break;
 		case 3:
-			document.getElementById(id).innerHTML = catch_text(id);
+			document.getElementById('mobile-view-' + id).innerHTML = catch_text(id);
 			break;
 	}
 }
