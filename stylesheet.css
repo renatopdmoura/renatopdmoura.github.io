@@ -32,7 +32,7 @@ footer{
 }
 
 .main-menu{
-	background-color: #ddd;
+	/*background-color: #ddd;*/
 }
 
 .link-menu{
@@ -40,19 +40,22 @@ footer{
 }
 
 .link-menu:link{
-	text-decoration: none;
+	text-decoration: underline;
+	color: #000;
 }
 
 .link-menu:visited{
 	text-decoration: none;
+	/*color: #000;*/
 }
 
 .link-menu:hover{
-	color: #777;
+	color: #fff;
 }
 
 .link-menu:active{
 	text-decoration: none;
+	color:  #aaa;
 }
 
 /*---Index page---*/
@@ -124,7 +127,7 @@ footer{
 [class*="col-"]{
 	float: left;
 	padding: 12px;
-	border:  1px solid #f00;
+	/*border:  1px solid #f00;*/
 }
 
 /*For desktop*/
@@ -168,9 +171,7 @@ footer{
 	.item-menu{
 		font-size: 24px;
 		margin-left: -20px;
-		/*padding:  0px;*/
-		border:  1px solid red;
-		background-color: #fef;
+		/*background-color: #fef;*/
 	}
 	.tech-item{
 		font-size: 24px;
