@@ -64,7 +64,6 @@ footer{
 	float:  left;
 	font-family: Humnst777;
 	font-size: 32px;
-	padding: 20px;
 }
 
 .tech-item{
@@ -80,7 +79,7 @@ footer{
 	background-color: #eee;
 }
 
-/*---_byNameList---*/
+/*Reference page---*/
 
 #ref-class-list{
 	background-color:  #fff;
@@ -129,11 +128,14 @@ footer{
 [class*="col-"]{
 	float: left;
 	padding: 12px;
-	/*border:  1px solid #f00;*/
+	border:  1px solid #f00;
 }
 
 /*For desktop*/
 @media only screen and (min-width: 768px){
+	.item-menu{
+		padding: 20px;
+	}
 	.tech-item{
 		font-size: 32px;
 	}
@@ -155,6 +157,9 @@ footer{
 }
 /*For small mobile*/
 @media only screen and (max-width: 768px){
+	.item-menu{
+		padding:  10px;
+	}
 	.tech-item{
 		font-size: 24px;
 	}
