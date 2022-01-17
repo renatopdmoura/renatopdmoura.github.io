@@ -22,11 +22,6 @@ footer{
 
 /*---Main header and menu---*/
 
-.main-container{
-	/*display: flex;*/
-}
-
-
 .main-header{
 	/*background-color: #868;*/
 }
@@ -114,8 +109,9 @@ footer{
 }
 
 #ref-description{
+	font-size: 18px;
+	padding: 35px;
 	background-color: #fff;
-	font-size:  18px;
 }
 
 #ref-class-list li{
@@ -253,11 +249,17 @@ footer{
 
 /*For desktop*/
 @media only screen and (min-width: 1366px){
+	.main-container{
+		width: 66.66vw;
+		margin: auto;
+	}
+
 	.main-header{
 		padding: 0px;
 		background-color: #222;
 	}
 	.main-title{
+
 	}
 	.main-title h1{
 		font-size: 48px;
@@ -294,7 +296,7 @@ footer{
 		border-right: 1px solid #ddd;
 	}
 	.btn-func-ls{
-		font-size: 20px;
+		font-size: 16px;
 	}
 	.col-d-1{width: 8.33%;}
 	.col-d-2{width: 16.66%;}
