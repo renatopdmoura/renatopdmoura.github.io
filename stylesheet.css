@@ -99,6 +99,7 @@ footer{
 
 #ref-description{
 	background-color: #fff;
+	font-size:  18px;
 }
 
 #ref-class-list li{
@@ -110,10 +111,10 @@ footer{
 
 #ref-class-list button{
 	font-family: Humnst777;
-	font-size: 22px;
 	width: 100%;
 	padding: 10px;
 	background-color: #ddf;
+	font-size: 24px;
 	border: none;
 }
 
@@ -128,7 +129,7 @@ footer{
 [class*="col-"]{
 	float: left;
 	padding: 12px;
-	border:  1px solid #f00;
+	/*border:  1px solid #f00;*/
 }
 
 /*For desktop*/
@@ -137,7 +138,7 @@ footer{
 		font-size: 32px;
 	}
 	#ref-class-list{
-		/*border-right:  1px solid #ccc;*/
+		border-right:  1px solid #ccc;
 	}
 	.col-1{width: 8.33%;}
 	.col-2{width: 16.66%;}
