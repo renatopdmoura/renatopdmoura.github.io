@@ -23,7 +23,7 @@ footer{
 /*---Main header and menu---*/
 
 .main-header{
-	background-color: #868;
+	/*background-color: #868;*/
 }
 
 .main-title{
@@ -127,23 +127,35 @@ footer{
 [class*="col-"]{
 	float: left;
 	padding: 12px;
-	border:  1px solid #f00;
+	/*border:  1px solid #f00;*/
 }
 
 /*For mobile*/
 @media only screen and (max-width: 600px){
+	.main-header{
+		padding: 0px;
+	}
+	.main-title{
+		background-color: #222;
+	}
 	.main-title h1{
 		font-size: 48px;
+		margin-top: 20px;
 	}
 	.main-title h2{
 		font-size: 32px;
+		margin-top: -30px;
 	}
 	.main-menu{
+		padding: 0px;
 		margin-top: -16px;
 	}
 	.item-menu{
-		font-size: 16px;
-		margin-left: -20px;
+		text-align: center;
+	}
+	.link-menu{
+		padding: 0px;
+		font-size: 22px;
 	}
 	.tech-item{
 		font-size: 24px;
