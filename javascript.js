@@ -7,12 +7,13 @@ function catch_text(id){
 
 function clear_text(){
 	let w = window.innerWidth;
-	var item_count = document.getElementById("func-list").childElementCount;
+	var item_count = document.getElementById('func-list').childElementCount;
 	for(var i = 1; i < item_count + 1; i++){
 		if(w >= 1366)
 			document.getElementById('desktop-view-' + i).innerHTML = "";
 		else
 			document.getElementById('mobile-view-' + i).innerHTML = "";
+		document.getElementById('btn-func-ls-' + i).style.backgroundColor = "#eee";
 	}
 	if(w >= 1366)
 		return 'desktop-view-';
@@ -22,6 +23,7 @@ function clear_text(){
 
 function switch_article(id){
 	let label_id = clear_text() + id;
+	document.getElementById('btn-func-ls-' + id).style.backgroundColor = "#ddf";
 	switch(id){		
 		case 1:
 			document.getElementById(label_id).innerHTML = catch_text(id);
