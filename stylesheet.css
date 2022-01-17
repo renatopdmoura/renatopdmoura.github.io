@@ -28,12 +28,11 @@ footer{
 
 .main-title{
 	font-family: Humnst777;
-	font-size: 48px;
 	color: #fff;
 }
 
 .main-menu{
-	/*background-color: #333;*/
+	background-color: #ddd;
 }
 
 .link-menu{
@@ -59,11 +58,8 @@ footer{
 /*---Index page---*/
 
 .item-menu{
-	display: inline;
 	list-style-type: none;
-	float:  left;
 	font-family: Humnst777;
-	font-size: 32px;
 }
 
 .tech-item{
@@ -133,7 +129,11 @@ footer{
 
 /*For desktop*/
 @media only screen and (min-width: 768px){
+	.main-title{
+		font-size: 48px;
+	}
 	.item-menu{
+		font-size: 32px;
 		padding: 20px;
 	}
 	.tech-item{
@@ -157,8 +157,20 @@ footer{
 }
 /*For small mobile*/
 @media only screen and (max-width: 768px){
+	.main-title{
+		font-size: 32px;
+	}
+	.main-menu{
+		padding-left: 0px;
+		padding-top: 0px;
+		margin-top: -20px;
+	}
 	.item-menu{
-		padding:  10px;
+		font-size: 24px;
+		margin-left: -20px;
+		/*padding:  0px;*/
+		border:  1px solid red;
+		background-color: #fef;
 	}
 	.tech-item{
 		font-size: 24px;
