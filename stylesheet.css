@@ -12,6 +12,7 @@
 body{
 	background-color: #fff;
 	font-family:  Arial, sans-serif;
+	margin-left: 16.66%;
 }
 
 footer{
@@ -75,7 +76,7 @@ footer{
 /*--Main section---*/
 
 .presentation{
-	background-color: #eee;
+	background-color: #fff;
 }
 
 /*Reference page---*/
@@ -117,6 +118,10 @@ footer{
 	list-style-type: none;
 	padding: 10px;
 	margin-left: -40px;
+}
+
+.main-title{
+	text-align: center;
 }
 
 /*---Responsive---*/
