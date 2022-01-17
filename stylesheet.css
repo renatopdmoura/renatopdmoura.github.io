@@ -90,10 +90,6 @@ footer{
 	cursor: pointer;
 }
 
-.btn-func-ls:hover{
-	background-color: #ddf;
-}
-
 #ref-class-list{
 	background-color:  #fff;
 	padding:  10px;
