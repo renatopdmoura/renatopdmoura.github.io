@@ -12,7 +12,6 @@
 body{
 	background-color: #fff;
 	font-family:  Arial, sans-serif;
-	margin-left: 16.66%;
 }
 
 footer{
@@ -22,6 +21,11 @@ footer{
 }
 
 /*---Main header and menu---*/
+
+.main-container{
+	/*display: flex;*/
+}
+
 
 .main-header{
 	/*background-color: #868;*/

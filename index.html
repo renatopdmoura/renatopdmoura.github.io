@@ -9,60 +9,61 @@
 	<link rel="stylesheet" href="stylesheet.css" type="text/css">
 	<title>Pura | Wiki</title>
 </head>
-<body class="col-s-12 col-t-12 col-d-8">
+<body>
+<div class="col-s-12 col-t-12 col-d-8">
+	<header class="col-s-12 col-t-12 col-d-12 main-header">
+		<div class="col-s-12 col-t-5 col-d-5 main-title">
+			<h1>Pura</h1>
+			<h2>Biblioteca Gráfica</h2>
+		</div>
 
-<header class="col-s-12 col-t-12 col-d-12 main-header">
-	<div class="col-s-12 col-t-5 col-d-5 main-title">
-		<h1>Pura</h1>
-		<h2>Biblioteca Gráfica</h2>
-	</div>
+		<nav class="col-s-12 col-t-7 col-d-7 row main-menu">
+			<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="index.html" accesskey="a" class="link-menu">Apresentação</a></span>
+			<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="reference.html" accesskey="r" class="link-menu">Referência</a></span>
+			<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="#" accesskey="t" class="link-menu">Download</a></span>
+		</nav>
+	</header>
 
-	<nav class="col-s-12 col-t-7 col-d-7 row main-menu">
-		<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="index.html" accesskey="a" class="link-menu">Apresentação</a></span>
-		<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="reference.html" accesskey="r" class="link-menu">Referência</a></span>
-		<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="#" accesskey="t" class="link-menu">Download</a></span>
-	</nav>
-</header>
+	<section class="col-s-12 col-t-12 col-d-12 presentation">
+		<h1>O que é Pura</h1>
+		<p>Pura é um conjunto de arquivos programados em C++ que fornecem uma série de recursos pertencentes ao pipeline de renderização gráfica. 
+		Definem as seguintes caracteriticas:</p>
 
-<section class="col-s-12 col-t-12 col-d-12 presentation">
-	<h1>O que é Pura</h1>
-	<p>Pura é um conjunto de arquivos programados em C++ que fornecem uma série de recursos pertencentes ao pipeline de renderização gráfica. 
-	Definem as seguintes caracteriticas:</p>
+		<ol>
+			<li>Gerenciador de sombreadores</li>
+				<ul>
+					<p>Funcionalidade atribuida a classe SRW, nela funções como geração de sombreadores e objetos de programa mais inicialização de dados uniformes
+					são realizadas. SRW funciona como classe base para a grande maioria das demais classes.</p>
+				</ul>
+			<li>Carregador de modelos</li>
+				<ul>
+					<p>A classe Object é responsável por realizar o carregamento de modelos 3D a partir da interpretação de arquivos .obj. É classe derivada de SRW, carregamentos
+					texturas e/ou definição de cores uniformes são feitas a partir das chamadas as funções de inicialização de uniformes da classe base.</p>
+				</ul>
+			<li>Carregador de terrenos</li>
+				<ul>
+					<p>Classe Terrain, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de SRW, uniformes são inicializados a partir de chamadas as funções da classe base</p>
+				</ul>
+			<li>Renderização de textos</li>
+				<ul>
+					<p>Classe Text, usa FreeType como núcleo de funcionalidade. Permite carregamento de texto de forma otimizada usando um identificador de texturas, ou métodos que 
+					carregam caracteres em tempo de execução - como comandos de console.
+					</p>
+				</ul>
+		</ol>
 
-	<ol>
-		<li>Gerenciador de sombreadores</li>
-			<ul>
-				<p>Funcionalidade atribuida a classe SRW, nela funções como geração de sombreadores e objetos de programa mais inicialização de dados uniformes
-				são realizadas. SRW funciona como classe base para a grande maioria das demais classes.</p>
-			</ul>
-		<li>Carregador de modelos</li>
-			<ul>
-				<p>A classe Object é responsável por realizar o carregamento de modelos 3D a partir da interpretação de arquivos .obj. É classe derivada de SRW, carregamentos
-				texturas e/ou definição de cores uniformes são feitas a partir das chamadas as funções de inicialização de uniformes da classe base.</p>
-			</ul>
-		<li>Carregador de terrenos</li>
-			<ul>
-				<p>Classe Terrain, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de SRW, uniformes são inicializados a partir de chamadas as funções da classe base</p>
-			</ul>
-		<li>Renderização de textos</li>
-			<ul>
-				<p>Classe Text, usa FreeType como núcleo de funcionalidade. Permite carregamento de texto de forma otimizada usando um identificador de texturas, ou métodos que 
-				carregam caracteres em tempo de execução - como comandos de console.
-				</p>
-			</ul>
-	</ol>
+		<h2>Tecnologias</h2>
+		<ul>
+			<li class="tech-item">OpenGL</li>
+			<li class="tech-item">SDL</li>
+			<li class="tech-item">FreeType</li>
+		</ul>
+	</section>
 
-	<h2>Tecnologias</h2>
-	<ul>
-		<li class="tech-item">OpenGL</li>
-		<li class="tech-item">SDL</li>
-		<li class="tech-item">FreeType</li>
-	</ul>
-</section>
-
-<footer class="col-s-12 col-t-12 col-d-12">
-		<h3>Copyright Coffee Soul Labs</h3>
-</footer>
+	<footer class="col-s-12 col-t-12 col-d-12">
+			<h3>Copyright Coffee Soul Labs</h3>
+	</footer>
+</div>
 
 </body>
 </html>
