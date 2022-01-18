@@ -3,7 +3,7 @@
 let w = window.innerWidth;
 
 function window_size_changed(){
-	location.reload();
+	document.location.reload();
 }
 
 function catch_text(id){
