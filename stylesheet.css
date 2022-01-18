@@ -10,7 +10,7 @@
 }
 
 body{
-	background-color: #fff;
+	background-color: #f6f8fa;
 	font-family:  Arial, sans-serif;
 }
 
@@ -18,6 +18,10 @@ footer{
 	background-color: #111;
 	color: #fff;
 	text-align: center;
+}
+
+.main-container{
+	background-color: #fff;
 }
 
 /*---Main header and menu---*/
@@ -121,6 +125,11 @@ footer{
 	text-align: center;
 }
 
+.audio-section{
+	margin:  10px;
+	border-right: 1px solid #ddd;
+}
+
 /*---Responsive---*/
 
 .row::after{
@@ -137,11 +146,15 @@ footer{
 
 /*---Mobile Larger---*/
 @media only screen and (max-width: 768px){
+	body{
+		background-color: #fff;
+	}
 	.main-header{
 		padding: 0px;
+		background-color: #fff;
 	}
 	.main-title{
-		background-color: #222;
+		background-color: #24292f;
 	}
 	.main-title h1{
 		font-size: 48px;
@@ -193,7 +206,7 @@ footer{
 @media only screen and (min-width: 768px){
 	.main-header{
 		padding: 0px;
-		background-color: #222;
+		background-color: #24292f;
 	}
 	.main-title{
 	}
@@ -249,11 +262,12 @@ footer{
 	.main-container{
 		width: 66.66vw;
 		margin: auto;
+		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
 	}
 
 	.main-header{
 		padding: 0px;
-		background-color: #222;
+		background-color: #24292f;
 	}
 	.main-title{
 
