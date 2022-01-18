@@ -1,12 +1,17 @@
 // Escrito por Renato Moura em 16 de Janeiro de 2021
 
+let w = window.innerWidth;
+
+function window_size_changed(){
+	location.reload();
+}
+
 function catch_text(id){
 	index = "text-" + id;
 	return document.getElementById('text-' + id).innerHTML;
 }
 
 function clear_text(){
-	let w = window.innerWidth;
 	var item_count = document.getElementById('func-list').childElementCount;
 	for(var i = 1; i < item_count + 1; i++){
 		if(w >= 1366)
@@ -34,5 +39,10 @@ function switch_article(id){
 		case 3:
 			document.getElementById(label_id).innerHTML = catch_text(id);
 			break;
+		case 32:
+			document.getElementById(label_id).innerHTML = catch_text(id);
+			break;
 	}
+	if(w >= 1366)
+		window.scrollTo(0, 0);
 }
