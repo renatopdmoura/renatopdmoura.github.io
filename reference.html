@@ -10,44 +10,181 @@
 	<script type="text/javascript" src="javascript.js"></script>
 	<title>Pura | Referência de biblioteca</title>
 </head>
+
 <body onresize="window_size_changed()">
 	<div class="main-container">
-		<header class="col-s-12 col-t-12 main-header">
+
+		<header class="col-s-12 col-t-12 col-d-12 main-header">
 			<div class="col-s-12 col-t-5 col-d-5 main-title">
 				<h1>Pura</h1>
 				<h2>Biblioteca Gráfica</h2>
 			</div>
-
 			<nav class="col-s-12 col-t-7 col-d-7 row main-menu">
-				<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="index.html" accesskey="a" class="link-menu">Apresentação</a></span>
-				<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="reference.html" accesskey="r" class="link-menu">Referência</a></span>
-				<span class="col-s-12 col-t-4 col-d-4 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" accesskey="t" class="link-menu">Download</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="index.html" class="link-menu">Apresentação</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="reference.html" class="link-menu">Referência</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="assets.html" class="link-menu">Ativos</a></span>
 			</nav>
 		</header>
 
-		<body>
 		<section id="ref-class-list" class="col-s-12 col-t-12 col-d-3">
-			<span id="text-1" hidden>
-				<p>Protótipo:</p>
-				<h1 class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path)</code></h1>
-				<p>Um gerador de programa de sombreamento de fabrica. É util para definir objetos de programas que serão compartilhados por diferentes instâncias.</p>
-			</span>
-			<span id="text-2" hidden>
-				<p>Protótipo:</p>
-				<h1 class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</code></h1>
-				<p>Um gerador de programa de sombreamento para situaçãos em que se faz necessário um sombreador de geometria.</p>
-			</span>
-			<span id="text-3" hidden>
-				<p>Protótipo:</p>
-				<h1 class="prot-func"><code>static void genProgramShaders()</code></h1>
-				<p>Constroi programas de sombreamentos definidos pelo programa.</p>
-			</span>
-			<span id="text-32" hidden>
-				<p>Protótipo:</p>
-				<h1 class="prot-func"><code>void info()</code></h1>
-				<p>Exibe informações sobre os dados alocados para objetos da classe SRW ou derivados dela.</p> 
-			</span>
-
+			<section>
+				<span id="text-1" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path)</code></h1>
+					<p>Um gerador de programa de sombreamento de fabrica. É util para definir objetos de programas que serão compartilhados por diferentes instâncias.</p>
+				</span>
+				<span id="text-2" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</code></h1>
+					<p>Um gerador de programa de sombreamento para situaçãos em que se faz necessário um sombreador de geometria.</p>
+				</span>
+				<span id="text-3" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genProgramShaders()</code></h1>
+					<p>Constroi programas de sombreamentos definidos internamente pela biblioteca.</p>
+				</span>
+				<span id="text-4" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-5" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void sharedUniforms(mat4<float>& matrix, vec3<float>& cameraPos, Sun* sun, std::vector<PointLight>* pointLightArray, std::vector<SpotLight>* spotLightArray = NULL)</code></h1>
+					<p>Chame essa função para definir um local de memória compartilhavel para dados de iluminação da qual todos objetos possam realizar a leitura.</p>
+				</span>
+				<span id="text-6" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void sharedUniforms(mat4<float>& viewProj, vec3<float>& cameraPos, bool update = true)</code></h1>
+					<p>Método para atualizar a matriz de visualização e a posição da câmera.</p>
+				</span>
+				<span id="text-7" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>void setUniform1b(std::string, bool value)</code></h1>
+					<p>Inicializa um uniforme do tipo boleano no programa de sombreamento atualmente vinculado.</p>
+				</span>
+				<span id="text-8" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>void setUniform1f(std::string, float value)</code></h1>
+					<p>Inicializa um uniforme do tipo float no programa de sombreamento atualmente vinculado.</p>
+				</span>
+				<span id="text-9" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-10" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-11" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-12" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-13" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-14" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-15" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-16" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-17" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-19" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-20" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-21" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-22" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-23" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-24" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-25" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-26" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-27" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-28" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-29" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-30" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-31" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
+					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				</span>
+				<span id="text-32" hidden>
+					<p>Protótipo:</p>
+					<h1 class="prot-func"><code>void info()</code></h1>
+					<p>Exibe informações sobre os dados alocados para objetos da classe SRW ou derivados dela.</p> 
+				</span>
+			</section>
 
 			<h1>Shader Resource Wrapper</h1>
 			<h2>Funções:</h2>

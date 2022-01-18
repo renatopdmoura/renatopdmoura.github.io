@@ -29,20 +29,7 @@ function clear_text(){
 function switch_article(id){
 	let label_id = clear_text() + id;
 	document.getElementById('btn-func-ls-' + id).style.backgroundColor = "#ddf";
-	switch(id){		
-		case 1:
-			document.getElementById(label_id).innerHTML = catch_text(id);
-			break;
-		case 2:
-			document.getElementById(label_id).innerHTML = catch_text(id);
-			break;
-		case 3:
-			document.getElementById(label_id).innerHTML = catch_text(id);
-			break;
-		case 32:
-			document.getElementById(label_id).innerHTML = catch_text(id);
-			break;
-	}
+	document.getElementById(label_id).innerHTML = catch_text(id);
 	if(w >= 1366)
 		window.scrollTo(0, 0);
 }
