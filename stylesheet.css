@@ -15,8 +15,21 @@ body{
 }
 
 footer{
-	background-color: #111;
-	color: #fff;
+	font-family: Arial, sans-serif;
+	border-top: 1px solid #ddd;
+	color: #444;
+}
+
+footer a{
+	font-size: 14px;
+	color: #666;
+}
+
+footer a:hover{
+	color: #5f9de5;
+}
+
+#copyright{
 	text-align: center;
 }
 
@@ -84,6 +97,7 @@ footer{
 
 /*Reference page---*/
 
+
 .btn-func-ls{
 	font-family: Humnst777;
 	width: 100%;
@@ -92,6 +106,15 @@ footer{
 	box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2);
 	background-color: #eee;
 	cursor: pointer;
+}
+
+details{
+	padding: 5px;
+}
+
+
+#func-list{
+	/*display: none;*/
 }
 
 #ref-class-list{
