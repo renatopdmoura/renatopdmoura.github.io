@@ -1,23 +1,23 @@
 <!DOCTYPE html>	
 <html>
 <head>
-	<title>Fassme Framework</title>
+	<title>??? Framework</title>
 	<meta charset="UTF-8">
-	<meta name="description" content="Referência de biblioteca Pura">
-	<meta name="keywords" content="Programação, OpenGL, Game Engine, C++, C, Games, Gráficos 3D, Wiki, Referência, Pura">
+	<meta name="description" content="Referência">
+	<meta name="keywords" content="Programação, C++, OpenGL">
 	<meta name="author" content="Renato Moura">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- include css -->
 	<link rel="stylesheet" href="stylesheet.css" type="text/css">
 	<link rel="stylesheet" href="css/common.css" type="text/css">
 	<!-- include javascript -->
-	<script type="text/javascript" src="javascript.js"></script>
+	<script type="text/javascript" src="js/javascript.js"></script>
 </head>
 <body>
-	<div id="main-container" class="row">
+	<main id="main-container" class="row">
 		<header id="main-header" class="col-s-12 col-t-12 col-d-12">
 			<div id="main-title" class="col-s-12 col-t-5 col-d-5">
-				<h1>Fassme Framework</h1>
+				<h1>??? Framework</h1>
 			</div>
 			<nav class="col-s-12 col-t-7 col-d-7 row main-menu">
 				<span class="col-s-12 col-t-12 col-d-4 item-menu"><a href="index.html" class="link-menu">Apresentação</a></span>
@@ -25,498 +25,498 @@
 				<span class="col-s-12 col-t-12 col-d-4 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
 			</nav>
 		</header>
-		<section id="ref-class-list" class="col-s-12 col-t-12 col-d-3">
-			<section>
-				<span id="text-1" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path)</code></h1>
-					<p>Um gerador de programa de sombreamento de fabrica. É util para definir objetos de programas que serão compartilhados por diferentes instâncias.</p>
-				</span>
-				<span id="text-2" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</code></h1>
-					<p>Um gerador de programa de sombreamento para situaçãos em que se faz necessário um sombreador de geometria.</p>
-				</span>
-				<span id="text-3" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genProgramShaders()</code></h1>
-					<p>Constroi programas de sombreamentos definidos internamente pela biblioteca.</p>
-				</span>
-				<span id="text-4" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-5" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void sharedUniforms(mat4<float>& matrix, vec3<float>& cameraPos, Sun* sun, std::vector<PointLight>* pointLightArray, std::vector<SpotLight>* spotLightArray = NULL)</code></h1>
-					<p>Chame essa função para definir um local de memória compartilhavel para dados de iluminação da qual todos objetos possam realizar a leitura.</p>
-				</span>
-				<span id="text-6" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void sharedUniforms(mat4<float>& viewProj, vec3<float>& cameraPos, bool update = true)</code></h1>
-					<p>Método para atualizar a matriz de visualização e a posição da câmera.</p>
-				</span>
-				<span id="text-7" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>void setUniform1b(std::string, bool value)</code></h1>
-					<p>Inicializa um uniforme do tipo boleano no programa de sombreamento atualmente vinculado.</p>
-				</span>
-				<span id="text-8" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>void setUniform1f(std::string, float value)</code></h1>
-					<p>Inicializa um uniforme do tipo float no programa de sombreamento atualmente vinculado.</p>
-				</span>
-				<span id="text-9" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-10" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-11" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-12" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-13" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-14" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-15" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-16" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-17" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-19" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-20" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-21" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-22" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-23" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-24" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-25" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-26" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-27" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-28" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-29" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-30" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-31" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></h1>
-					<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				</span>
-				<span id="text-32" hidden>
-					<p>Protótipo:</p>
-					<h1 class="prot-func"><code>void info()</code></h1>
-					<p>Exibe informações sobre os dados alocados para objetos da classe SRW ou derivados dela.</p> 
-				</span>
-			</section>
+		<section>
+			<div id="text-1" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path)</code></p>
+				<p>Um gerador de programa de sombreamento de fabrica. É util para definir objetos de programas que serão compartilhados por diferentes instâncias.</p>
+			</div>
+			<div id="text-2" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</code></p>
+				<p>Um gerador de programa de sombreamento para situaçãos em que se faz necessário um sombreador de geometria.</p>
+			</div>
+			<div id="text-3" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genProgramShaders()</code></p>
+				<p>Constroi programas de sombreamentos definidos internamente pela biblioteca.</p>
+			</div>
+			<div id="text-4" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-5" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void sharedUniforms(mat4<float>& matrix, vec3<float>& cameraPos, Sun* sun, std::vector<PointLight>* pointLightArray, std::vector<SpotLight>* spotLightArray = NULL)</code></p>
+				<p>Chame essa função para definir um local de memória compartilhavel para dados de iluminação da qual todos objetos possam realizar a leitura.</p>
+			</div>
+			<div id="text-6" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void sharedUniforms(mat4<float>& viewProj, vec3<float>& cameraPos, bool update = true)</code></p>
+				<p>Método para atualizar a matriz de visualização e a posição da câmera.</p>
+			</div>
+			<div id="text-7" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>void setUniform1b(std::string, bool value)</code></p>
+				<p>Inicializa um uniforme do tipo boleano no programa de sombreamento atualmente vinculado.</p>
+			</div>
+			<div id="text-8" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>void setUniform1f(std::string, float value)</code></p>
+				<p>Inicializa um uniforme do tipo float no programa de sombreamento atualmente vinculado.</p>
+			</div>
+			<div id="text-9" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-10" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-11" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-12" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-13" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-14" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-15" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-16" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-17" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-19" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-20" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-21" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-22" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-23" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-24" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-25" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-26" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-27" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-28" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-29" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-30" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-31" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+			</div>
+			<div id="text-32" hidden>
+				<p>Protótipo:</p>
+				<p class="prot-func"><code>void info()</code></p>
+				<p>Exibe informações sobre os dados alocados para objetos da classe SRW ou derivados dela.</p> 
+			</div>
+		</section>
+		<aside id="ref-class-list" class="col-s-12 col-t-12 col-d-3">
 			<details>
 				<summary>Shader Resource Wrapper</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Object</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Terrain</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Text</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Math</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Datatype</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Camera</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>Common</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
 			<details>
 				<summary>CommandLine</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><span id="mobile-view-1"></span></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><span id="mobile-view-2"></span></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><span id="mobile-view-3"></span></li>
-					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><span id="mobile-view-4"></span></li>
-					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><span id="mobile-view-5"></span></li>
-					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><span id="mobile-view-6"></span></li>
-					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><span id="mobile-view-7"></span></li>
-					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><span id="mobile-view-8"></span></li>
-					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><span id="mobile-view-9"></span></li>
-					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><span id="mobile-view-10"></span></li>
-					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><span id="mobile-view-11"></span></li>
-					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><span id="mobile-view-12"></span></li>
-					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><span id="mobile-view-13"></span></li>
-					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><span id="mobile-view-14"></span></li>
-					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><span id="mobile-view-15"></span></li>
-					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><span id="mobile-view-16"></span></li>
-					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><span id="mobile-view-17"></span></li>
-					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><span id="mobile-view-18"></span></li>
-					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><span id="mobile-view-19"></span></li>
-					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><span id="mobile-view-20"></span></li>
-					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><span id="mobile-view-21"></span></li>
-					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><span id="mobile-view-22"></span></li>
-					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><span id="mobile-view-23"></span></li>
-					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><span id="mobile-view-24"></span></li>
-					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><span id="mobile-view-25"></span></li>
-					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><span id="mobile-view-26"></span></li>
-					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><span id="mobile-view-27"></span></li>
-					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><span id="mobile-view-28"></span></li>
-					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><span id="mobile-view-29"></span></li>
-					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><span id="mobile-view-30"></span></li>
-					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><span id="mobile-view-31"></span></li>
-					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><span id="mobile-view-32"></span></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genProgramShader</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">genProgramShaders</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">genGeometryBuffer</button><article id="mobile-view-4"></article></li>
+					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">sharedUniforms</button><article id="mobile-view-5"></article></li>
+					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">sharedUniforms</button><article id="mobile-view-6"></article></li>
+					<li><button id="btn-func-ls-7" class="btn-func-ls" onclick="switch_article(7)">setUniform1b</button><article id="mobile-view-7"></article></li>
+					<li><button id="btn-func-ls-8" class="btn-func-ls" onclick="switch_article(8)">setUniform1f</button><article id="mobile-view-8"></article></li>
+					<li><button id="btn-func-ls-9" class="btn-func-ls" onclick="switch_article(9)">setUniform1f</button><article id="mobile-view-9"></article></li>
+					<li><button id="btn-func-ls-10" class="btn-func-ls" onclick="switch_article(10)">setUniform3f</button><article id="mobile-view-10"></article></li>
+					<li><button id="btn-func-ls-11" class="btn-func-ls" onclick="switch_article(11)">setUniform3f</button><article id="mobile-view-11"></article></li>
+					<li><button id="btn-func-ls-12" class="btn-func-ls" onclick="switch_article(12)">setUniformMat4f</button><article id="mobile-view-12"></article></li>
+					<li><button id="btn-func-ls-13" class="btn-func-ls" onclick="switch_article(13)">addTexture</button><article id="mobile-view-13"></article></li>
+					<li><button id="btn-func-ls-14" class="btn-func-ls" onclick="switch_article(14)">addTexture</button><article id="mobile-view-14"></article></li>
+					<li><button id="btn-func-ls-15" class="btn-func-ls" onclick="switch_article(15)">initUnifSampler2D</button><article id="mobile-view-15"></article></li>
+					<li><button id="btn-func-ls-16" class="btn-func-ls" onclick="switch_article(16)">initUnifSamplerCubemap</button><article id="mobile-view-16"></article></li>
+					<li><button id="btn-func-ls-17" class="btn-func-ls" onclick="switch_article(17)">initUnif1b</button><article id="mobile-view-17"></article></li>
+					<li><button id="btn-func-ls-18" class="btn-func-ls" onclick="switch_article(18)">initUnif1f</button><article id="mobile-view-18"></article></li>
+					<li><button id="btn-func-ls-19" class="btn-func-ls" onclick="switch_article(19)">initUnif3f</button><article id="mobile-view-19"></article></li>
+					<li><button id="btn-func-ls-20" class="btn-func-ls" onclick="switch_article(20)">initUnifMat4f</button><article id="mobile-view-20"></article></li>
+					<li><button id="btn-func-ls-21" class="btn-func-ls" onclick="switch_article(21)">setProgram</button><article id="mobile-view-21"></article></li>
+					<li><button id="btn-func-ls-22" class="btn-func-ls" onclick="switch_article(22)">getProgram</button><article id="mobile-view-22"></article></li>
+					<li><button id="btn-func-ls-23" class="btn-func-ls" onclick="switch_article(23)">getUniform1b</button><article id="mobile-view-23"></article></li>
+					<li><button id="btn-func-ls-24" class="btn-func-ls" onclick="switch_article(24)">getUniform1f</button><article id="mobile-view-24"></article></li>
+					<li><button id="btn-func-ls-25" class="btn-func-ls" onclick="switch_article(25)">getUniform3f</button><article id="mobile-view-25"></article></li>
+					<li><button id="btn-func-ls-26" class="btn-func-ls" onclick="switch_article(26)">getUniformMat4f</button><article id="mobile-view-26"></article></li>
+					<li><button id="btn-func-ls-27" class="btn-func-ls" onclick="switch_article(27)">searchUniformSampler2D</button><article id="mobile-view-27"></article></li>
+					<li><button id="btn-func-ls-28" class="btn-func-ls" onclick="switch_article(28)">searchUniform1b</button><article id="mobile-view-28"></article></li>
+					<li><button id="btn-func-ls-29" class="btn-func-ls" onclick="switch_article(29)">searchUniform1f</button><article id="mobile-view-29"></article></li>
+					<li><button id="btn-func-ls-30" class="btn-func-ls" onclick="switch_article(30)">searchUniform3f</button><article id="mobile-view-30"></article></li>
+					<li><button id="btn-func-ls-31" class="btn-func-ls" onclick="switch_article(31)">searchUniformMat4f</button><article id="mobile-view-31"></article></li>
+					<li><button id="btn-func-ls-32" class="btn-func-ls" onclick="switch_article(32)">info</button><article id="mobile-view-32"></article></li>
 				</ul>
 			</details>
-		</section>
+		</aside>
 		<section id="ref-description" class="col-s-12 col-t-12 col-d-8 row">
 			<article id="desktop-view-1"></article>
 			<article id="desktop-view-2"></article>
@@ -552,12 +552,12 @@
 			<article id="desktop-view-32"></article>
 		</section>
 		<footer class="col-s-12 col-t-12 col-d-12">
-			<span class="col-s-12 col-t-12 col-d-2"><a href="assets.html">Apresentação</a></span>
+			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
 			<span class="col-s-12 col-t-12 col-d-2"><a href="assets.html">Ativos</a></span>
-			<span class="col-s-12 col-t-12 col-d-12"><a href="assets.html">Referência</a></span>
-			<span class="col-s-12 col-t-12 col-d-12"><a href="assets.html">Download</a></span>
-			<span id="copyright" class="col-s-12 col-t-12 col-d-12">&copy 2022 Fassme</h4>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="reference.html">Referência</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank">Download</a></span>
+			<span id="copyright" class="col-s-12 col-t-12 col-d-12">&copy ??? Fassme</h4>
 		</footer>
-	</div>
+	</main>
 </body>
 </html>

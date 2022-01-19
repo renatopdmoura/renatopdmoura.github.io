@@ -1,0 +1,14 @@
+@charset utf-8;
+
+@font-face{
+	font-family: Humnst777;
+	src: url(../fonts/Humnst777.ttf);
+}
+
+.tech-item{
+	font-family: Humnst777;
+	font-size: 24px;
+	list-style-type: none;
+	padding: 10px;
+	display: inline-block;
+}

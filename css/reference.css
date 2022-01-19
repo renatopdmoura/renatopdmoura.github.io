@@ -2,18 +2,8 @@
 
 @font-face{
 	font-family: Humnst777;
-	src: url(fonts/Humnst777.ttf);
+	src: url(../fonts/Humnst777.ttf);
 }
-
-.tech-item{
-	font-family: Humnst777;
-	font-size: 24px;
-	list-style-type: none;
-	padding: 10px;
-	display: inline-block;
-}
-
-/*Reference page---*/
 
 .btn-func-ls{
 	font-family: Humnst777;
@@ -58,10 +48,6 @@ details{
 	margin-left: -40px;
 }
 
-#audio-section audio{
-	border-bottom: 1px solid #ddd;
-}
-
 /*---Mobile Larger---*/
 @media only screen and (max-width: 768px){
 	.prot-func{
@@ -80,7 +66,8 @@ details{
 /*---Tablet---*/
 @media only screen and (min-width: 769px){
 	.prot-func{
-		border: 1px solid #000;		
+		border: 1px solid #000;
+		border-radius: 5px;
 		padding: 10px;
 	}
 	.prot-func code{
@@ -95,7 +82,7 @@ details{
 /*For desktop*/
 @media only screen and (min-width: 1366px){
 	.prot-func{
-		border: 1px solid #000;		
+		/*border: 1px solid #000;		*/
 		padding: 10px;
 	}
 	.prot-func code{
