@@ -5,98 +5,15 @@
 	src: url(fonts/Humnst777.ttf);
 }
 
-*{
-	box-sizing: border-box;
-}
-
-body{
-	background-color: #f6f8fa;
-	font-family:  Arial, sans-serif;
-}
-
-footer{
-	font-family: Arial, sans-serif;
-	border-top: 1px solid #ddd;
-	color: #444;
-}
-
-footer a{
-	font-size: 14px;
-	color: #666;
-}
-
-footer a:hover{
-	color: #5f9de5;
-}
-
-#copyright{
-	text-align: center;
-}
-
-.main-container{
-	background-color: #fff;
-}
-
-/*---Main header and menu---*/
-
-.main-header{
-	/*background-color: #868;*/
-}
-
-.main-title{
-	font-family: Humnst777;
-	color: #fff;
-}
-
-.main-menu{
-	/*background-color: #ddd;*/
-}
-
-.link-menu{
-	color: #000;
-}
-
-.link-menu:link{
-	text-decoration: underline;
-	color: #000;
-}
-
-.link-menu:visited{
-	text-decoration: none;
-	/*color: #000;*/
-}
-
-.link-menu:hover{
-	color: #fff;
-}
-
-.link-menu:active{
-	text-decoration: none;
-	color:  #aaa;
-}
-
-/*---Index page---*/
-
-.item-menu{
-	list-style-type: none;
-	font-family: Humnst777;
-}
-
 .tech-item{
-	display: inline-block;
+	font-family: Humnst777;
+	font-size: 24px;
 	list-style-type: none;
 	padding: 10px;
-	font-family: Humnst777;
-}
-
-/*--Main section---*/
-
-.presentation{
-	background-color: #fff;
+	display: inline-block;
 }
 
 /*Reference page---*/
-
 
 .btn-func-ls{
 	font-family: Humnst777;
@@ -112,13 +29,11 @@ details{
 	padding: 5px;
 }
 
-
 #func-list{
-	/*display: none;*/
+	/*To get childs using js*/
 }
 
 #ref-class-list{
-	background-color:  #fff;
 	padding:  10px;
 }
 
@@ -135,7 +50,6 @@ details{
 #ref-description{
 	font-size: 18px;
 	padding: 35px;
-	background-color: #fff;
 }
 
 #ref-class-list li{
@@ -144,62 +58,12 @@ details{
 	margin-left: -40px;
 }
 
-.main-title{
-	text-align: center;
-}
-
-.audio-section{
-	margin:  10px;
-	border-right: 1px solid #ddd;
-}
-
-/*---Responsive---*/
-
-.row::after{
-	content: "";
-	clear:  both;
-	display: table;
-}
-
-[class*="col-"]{
-	float: left;
-	padding: 12px;
-	/*border:  1px solid #f00;*/
+#audio-section audio{
+	border-bottom: 1px solid #ddd;
 }
 
 /*---Mobile Larger---*/
 @media only screen and (max-width: 768px){
-	body{
-		background-color: #fff;
-	}
-	.main-header{
-		padding: 0px;
-		background-color: #fff;
-	}
-	.main-title{
-		background-color: #24292f;
-	}
-	.main-title h1{
-		font-size: 48px;
-		margin-top: 20px;
-	}
-	.main-title h2{
-		font-size: 32px;
-		margin-top: -30px;
-	}
-	.main-menu{
-		padding: 0px;
-	}
-	.item-menu{
-		text-align: center;
-		border-bottom: 1px solid #aaa;
-	}
-	.link-menu{
-		font-size: 24px;
-	}
-	.tech-item{
-		font-size: 24px;
-	}
 	.prot-func{
 		border: 1px solid #000;		
 		padding: 10px;
@@ -211,50 +75,10 @@ details{
 	.btn-func-ls{
 		font-size: 20px;
 	}
-	.col-s-1{width: 8.33%;}
-	.col-s-2{width: 16.66%;}
-	.col-s-3{width: 25%;}
-	.col-s-4{width: 33.33%;}
-	.col-s-5{width: 41.66%;}
-	.col-s-6{width: 50%;}
-	.col-s-7{width: 58.33%;}
-	.col-s-8{width: 66.66%;}
-	.col-s-9{width: 75%;}
-	.col-s-10{width: 83.33%;}
-	.col-s-11{width: 91.66%;}
-	.col-s-12{width: 100.0%;}
 }
 
-/*---Table---*/
-@media only screen and (min-width: 768px){
-	.main-header{
-		padding: 0px;
-		background-color: #24292f;
-	}
-	.main-title{
-	}
-	.main-title h1{
-		font-size: 48px;
-		margin-top: 20px;
-	}
-	.main-title h2{
-		font-size: 32px;
-		margin-top: -30px;
-	}
-	.main-menu{
-		padding: 0px;
-	}
-	.item-menu{
-		text-align: center;
-		border-bottom: 1px solid #aaa;
-	}
-	.link-menu{
-		font-size: 24px;
-		color: #fff;
-	}
-	.tech-item{
-		font-size: 24px;
-	}
+/*---Tablet---*/
+@media only screen and (min-width: 769px){
 	.prot-func{
 		border: 1px solid #000;		
 		padding: 10px;
@@ -266,57 +90,10 @@ details{
 	.btn-func-ls{
 		font-size: 24px;
 	}
-	.col-t-1{width: 8.33%;}
-	.col-t-2{width: 16.66%;}
-	.col-t-3{width: 25%;}
-	.col-t-4{width: 33.33%;}
-	.col-t-5{width: 41.66%;}
-	.col-t-6{width: 50%;}
-	.col-t-7{width: 58.33%;}
-	.col-t-8{width: 66.66%;}
-	.col-t-9{width: 75%;}
-	.col-t-10{width: 83.33%;}
-	.col-t-11{width: 91.66%;}
-	.col-t-12{width: 100.0%;}
 }
 
 /*For desktop*/
 @media only screen and (min-width: 1366px){
-	.main-container{
-		width: 66.66vw;
-		margin: auto;
-		box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.2);
-	}
-
-	.main-header{
-		padding: 0px;
-		background-color: #24292f;
-	}
-	.main-title{
-
-	}
-	.main-title h1{
-		font-size: 48px;
-		margin-top: 20px;
-	}
-	.main-title h2{
-		font-size: 32px;
-		margin-top: -30px;
-	}
-	.main-menu{
-		padding: 0px;
-	}
-	.item-menu{
-		text-align: center;
-		border-bottom: 1px solid #aaa;
-	}
-	.link-menu{
-		font-size: 24px;
-		color: #fff;
-	}
-	.tech-item{
-		font-size: 24px;
-	}
 	.prot-func{
 		border: 1px solid #000;		
 		padding: 10px;
@@ -332,16 +109,4 @@ details{
 	.btn-func-ls{
 		font-size: 16px;
 	}
-	.col-d-1{width: 8.33%;}
-	.col-d-2{width: 16.66%;}
-	.col-d-3{width: 25%;}
-	.col-d-4{width: 33.33%;}
-	.col-d-5{width: 41.66%;}
-	.col-d-6{width: 50%;}
-	.col-d-7{width: 58.33%;}
-	.col-d-8{width: 66.66%;}
-	.col-d-9{width: 75%;}
-	.col-d-10{width: 83.33%;}
-	.col-d-11{width: 91.66%;}
-	.col-d-12{width: 100.0%;}
 }
