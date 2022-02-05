@@ -1,0 +1,27 @@
+@charset utf-8;
+
+.img-ex{
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+}
+
+pre{
+	tab-size: 2;
+}
+
+.code-block{
+	width: 100%;
+}
+
+
+.content{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
+@media only screen and (max-width: 768px){
+	.img-ex{
+		width: 100%;
+	}
+}

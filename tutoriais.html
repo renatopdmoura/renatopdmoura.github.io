@@ -1,0 +1,182 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<title>??? Framework</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Referência">
+	<meta name="keywords" content="Programação, C++, OpenGL">
+	<meta name="author" content="Renato Moura">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- include css -->
+	<link rel="stylesheet" href="css/common.css" type="text/css">
+	<link rel="stylesheet" href="css/tutoriais.css" type="text/css">
+	<!-- include javascript -->
+	<script type="text/javascript" src="js/javascript.js"></script>
+</head>
+<body>
+	<main id="main-container" class="row">
+		<header id="main-header" class="col-s-12 col-t-12 col-d-12">
+			<div id="main-title" class="col-s-12 col-t-5 col-d-5">
+				<h1>ImCreate</h1>
+			</div>
+			<nav class="col-s-12 col-t-7 col-d-7 row">
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="index.html" class="link-menu">Apresentação</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="tutoriais.html" class="link-menu">Tutoriais</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="reference.html" class="link-menu">Referência</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
+			</nav>
+		</header>
+		<section class="col-s-12 col-t-12 col-d-12 content">
+			<h2>Interface Gráfica de Usuário - GUI</h2>
+			
+			<p>Os recursos de interface gráfica de usuário - GUI - fazem parte da biblioteca 'Imcreate' sendo inteiramente desenvolvida usando os príncipios de renderização OpenGL.</p>
+
+			<p>Versão atual: 0.0.0</p>
+
+			<p>Para começar a usar objetos do tipo GUI, deve-se fazer a inclusão do arquivo de cabeçalho "GeneralGUI.hpp".</p>
+
+			<p>Todos os objetos de interface gráfica compartilham funções e dados em comum com a classe base GUI. Dado tal, cada especialização da classe possui sua lógica própria de construção.</p>
+
+			<h2>Criando Painéis</h2>
+
+			<p>Painéis são idealmente contâiners para um grupo de objetos. Por padrão, painéis são criados com a região do cabeçalho como a área de eventos - como agarrar e selecionar.</p>
+			<p>Para grande maioria dos casos, questões visuais e de posicionamento são decidas no construtor do objeto:</p>
+			<code><pre>
+				Panel panel000(float x, float y, float w, float h, float thickness, vec4&lt;float&gt; backgroundColor, vec4&lt;float&gt; headerColor, vec4&lt;float&gt; borderColor,<wbr> GUI_PanelLayout panelLayout);
+			</pre></code>
+			<p>Os parâmetros <code>x, y</code> e <code>w, h</code> dizem respeito ao posicionamento e dimenções do painel respectivamente dados em porcentagem.</p>
+			<p><code>thickness</code> é a espessura da borda.</p>
+			<p><code>backgroundColor, headerColor, borderColor</code> são como intuitivamente seus nomes definem - note que o canal alpha pode ser especificado.</p>
+			<p><code>panelLayout</code> é onde um objeto deve ser posicionado se for atribuído à outro objeto. Os tipos de layout são:</p> 
+				<li>ON_WINDOW: O objeto terá sua posição e dimensão em relação a tela, mas manterá uma relação com um objeto pai - se for definido como filho.</li>
+				<li>ON_HEADER: O objeto terá sua posição e dimensão relativas ao cabeçalho do objeto pai.</li>
+				<li>ON_BODY: O objeto terá sua posição e dimensão relativas ao corpo do objeto pai.</li>
+			<h3>Exemplo</h3>
+			<code><pre>
+				Panel panel000(50.0f, 50.0f, 20.0f, 45.0f, 6.0f, vec4&lt;float&gt;(0.2f, 0.19f, 0.22f), vec4&lt;float&gt;(0.65f, 0.34f, 0.2f), vec4&lt;float&gt;(0.2f, 0.2f, 0.2f));
+			</pre></code>
+			<p> O código anteriror criar o seguinte resultado:</p>
+			<img src="media/img/panel000.png" class="img-ex"/>
+			<p>A região alaranjada é a área que denota o cabeçalho, enquanto a região azul cinzenta define o corpo do painel.</p>
+			<h2>Texturas</h2>
+			<p>Painéis podem receber uma imagem de fundo ao invés de apenas uma cor uniforme. Para isso deve-se instânciar um painel normalmente - defindo até mesmo sua cor uniforme(ela será ignorada se uma textura for fornecida) - e após bastas chamar a função <code>addTexture(std::string path, std::string uniformName, uint index)</code></p>
+			<h3>Exemplo:</h3>
+			<code><pre>
+				panel000.addTexture("../assets/textures/alpha/ranger.bmp", "img", 0);
+			</pre></code>
+			<p>O código anterir cria o seguinte resultado:</p>
+			<img src="media/img/panel000_img.png" class="img-ex"/>
+			<p>Obs.: O nome uniforme sempre deve ser "img" seguido do indíce 0 ou então o sombreador irá assumir um comportamento indeterminado.</p>
+			<p>Obs².: <code>addTexture</code> é uma função que pertence a classe base SRW, o que indica a dependência de GUI por SRW. Essa informação pode ser útil para flexibilizar as possibilidades de programação, mas painéis não foram projetados para usaram mas do que uma chamada de addTexture - se o fizer, a última chamada será válida - ou de qualquer outra função da classe SRW. Apesar de ser possível, não é legal.</p>
+			<h2>Relacionamento</h2>
+			<p>Todo objeto do tipo GUI pode manter uma relação pai-filho com outro objeto. Isso permite que objetos tenha sua posição, dimensão e visibilidade relativos ao objeto pai. Como um relacionamento um para muitos, o objeto pai será sempre o último definido.</p>
+			<p>Para tornar um objeto agregado a outro, após construir ambos objetos, chame a função pública <code>push(GUI* guiObject)</code>:</p>
+			<code>
+				father.push(&children);
+			</code>
+			<h3>Exemplo:</h3>
+			<code><pre>
+				Panel panel000(50.0f, 50.0f, 20.0f, 45.0f, 6.0f, vec4&lt;float&gt;(0.2f, 0.19f, 0.22f), vec4&lt;float&gt;(0.65f, 0.34f, 0.2f), vec4&lt;float&gt;(0.2f, 0.2f, 0.2f));
+				Text title000("../assets/fonts/Humnst777.ttf", 18.0f, 50.0f, 50.0f, vec3&lt;float&gt;(0.9f), "PANEL000", ON_HEADER);
+				panel000.push(title000);
+			</pre></code>
+			<p> O código anteriror criar o seguinte resultado:</p>
+			<img src="media/img/panel000_title000.png" class="img-ex"/>
+			<p>"Text" é mais um tipo de objeto GUI. Seu construtor aceita um caminho para fonte a ser usada, o tamanho da fonte em pixels, sua posição, cor da fonte, a string a ser exibida e o layout de posicionamento.</p>
+			<h2>Eventos</h2>
+			<p> Um aspecto crucial de uma interface de usuário é operar eventos com base na ação do usuário. Eventos especiais podem ser criados
+			a partir de um função lambda passada como parâmetro da função <code>setUserEvent([&](){ /***meu evento***/ })</code>.</p>
+			<h3>Exemplo:</h3>
+			<code><pre>
+			...
+			title000.setUserEvent([&](){
+				panel000.setHidden(true);
+			});
+			</pre></code>
+			<p>O bloco de código anterior irá esconder o objeto painel000 quando o usuário clicar sobre o título do painel.</p>
+			<h2>Gerenciamento</h2>
+			<p>Toda vez que um novo objeto GUI é criado ele será armazenado numa pilha interna definida na classe base GUI. Assim sendo, não é necessário chamar para cada objeto individual funções de renderização e entrada de eventos do sistema, bastando apenas no loop de renderização chamar <code>GUI::stackRender()</code> e <code>GUI::stackEvent()</code> no loop de eventos.</p>
+			<p>Obs.: Ter objetos na pilha interna da classe base permite auto organizar a sobreposição dos painéis de modo que o objeto selecionado será sempre trazido a tona.</p>
+			<p>Note: Sempre que um objeto for definido como filho, ele será retirado da pilha interna da classe base e passará a ser gerenciado pela pilha interna do objeto pai - isso também desabilitará agarrar para mover no objeto filho.</p>
+			<h2>Checkbox</h2>
+			<p>Checkbox são objetos úteis para sinalizar visualmente comportamentos binário, ou estão ativos ou estão desativados.</p>
+			<p>Não existem muitas coisas especiais para um checkbox, a funcionalidade binária deve ser implementada arbitráriamente pelo programador seguindo o princípio de ativar/desativar na callback definada pela chamada à <code>setUserEvent</code>.</p>
+			<h3>Exemplo:</h3>
+			<code><pre>
+				Panel panel000(50.0f, 50.0f, 20.0f, 45.0f, 6.0f, vec4&lt;float&gt;(0.2f, 0.19f, 0.22f), vec4&lt;float&gt;(0.65f, 0.34f, 0.2f), vec4&lt;float&gt;(0.2f, 0.2f, 0.2f));
+				Text title000("../assets/fonts/Humnst777.ttf", 18.0f, 50.0f, 50.0f, vec3&lt;float&gt;(0.9f), "PANEL000", ON_HEADER);
+				panel000.push(title000);
+				Checkbox cbxPinPanel000(98.0f, 50.0f, ON_HEADER);
+				cbxPinPanel000.setUserEvent([&](){
+					cbxPinPanel000.setOn(!cbxPinPanel000.getOn());
+					panel000.setPin(!panel000.getPin());
+				});
+				panel000.push(&cbxPinPanel000);
+			</pre></code>
+			<p>O bloco de código anterior posicionará um checkbox no cabeçalho de panel000. Ao marcar o checkbox, o painel ficará fixo em sua posição atual não podendo ser movido até que o checkbox seja desmarcado.</p>
+			<img src="media/img/panel000_pin_checkbox.png" class="img-ex"/>
+			<p>Checkbox podem ser usadas em conjunto assumindo uma relação semântica de ativação. Isso é útil para ter apenas uma opção de uma seção de opções ativa. Para isso é preciso definir um conjunto de checkbox como um grupo:</p>
+			<code><pre>
+				Panel panel000(50.0f, 50.0f, 20.0f, 45.0f, 6.0f, vec4&lt;float&gt;(0.2f, 0.19f, 0.22f), vec4<float>(0.65f, 0.34f, 0.2f), vec4&lt;float&gt;(0.2f, 0.2f, 0.2f));
+				panel000.addTexture("../assets/textures/alpha/ranger.bmp", "img", 0);
+				Text title000("../assets/fonts/Humnst777.ttf", 18.0f, 50.0f, 50.0f, vec3&lt;float&gt;(0.9f), "PANEL000", ON_HEADER);
+				Text txtTex0("../assets/fonts/Humnst777.ttf", 12.0f, 20.0f, 3.0f, vec3&lt;float&gt;(0.9f), "TEX0", ON_BODY);
+				Text txtTex1("../assets/fonts/Humnst777.ttf", 12.0f, 92.0f, 3.0f, vec3&lt;float&gt;(0.9f), "TEX1", ON_BODY);
+				
+				Checkbox cbxPinPanel000(98.0f, 50.0f, ON_HEADER);
+				Checkbox cbxTex0(10.0f, 2.0f, ON_BODY);
+				Checkbox cbxTex1(80.0f, 2.0f, ON_BODY);
+
+				Group groupTexOptions;
+				groupTexOptions.checkbox.push_back(&cbxTex0);
+				groupTexOptions.checkbox.push_back(&cbxTex1);
+
+				title000.setUserEvent([&](){
+					panel000.setHidden(true);
+				});
+				cbxPinPanel000.setUserEvent([&](){
+					cbxPinPanel000.setOn(!cbxPinPanel000.getOn());
+					panel000.setPin(!panel000.getPin());
+				});
+				cbxTex0.setUserEvent([&](){
+					groupTexOptions.doUnique(cbxTex0.getID());
+					cbxTex0.setOn(!cbxTex0.getOn());
+					if(cbxTex0.getOn())
+						panel000.addTexture("../assets/textures/brick_wall/yellow_bricks_diff_1k.jpg", "img", 0);
+					else
+						panel000.addTexture("../assets/textures/alpha/ranger.bmp", "img", 0);
+				});
+				cbxTex1.setUserEvent([&](){
+					groupTexOptions.doUnique(cbxTex1.getID());
+					cbxTex1.setOn(!cbxTex1.getOn());
+					if(cbxTex1.getOn())
+						panel000.addTexture("../assets/textures/brick_wall/yellow_bricks_nor_gl_2k.jpg", "img", 0);
+					else
+						panel000.addTexture("../assets/textures/alpha/ranger.bmp", "img", 0);
+				});
+
+				panel000.push(&cbxPinPanel000);
+				panel000.push(&title000);
+				panel000.push(&txtTex0);
+				panel000.push(&txtTex1);
+				panel000.push(&cbxTex0);
+				panel000.push(&cbxTex1);
+			</pre></code>
+			<p>O código anterior resultará nas seguintes imagens:</p>
+			<img src="media/img/checkbox_group.png" class="img-ex"/>
+			<p>Escolher entre "Tex0" e "Tex1" ou nenhum alternará a textura exibida no corpo do painel.</p>
+			<p>A parte diferêncial nesse código é a instanciação do objeto <code>groupTexOption</code>. Uma vez que um objeto "Group" é criado, devemos atribuir os objetos checkbox desejados a pilha interna do grupo por meio do membro <code>checkbox</code>, e então dentro da callback de evento de cada checkbox chamar a função <code>doUnique</code> pertencente ao objeto do tipo Group passando o identificador do checkbox em questão como parâmetro. O que essa função faz é desinalizar todos os outros checkbox do grupo uma vez que o atualmente clicado esteja ativo.</p>
+			<h2>Text</h2>
+			<p>Text é projetada para usar fontes bitmap. Isso traz certas problemáticas ainda não resolvidas que afetam o visual de carácteres minúsculos.
+			É por essa razão que os calculos de alinhamento as vezes não parecem corretos ou o texto parece ser de baixa resolução. Apesar disso, a classe Text pode continuar em seu uso pleno pois ao refatora-lá o seu relacioanamento com outros objetos do tipo GUI deve continuar o mesmo.</p>
+	</section>
+		<footer class="col-s-12 col-t-12 col-d-12">
+			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="reference.html">Referência</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank">Download</a></span>
+			<span id="copyright" class="col-s-12 col-t-12 col-d-12">&copy 2022 ImCreate</span>
+		</footer>
+	</main>
+</body>
+</html>
