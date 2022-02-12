@@ -15,9 +15,25 @@ pre{
 }
 
 
-.content{
-	padding-left: 5%;
-	padding-right: 5%;
+.Core{
+	/*display:  none;*/
+}
+
+
+.Initialize{
+	/*display:  none;*/
+}
+
+.Camera{
+	/*display: none;*/
+}
+
+.GUI{
+	/*display: none;*/
+}
+
+.Terrain{
+	/*display:  none;*/
 }
 
 @media only screen and (max-width: 768px){

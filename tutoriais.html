@@ -26,14 +26,153 @@
 				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
 			</nav>
 		</header>
-		<section class="col-s-12 col-t-12 col-d-12 content">
+		<section class="col-s-12 col-t-12 col-d-12 content Core">
+			<h2>Núcleo</h2>
+			<p>Alguns tipos de dados precisam ser acessados constantemente em diferentes arquivos. Para resolver isso, um arquivo de cabeçalho define tais váriaveis de modo que possam ser facilmente acessados independente do diretório que esteja desde que seja feita as devidas inclusões.</p>
+			<p>A maioria das classes são derivadas de SRW, e SRW já faz a inclusão desse arquivo, portanto, torna acessivel tais dados em todas as classes atuais. A lista de dados úteis é esta:</p>
+			<ul>
+				<li>ext_window: um ponteiro para uma janela gerida pelo SDL.</li>
+				<li>ext_screen_width: um inteiro para armazenar a largura atual da janela.</li>
+				<li>ext_screen_height: um inteiro para armazenar a altura atual da janela.</li>
+				<li>QUIT: uma boleana que controla se o laço principal da aplicação está ativo ou não.</li>
+			</ul>
+			<p>Se estiver curioso para verificar todos as varíaveis disponíveis acesse o arquivo em "libraries/Common/Common.hpp".</p>
+			<p>O núcleo contém apenas uma função de relevância para o usuário desenvolvedor que é discutida na próxima seção.</p>
+		</section>
+
+		<section class="col-s-12 col-t-12 col-d-12 content Initialize">
+			<h2>Inicialização</h2>
+			<p>Para começar a usar os recursos da biblioteca a inclusão do arquivo em "libraries/Common/Core.hpp" deve serfeita.</p>
+			<p>Uma vez feito tal, declare a função principal com o seguinte protótipo:</p>
+			<code>int main(int argv, char** args)</code>
+			<p>Logo após, inicie uma condicional e chame a função <code>initialize</code> como argumento. A função tem o seguinte protótipo:</p>
+			<code>
+				bool initialize(std::string title, int w, int h, bool border = true, bool fullscreen = false)
+			</code>
+			<p>Isso efetivamente criará uma janela de contexto OpenGL além de iniciar os subsistemas geridos pelo SDL. Uma vez que leva um título, largura e altura da janela, se deve ou não usar bordas e o modo de abertura da janela, retornará <code>true</code> caso nenhuma falha ocorra, o que siginifica que a partir dessa condicional, todos os recursos da biblioteca estão elegíveis à serem usados. Lembre-se, será dentro desse bloco condicional que toda mágica irá ocorrer.</p>
+			<p>O código de inicialização é como esse:</p>
+			<code>
+				if(initialize("Labs", 1366, 768, false)){<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;...
+			</code>
+		</section>
+		
+		<section class="col-s-12 col-t-12 col-d-12 content Camera">
+			<h2>Câmera</h2>
+			<p>Uma câmera é como um obersvador virtual, o qual podem mover-se pela cena em tempo real.</p>
+			<p>No atual ponto de desenvolvimento da biblioteca, apenas uma câmera do tipo "FPS" - câmeras que observam a cena em primeira pessoa podendo mover-se nos eixos XYZ com rotações apenas em XY - está disponível.</p>
+			<p>A criação de uma câmera precede qualquer outro recurso pois é a partir dela que fará sentido observar os objetos em cena.</p>
+			<p>Veja o seguinte código:</p>
+			<code>
+				Camera fpsCam(vec3&lt;float&gt; from, vec3&lt;float&gt; to, float fov, float zNear, float zFar);
+			</code>
+			<p>Onde <code>from</code> é a posição inicial do observador e <code>to</code> a direção em que está olhando.</p>
+			<p><code>fov</code> é o ângulo de abertura do campo de visão.</p>
+			<p><code>zNear</code> e <code>zFar</code> sãos distâncias mínimas e máximas para o volume de visualiazação. Note que <code>zFar</code> pode ser infinitamente grande, contudo, uma das principais funções da existência de <code>zFar</code> e salvar algum desempenho, já que quanto maior for seu valor mais primitivas deverão ser processadas pela placa de video.</p>
+			<p>Antes que objetos tridimensionais possam ser instânciados, é preciso salvar as informações da câmera em um buffer compartilhado do qual tais objetos possam ler para então projetar objetos de acordo. Para isso chame a seguinte função da classe SRW:</p>
+			<code>
+				SRW::sharedUniforms(fpsCam.getViewAndProjectionMatrix(), fpsCam.getPosition(), NULL, NULL, NULL);
+			</code>
+			<h3>Luzes</h3>
+			<p>Perceba que, um mundo sem luz não pode ser observado e o mesmo vale para o ramo da computação gráfica. Uma vez que faça a chamada a função acima tal como ela está, tudo na sua tela será apenas como silhuetas negras. Resolver isso é simples, basta apenas criar ao menos uma luz ou até mesmo um conjunto de luzes.</p>
+			<p>Luzes podem existir em 3 tipos:</p>
+				<ul>
+					<li>Pontuais: irradiam a partir de determinada posição em todas as direções.</li>
+					<li>Holofote: irradiam a partir de uma determinada posição em uma unica direção conhecida.</li>
+					<li>Direcionais: como o sol, são modeladas para estarém distantes de modo que sua luz influência todo objeto em cena.</li>
+				</ul>
+			<p>Vamos começar criando uma luz direcional, será nosso sol:</p>
+			<code>
+				Sun sun = {vec4&lt;float&gt;(0.0f, 1.0f, 0.0f), vec4&lt;float&gt;(0.2f, 0.2f, 0.2f)};
+			</code>
+			<p>Aqui <code>Sun</code> é uma classe simples que aceita um vetor de direção e um vetor que representará a cor da luz.</p>
+			<p>Uma vez criado nosso sol fazemos a chamada a função <code>SRW::sharedUniforms</code> e passamos por referência o objeto <code>sun</code> para o terceiro parâmetro da função:</p>
+			<code>
+				SRW::sharedUniforms(fpsCam.getViewAndProjectionMatrix(), fpsCam.getPosition(), &sun, NULL, NULL);
+			</code>
+			<p>Por resultado, os objetos agora terão alguma iluminação e poderão ser visualizados com suas cores e texturas.</p>
+			<p>Ainda podemos fazer mais, como gerar um conjunto de luzes pontuais e até mesmo holofótes:</p>
+			<code>
+				std::vector&lt;PointLight&gt; pointLightArray = {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{vec4&lt;float&gt;(0.0f, 2.0f, 8.0f),  vec4&lt;float&gt;(80.0f, 0.0f, 0.0f)},<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{vec4&lt;float&gt;(8.0f, 2.0f, 0.0f),  vec4&lt;float&gt;(0.0f, 80.0f, 0.0f)},<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{vec4&lt;float&gt;(0.0f, 2.0f, -8.0f), vec4&lt;float&gt;(0.0f, 0.0f, 80.0f)},<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{vec4&lt;float&gt;(-8.0f, 2.0f, 0.0f), vec4&lt;float&gt;(80.0f, 80.0f, 80.0f)}};<br>
+
+				std::vector<SpotLight> spotLightArray   = {{vec4&lt;float&gt;(0.0f, 1.0f, 0.0f, 0.65f), vec4&lt;float&gt;(0.0f, 4.0f, 0.0f, 0.35f), vec4&lt;float&gt;(20.0f, 20.0f, 20.0f)}};
+			</code>
+			<p>Acima, um vetor de luzes pontuais e holofótes. O tipo <code>PointLight</code> possui membros que definem a posição e cor da luz, enquanto o tipo <code>SpotLight</code> possui membros que definem a direção da luz - com o membro w de vec4 como o ângulo de corte externo-, a posição da luz - com o membro w de vec4 como o ângulo de corte interno e a cor da luz. Obs.: O ângulo de corte externo e interno correspondem ao cosseno de dois circulos usados para o cálculo de atenuação de bordas de uma luz holofóte.</p>
+			<p>A chamada de função deve então se parecer como essa:</p>
+			<code>
+				SRW::sharedUniforms(fpsCam.getViewAndProjectionMatrix(), fpsCam.getPosition(), &sun, &pointLightArray, &spotLightArray);
+			</code>
+			<h3>Funções de acesso público</h3>
+			<p>Algumas funções públicas foram usadas anteriormente na chamada de <code>SRW::sharedUniforms</code>. A maioria das funções da classe "Camera" retornam dados membros de modo que possam ser utéis em alguma operação mais tarde. Anteriormente usamos uma chama a <code>getViewAndProjectionMatrix()</code>. Essa função retorna a matriz de visualização e de projeção concatendas. Enquanto a matriz de visualização é responsável em orientar e posicionar os objetos no volume de visualozação, a matriz de projeção pega a informação tridimensional e as converte em algo bidimensional, como uma imagem na tela do monitor. A atualizações da câmera - como quando nos movemos pelo cenário - significam novas transformações lineares e projetivas nas matrizes "View" e "Projection" que devem refletir no buffer de uniformes compartilhados.</p>
+			<p><code>getPosition()</code> pode ser facilmente deduzido. Obter a posição atual da câmera é relevante quando os sombreadores precisam desse dado para calcular a reflexão da luz incidente sobre uma superfice.</p>
+			<p>O que sobra é dizer como atualizar os dados membros de um objeto do tipo "Camera". Não há mistérios. Quando nos movemos em um ambiente 3D, como num jogo, usamos em geral dois tipos de entrada: o teclado e o mouse. Um objeto da classe "Camera" vêm com duas funções para gerenciamento de eventos. Então tudo que deve ser feito é dentro do bloco do laço de eventos, fazer a chamada as respectivas funções: <code>keyboardEvent(SDL_Event* event)</code> e <code>mouseEvent(SDL_Event* event)</code> passando como parâmetro a referência de um objeto SDL_Event criado previamente. Uma vez que as entradas de eventos estejam sendo capturadas, após o fechamento do laço de eventos, chame a função da classe "Camera" <code>updateCoordinates()</code> e após <code>SRW::updateUniforms(fpsCam.getViewAndProjection(), fpsCam.getPosition(), 0)</code>, essa função irá atualizar o buffer de uniformes compartilhados.</p>
+			<p>Outras funções podem ser encontradas na referência da bliblioteca.</p>
+		</section>
+		<section class="col-s-12 col-t-12 col-d-12 content Audio">
+			<h2>Audio</h2>
+			<p>ImCreate usa OpenAL para reproduzir sons tridimensionais e acrescentar maior imersão as cenas fornecendo "pan orientado" e recursos de atenução do som em função da distância do ouvinte para fonte emissora. A atenuação pode ser resolvida pelas seguintes equações:</p>
+			<h4>AL_INVERSE_DISTANCE_CLAMPED</h4>
+			<code>
+				distance = max(distance, AL_REFERENCE_DISTANCE);</br>
+				distance = min(distance, AL_MAX_DISTANCE);</br>
+				gain     = AL_REFERENCE_DISTANCE / (AL_REFERENCE_DISTANCE + AL_ROLLOFF_FACTOR) * (distance - AL_REFERENCE_DISTANCE);
+			</code>
+			<p>Onde "AL_REFERENCE_DISTANCE" é a distância máxima para fixação do ganho, ou seja, sem atenuação pela distância.</p>
+			<p>Onde "AL_MAX_DISTANCE" é a distância máxima para afetar a atenuação. O ganho será variável entre ]AL_REFERENCE_DISTANCE, AL_MAX_DISTANCE].</p>
+			<p>Onde "AL_ROLLOFF_FACTOR" é uma variável de compensação no intervalo [0.0f, Inf[ - infinito, mas a API irá dar um jeito de fixar os valores entre 0.0f e 1.0f - que escala a atenuação do ganho pela distância.</p>
+			<p>Dado tal equação, é possível notar que o ganho nunca será igual a zero.</p>
+			<h4>AL_LINEAR_DISTANCE_CLAMPED</h4>
+			<code>
+				distance = max(distance, AL_REFERENCE_DISTANCE);<br>
+				distance = min(distance, AL_MAX_DISTANCE);<br>
+				gain = 1 - AL_ROLLOFF_FACTOR * (distance - AL_REFERENCE_DISTANCE) / (AL_MAX_DISTANCE - AL_REFERENCE_DISTANCE);
+			</code>
+			<p>A equação que determina a redução do ganho linearmente conforme a distância aumenta. Esse é o modelo estendido de AL_LINEAR_DISTANCE para fixar o ganho para distâncias menores que AL_REFERENCE_DISTANCE. Por ser uma função linear, após AL_MAX_DISTANCE o ganho será 0.</p>
+			<h4>AL_EXPONENT_DISTANCE_CLAMPED</h4>
+			<code>
+				distance = max(distance, AL_REFERENCE_DISTANCE);<br>
+				distance = min(distance, AL_MAX_DISTANCE);<br>
+				gain = (distance / AL_REFERENCE_DISTANCE) ^ (-AL_ROLLOFF_FACTORY);
+			</code>
+			<p>O ganho varia exponencialmente inversamente proporcional á distância.</p>
+			<h4>AL_NONE</h4>
+			<p>Esse valor desativa a funcionalidade de atenuação do ganho em função da distância.<p>
+			<h3>Emitindo sons</h3>
+			<p>"Fontes" são como a API OpenAL define um emissor de som no espaço tridimensional. Fontes são armazenadas na pilha interna de uma instância da classe Audio e armazenads em um único buffer vinculado ao primeiro dispositivo de som elegível.</p>
+			<p>Para começar a usar os recursos de audio chame <code>Audio::initialize(vec3&lt;float&gt;(0.0f) from, vec3&lt;float&gt; to, int distanceModel)</code> passando como argumentos respectivamente a posição inicial do observador e a direção de visualização.</p>
+			<p>Uma classe "Emitter" é responsável por armazenar as informações de uma fonte que deve ser passada como argumento para um objeto da classe Audio por meio da função <code>setEmitters(std::vector&lt;Emitter&gt;& emitters)</code> - para permitir que um conjunto de emissores sejam enviados em apenas uma chamada, o argumento deve sempre ser um vetor de "Emitters". Exemplo:</p>
+			<code>
+				std::vector<Emitter> ambience = {<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;{Emitter("../assets/sfx/water.wav", vec3<float>(0.0f), 1.0f, 8.0f, 1.0f, 1.0f, AL_FORMAT_MONO16)}<br>
+				&nbsp;&nbsp;&nbsp;&nbsp;// Quantos mais emissores desejar...<br>
+				};<br>
+				Audio sfxList000;<br>
+				sfxList000.setEmitters(ambience);
+			</code>
+			<p>Sendo os parâmetros do construtor de Emitter o caminho do arquivo de áudio, a posição da fonte, a distância de referência, a distância máxima, o fator de compensação de ganho, o ganho relativo e o formato á ser reproduzido.</p>
+			<p>Uma coisa a notar é o último parâmetro. <code>format</code> pode ser AL_FORMAT_MONO8, AL_FORMAT_MONO16, AL_FORMAT_STEREO8, AL_FORMAT_STEREO16, sendo que para que uma fonte tenha um comportamento tridimensional, OpenAL apenas suporta formatos mono, formatos estéreos desabilitarão as configurações de pan e atenuação.</p>
+			<h3>Reproduzindo som</h3>
+			<p>Uma vez que um objeto "Audio" esteja devidamente criado e inicializado, antes de acessar o laço principal, chame a função <code>play()</code> pertencente a classe Audio. Uma vez que os sons são selecionados para reprodução de acordo com a distância entre a fonte e o ouvinte, a função <code>play()</code> é útil para auxiliar que o algoritmo de seleção por distância possa deduzir qual será o estado inicial de uma fonte(se deve ser reproduzida ou não). Por último, atualize a posição do ouvinte a cada novo quadro - o ouvinte tem as mesmas coordenadas que o observador - posição e orientação. Veja o exemplo:</p>
+			<code>
+				...
+				// Dentro do laço principal, após atualizar a câmera<br>
+				Audio::updateListener(fpsCam.getPosition(), fpsCam.getTarget());
+			</code>
+		</section>
+
+
+		<section class="col-s-12 col-t-12 col-d-12 content GUI">
 			<h2>Interface Gráfica de Usuário - GUI</h2>
 			
 			<p>Os recursos de interface gráfica de usuário - GUI - fazem parte da biblioteca 'Imcreate' sendo inteiramente desenvolvida usando os príncipios de renderização OpenGL.</p>
 
 			<p>Versão atual: 0.0.0</p>
 
-			<p>Para começar a usar objetos do tipo GUI, deve-se fazer a inclusão do arquivo de cabeçalho "GeneralGUI.hpp".</p>
+			<p>Para começar a usar objetos do tipo GUI, deve-se fazer a inclusão do arquivo de cabeçalho em "libraries/GUI/GeneralGUI.hpp".</p>
 
 			<p>Todos os objetos de interface gráfica compartilham funções e dados em comum com a classe base GUI. Dado tal, cada especialização da classe possui sua lógica própria de construção.</p>
 
@@ -42,7 +181,7 @@
 			<p>Painéis são idealmente contâiners para um grupo de objetos. Por padrão, painéis são criados com a região do cabeçalho como a área de eventos - como agarrar e selecionar.</p>
 			<p>Para grande maioria dos casos, questões visuais e de posicionamento são decidas no construtor do objeto:</p>
 			<code><pre>
-				Panel panel000(float x, float y, float w, float h, float thickness, vec4&lt;float&gt; backgroundColor, vec4&lt;float&gt; headerColor, vec4&lt;float&gt; borderColor,<wbr> GUI_PanelLayout panelLayout);
+				Panel panel000(float x, float y, float w, float h, float thickness, vec4&lt;float&gt; backgroundColor, vec4&lt;float&gt; headerColor, vec4&lt;float&gt; borderColor,<wbr> GUI_PanelLayout panelLayout = ON_WINDOW);
 			</pre></code>
 			<p>Os parâmetros <code>x, y</code> e <code>w, h</code> dizem respeito ao posicionamento e dimenções do painel respectivamente dados em porcentagem.</p>
 			<p><code>thickness</code> é a espessura da borda.</p>
@@ -169,7 +308,100 @@
 			<h2>Text</h2>
 			<p>Text é projetada para usar fontes bitmap. Isso traz certas problemáticas ainda não resolvidas que afetam o visual de carácteres minúsculos.
 			É por essa razão que os calculos de alinhamento as vezes não parecem corretos ou o texto parece ser de baixa resolução. Apesar disso, a classe Text pode continuar em seu uso pleno pois ao refatora-lá o seu relacioanamento com outros objetos do tipo GUI deve continuar o mesmo.</p>
-	</section>
+		</section>
+		
+		<section class="col-s-12 col-t-12 col-d-12 content Terrain">
+			<h2>Terrenos</h2>
+			<p>Carregar terrenos é um tarefa facil. Terrenos são criados a partir de uma imagem de tons de cinza geralmente - conhecida como mapa de altura. Desde que você fornece um mapa de altura, a biblioteca fará as tarefas adicionais de interpretação e geração do modelo tridimensional.</p>
+			<p>Na imagem, a cor branca representa o máximo de altura e a cor preta o mínimo:</p>
+			<img src="media/img/heightmap000.png" class="img-ex"/>
+			<p>Essa imagem criará uma planíce que se alonga até encontrar um relevo acidentado de dois níves próximo a sua borda superior.</p>
+			<p>Para criar um objeto Terrain primeiro inclua o cabeçalho do arquivo "libraries/Terrain/Terrain.hpp" no seu projeto e então use a seguinte declaração:</p>
+			<code>
+				Terrain(const char* path, unsigned char bitsPerPixel, unsigned int width, unsigned int height, float hs, float bs)
+			</code>
+			<p>O parâmetro <code>path</code> recebe o caminho da imagem a ser usada. Note que a biblioteca apenas lê arquivos do tipo .raw, ou que não tenha nem um cabeçalho adicional como nos formatos compactados. Formatos raw podem ser exportados no photoshop - um meio alternativo e usar o formato .r8 do Krita.</p>
+			<p>O parâmetro <code>bitsPerPixel</code> é a profundidade em bits por pixel, podendo ser de 8 bits - tons de cinza - 16 bits ou 24 bits.</p>
+			<p><code>width</code> e <code>height</code> são as dimensões da imagem.</p>
+			<p><code>hs</code> é a escala de altura e <code>bs</code> o tamanho de um bloco. Gerar terrenos se basea em gerar uma grade, onde cada intersecção da linhas que compõem a grade são um ponto de controle. Manipular esse ponto de controle significa torná-lo mais branco ou mais preto. O mapa de altura como uma imagem, tem seus valores por pixel armazenadas no intervalo de 0 a 255 como uma grade e que serão normalizados para o intervalo [0, 1], veja, que quando falamos no universo virtual, a noção de escala é algo arbitrário. Portanto, tais valores não serviriam para fazer um grande deslocamento tal como uma montanha, logo é preciso usar um valor escalar para dimensionar um deslocamento mais adequado e é isso que <code>hs</code> é. <code>bs</code> vem de block scale - escala do bloco-, significa o quão equidistante os pontos de controle estão um do outro. Ajustar esse valor resultará diretamente em quanto impacto <code>hs</code> terá como escala uma vez que tal ajuste mudará o diâmetro horizontal do terreno.</p>
+			<h3>Texturização multi-camadas</h3>
+			<p>A texturização multi-camadas consiste em fornecer três diferentes grupos de texturas:</p>
+			<ul>
+				<li>Textura de base: é a textura de camada 0. Ela deve preencher toda superfície.</li>
+				<li>Textura de declive: é a textura de camada 1. As superfícies que apresentam determinado declive tendem a ter sua textura de camada 0 misturada a textura de camada 1, logo quanto maior for a inclinação da superficie mais a texturização tenderá para camada 1 e quanto menor for mais tenderá para camada 0.</li>
+				<li>Textura de caminho: é a textura de camada 2. A textura de caminho determina onde preencher a partir de uma textura de máscara, a qual irá sobrebor toda superficie que esteja dentro da área onde os pixels tenderem ao preto.</li>
+			</ul>
+			<p>Esse é um exemplo de <a link="">textura de caminho</a>.</p>
+			<p>Os efeitos de usar a camada 0, camada 0 + camada 1 e camada 0 + camada 1 + camada 2 pode ser observados, respectivamente nas imagens a seguir:</p>
+			<img src="media/img/texLayer0.png" class="col-s-12 col-t-4 col-d-4 img-ex"/>
+			<img src="media/img/texLayer1.png" class="col-s-12 col-t-4 img-ex"/>
+			<img src="media/img/texLayer2.png" class="col-s-12 col-t-4 img-ex"/>
+			<p>Para carregar as texturas da camada 0, 1 e 2 use as seguinte chamadas de função respectivamente:</p>
+			<code>
+				setBaseTex(std::string pathAlbedo, std::string pathNormal, std::string pathRough, std::string pathAO)<br>
+				setSlopeTex(std::string pathAlbedo, std::string pathNormal, std::string pathRough, std::string pathAO)<br>
+				setPathTex(std::string pathMask, std::string pathAlbedo, std::string pathNormal, std::string pathRough, std::string pathAO)
+			</code>
+			<p>Os parâmetros <code>pathAlbedo, pathNormal, pathRough, pathAO</code> recebem o caminho das texturas - de acordo com o fluxo de trabalho de iluminação baseada fisicamente - que são esperadas estarem no direitório "assets/textures/terrain/". <code>pathMask</code> é referente ao diretório da textura que servirá de mascará para o terreno.</p>
+			<h3>Uma implementação prática</h3>
+			<p>A quantidade de terrenos por cena é irrestrita, uma vez que basta instânciar um objeto do tipo terreno e então no laço de renderização chamar a função membro <code>render()</code> de "Terrain".</p>
+			<p>Terrenos, como obetos tridimensionais, possuem um matriz de transformação de modelo que pode ser acessada por meio da função <code>getModel()</code> e então escalonada, rotacionada ou transladada. Veja o código exemplo:</p>
+			<code>
+				Terrain terrain("../assets/textures/terrain/maps/heightmap000.r8", 8, 256, 256, 40.0f, 2.0f);<br>
+				terrain.setBaseTex("snow_02_diff_1k.jpg", "snow_02_nor_1k.jpg", "snow_02_rough_1k.jpg", "snow_02_ao_1k.jpg");<br>
+				terrain.setSlopeTex("rock_wall_02_diff_1k.jpg", "rock_wall_02_nor_gl_1k.jpg", "rock_wall_02_rough_1k.jpg", "rock_wall_02_ao_1k.jpg");<br>
+				terrain.setPathTex("pathMask001.bmp", "grass_path_2_diff_1k.jpg", "grass_path_2_nor_1k.jpg", "grass_path_2_rough_1k.jpg", "grass_path_2_AO_1k.jpg");<br>
+				terrain.setUniform1f("material.metallic", 0.0f);<br>
+				terrain.getModel() = rotateY(45.0f);
+			</code>
+			<p>Obs.: Perceba a chamada a <code>setUniform1f</code>. O que isso faz é determinar o quão metálico uma superfície se parece. Idealmente, cada conjunto de texturas deveria ter o seu respectivo material metálico, contudo, usar apenas um flutuador como entrada metálica, faz com que todo terreno assuma o comportamento de um metal quando a luz irradiar sobre ele. Apesar de uma limitação para simulação visual, é suficiente.</p>
+			<p>Uma vez que o programa esteja para ser encerrado, chame a função <code>free()</code> da classe <code>Terrain</code> para realizar o desalocamento de recursos.</code>	
+		</section>
+		<section class="col-s-12 col-t-12 col-d-12 content Auxiliary-Libraries">
+			<h2>Bibliotecas auxilíares</h2>
+			<h3>Matemática</h3>
+			<p>O arquivo "Math.hpp" disponível no diretório "librarires/Math/" fornece uma série de funções e tipos de dados de cunho matemático como:</p>
+			<ul>
+				<p>Classes:</p>
+				<code>
+					<li>mat2&lt;T&gt;</li>
+					<li>mat4&lt;T&gt;</li>
+					<li>vec2&lt;T&gt;</li>
+					<li>vec3&lt;T&gt;</li>
+					<li>vec4&lt;T&gt;</li>
+				</code>
+				<p>Funções:</p>
+				<code>
+					<li>T radians(T angle)</li>
+					<li>vec3&lt;T&gt; normalize(vec3&lt;T&gt;& vector)</li>
+					<li>vec3&lt;T&gt; cross(const vec3&lt;T&gt;& a, const vec3&lt;T&gt;& b)</li>
+					<li>T dot(const vec3&lt;T&gt;& a, const vec3&lt;T&gt;& b)</li>
+					<li>mat4&lt;T&gt; lookAt(const vec3&lt;T&gt;& eye, const vec3&lt;T&gt;& target, const vec3&lt;T&gt; up)</li>
+					<li>mat4&lt;T&gt; perspective(T fovy, T aspect, T zNear, T zFar)</li>
+					<li>mat4&lt;T&gt; perspective(T angle, T w, T h)</li>
+					<li>mat4&lt;T&gt; orthographic(T l, T r, T b, T t, T near, T far)</li>
+					<li>mat4&lt;T&gt; orthographic(T l, T r, T b, T t)</li>
+					<li>mat4&lt;T&gt; translate(vec3&lt;T&gt; v)</li>
+					<li>mat4&lt;T&gt; scale(vec3&lt;T&gt; v)</li>
+					<li>mat4&lt;T&gt; rotateX(T angle)</li>
+					<li>mat4&lt;T&gt; rotateY(T angle)</li>
+					<li>mat4&lt;T&gt; rotateZ(T angle)</li>
+				</code>
+			</ul>
+			<p>Uma descrição detalhada sobre será feita em breve.</p>
+			<h3>Classes auxiliáres de dados de iluminação</h3>
+			<ul>
+				<code>
+					<li>PointLight</li>
+					<li>SpotLight</li>
+					<li>Sun</li>
+					<li>Material</li>
+				</code>
+			</ul>
+			<p>Uma descrição detalhada sobre será feita em breve.</p>
+		</section>
+
+
 		<footer class="col-s-12 col-t-12 col-d-12">
 			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
 			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>

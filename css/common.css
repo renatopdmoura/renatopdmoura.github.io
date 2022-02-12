@@ -51,6 +51,11 @@ footer a:hover{
 	text-align: center;
 }
 
+section.content{
+	padding-left: 5%;
+	padding-right: 5%;
+}
+
 .item-menu{
 	font-family: Humnst777;
 	text-align: center;
