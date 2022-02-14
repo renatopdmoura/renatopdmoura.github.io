@@ -1,4 +1,4 @@
-// Escrito por Renato Moura em 16 de Janeiro de 2021
+// Escrito por Renato Moura em 16 de Janeiro de 2022
 
 let w = window.innerWidth;
 
@@ -32,4 +32,25 @@ function switch_article(id){
 	document.getElementById(label_id).innerHTML = catch_text(id);
 	if(w >= 1366)
 		window.scrollTo(0, 0);
+}
+
+function hiden(){
+	var item_count = document.getElementById('func-list').childElementCount;
+	for(var i = 1; i < item_count + 1; i++){
+		document.getElementById('desktop-view-' + i).style.display = 'none';
+		document.getElementById('btn-func-ls-' + i).style.backgroundColor = "#eee";
+		if(w <= 1366){
+			document.getElementById('mobile-view-' + i).innerHTML = document.getElementById('desktop-view-' + i).innerHTML;
+		}
+	}
+	if(w >= 1366)
+		return 'desktop-view-';
+	else
+		return 'mobile-view-';
+}
+
+function show(id){
+	let label_id = hiden() + id;
+	document.getElementById('btn-func-ls-' + id).style.backgroundColor = "#ddf";
+	document.getElementById(label_id).style.display = "inline";
 }

@@ -48,6 +48,14 @@ details{
 	margin-left: -40px;
 }
 
+[id *="desktop-view-"]{
+	display: none;
+}
+
+[id *="mobile-view-"]{
+	display: none;
+}
+
 /*---Mobile Larger---*/
 @media only screen and (max-width: 768px){
 	.prot-func{

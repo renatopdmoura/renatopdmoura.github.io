@@ -79,7 +79,7 @@ section.content{
 [class*="col-"]{
 	float: left;
 	padding: 12px;
-	/*border:  1px solid #f00;*/
+	/* border:  1px solid #f00; */
 }
 
 .row::after{

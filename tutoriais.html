@@ -26,7 +26,7 @@
 				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
 			</nav>
 		</header>
-		<section class="col-s-12 col-t-12 col-d-12 content Core">
+		<section class="col-s-12 col-t-12 col-d-9 content Core">
 			<h2>Núcleo</h2>
 			<p>Alguns tipos de dados precisam ser acessados constantemente em diferentes arquivos. Para resolver isso, um arquivo de cabeçalho define tais váriaveis de modo que possam ser facilmente acessados independente do diretório que esteja desde que seja feita as devidas inclusões.</p>
 			<p>A maioria das classes são derivadas de SRW, e SRW já faz a inclusão desse arquivo, portanto, torna acessivel tais dados em todas as classes atuais. A lista de dados úteis é esta:</p>
@@ -39,6 +39,23 @@
 			<p>Se estiver curioso para verificar todos as varíaveis disponíveis acesse o arquivo em "libraries/Common/Common.hpp".</p>
 			<p>O núcleo contém apenas uma função de relevância para o usuário desenvolvedor que é discutida na próxima seção.</p>
 		</section>
+		<div class="col-s-12 col-t-12 col-d-3 topic">
+			<ul>
+				<h4>Tópicos nesse artigo</h4>
+				<p>Começando</p>
+				<li><a href="#">Núcleo</a></li>
+				<li><a href="#">Inicialização</a></li>
+				<p>Preparando o cenário</p>
+				<li><a href="#">Câmera</a></li>
+				<li><a href="#">Audio</a></li>
+				<li><a href="#">GUI</a></li>
+				<li><a href="#">Terrain</a></li>
+				<p>Adendos</p>
+				<li><a href="#">Bibliotecas auxiliáres</a></li>
+				<p><em>Atualizdo em 14/02/2022</em></p>
+			</ul>
+		</div>
+
 
 		<section class="col-s-12 col-t-12 col-d-12 content Initialize">
 			<h2>Inicialização</h2>
@@ -112,9 +129,13 @@
 			<p>O que sobra é dizer como atualizar os dados membros de um objeto do tipo "Camera". Não há mistérios. Quando nos movemos em um ambiente 3D, como num jogo, usamos em geral dois tipos de entrada: o teclado e o mouse. Um objeto da classe "Camera" vêm com duas funções para gerenciamento de eventos. Então tudo que deve ser feito é dentro do bloco do laço de eventos, fazer a chamada as respectivas funções: <code>keyboardEvent(SDL_Event* event)</code> e <code>mouseEvent(SDL_Event* event)</code> passando como parâmetro a referência de um objeto SDL_Event criado previamente. Uma vez que as entradas de eventos estejam sendo capturadas, após o fechamento do laço de eventos, chame a função da classe "Camera" <code>updateCoordinates()</code> e após <code>SRW::updateUniforms(fpsCam.getViewAndProjection(), fpsCam.getPosition(), 0)</code>, essa função irá atualizar o buffer de uniformes compartilhados.</p>
 			<p>Outras funções podem ser encontradas na referência da bliblioteca.</p>
 		</section>
+
 		<section class="col-s-12 col-t-12 col-d-12 content Audio">
 			<h2>Audio</h2>
-			<p>ImCreate usa OpenAL para reproduzir sons tridimensionais e acrescentar maior imersão as cenas fornecendo "pan orientado" e recursos de atenução do som em função da distância do ouvinte para fonte emissora. A atenuação pode ser resolvida pelas seguintes equações:</p>
+			<p>ImCreate usa OpenAL para reproduzir sons espaciais e acrescentar maior imersão as cenas.</p> 
+			<h3>Modelo de Disância</h3>
+			</p>OpenAL trata amostras de audio como dois formatos possiveis: AL_FORMAT_MONO8/AL_FORMAT_MONO16 e AL_FORMAT_STEREO8/AL_FORMAT_STEREO16. Decidir qual formato usar para uma amostrar depende do seu prósito. Formatos mono são formatos ao qual os efeitos espaciais devem ser aplicados a amostra(pan e atenuação), já os formatos estéreos são destinados a tocar músicas de fundo dado que os efeitos espaciais funcionam apenas em formatos mono.</p>
+			<p>Outro parâmetro de importância e determinar como os efeitos espaciais devem se comportar em relação a distância do ouvinte para a fonte emissora de som. As possibilidades são dadas em três tipos e suas variações:</p>
 			<h4>AL_INVERSE_DISTANCE_CLAMPED</h4>
 			<code>
 				distance = max(distance, AL_REFERENCE_DISTANCE);</br>
@@ -125,13 +146,14 @@
 			<p>Onde "AL_MAX_DISTANCE" é a distância máxima para afetar a atenuação. O ganho será variável entre ]AL_REFERENCE_DISTANCE, AL_MAX_DISTANCE].</p>
 			<p>Onde "AL_ROLLOFF_FACTOR" é uma variável de compensação no intervalo [0.0f, Inf[ - infinito, mas a API irá dar um jeito de fixar os valores entre 0.0f e 1.0f - que escala a atenuação do ganho pela distância.</p>
 			<p>Dado tal equação, é possível notar que o ganho nunca será igual a zero.</p>
+			<p>Esse modelo é bastante próximo de como o som se propaga na realidade. Ao ínves de como no modelo linear(ver abaixo), ao afastar-se suficientemente do emissor, o som não será silêncio, mas passara a ter um ganho atenuado constante. Isso tem o potêncial de que o som ambiente torna-se o somatório de todos os sons em cena que juntos, misturam-se ao ponto de perder sua nitidez total.
 			<h4>AL_LINEAR_DISTANCE_CLAMPED</h4>
 			<code>
 				distance = max(distance, AL_REFERENCE_DISTANCE);<br>
 				distance = min(distance, AL_MAX_DISTANCE);<br>
 				gain = 1 - AL_ROLLOFF_FACTOR * (distance - AL_REFERENCE_DISTANCE) / (AL_MAX_DISTANCE - AL_REFERENCE_DISTANCE);
 			</code>
-			<p>A equação que determina a redução do ganho linearmente conforme a distância aumenta. Esse é o modelo estendido de AL_LINEAR_DISTANCE para fixar o ganho para distâncias menores que AL_REFERENCE_DISTANCE. Por ser uma função linear, após AL_MAX_DISTANCE o ganho será 0.</p>
+			<p>A equação que determina a redução do ganho linearmente conforme a distância aumenta. Esse é o modelo estendido de AL_LINEAR_DISTANCE para fixar o ganho para distâncias menores que AL_REFERENCE_DISTANCE. Por ser uma função linear, após AL_MAX_DISTANCE o ganho será zerado.</p>
 			<h4>AL_EXPONENT_DISTANCE_CLAMPED</h4>
 			<code>
 				distance = max(distance, AL_REFERENCE_DISTANCE);<br>
@@ -141,29 +163,50 @@
 			<p>O ganho varia exponencialmente inversamente proporcional á distância.</p>
 			<h4>AL_NONE</h4>
 			<p>Esse valor desativa a funcionalidade de atenuação do ganho em função da distância.<p>
+			<p>Cada versão acima possui um corresnpondente sem a palavara chave "CLAMPED". Omití-la fará que ocorra atenuação desde a posição inicial da fonte emissora de som até AL_MAX_DISTANCE. </p>
 			<h3>Emitindo sons</h3>
-			<p>"Fontes" são como a API OpenAL define um emissor de som no espaço tridimensional. Fontes são armazenadas na pilha interna de uma instância da classe Audio e armazenads em um único buffer vinculado ao primeiro dispositivo de som elegível.</p>
-			<p>Para começar a usar os recursos de audio chame <code>Audio::initialize(vec3&lt;float&gt;(0.0f) from, vec3&lt;float&gt; to, int distanceModel)</code> passando como argumentos respectivamente a posição inicial do observador e a direção de visualização.</p>
-			<p>Uma classe "Emitter" é responsável por armazenar as informações de uma fonte que deve ser passada como argumento para um objeto da classe Audio por meio da função <code>setEmitters(std::vector&lt;Emitter&gt;& emitters)</code> - para permitir que um conjunto de emissores sejam enviados em apenas uma chamada, o argumento deve sempre ser um vetor de "Emitters". Exemplo:</p>
+			<p>OpenAL refere-se a emissores de som como "source"(traduzido para "origem, fonte"), esse termo nessa seção será então analogo a emissores de som no espaço.</p>
+			<p>Começar a usar os recursos de áudio requer a chamada de <code>Audio::initialize(vec3&lt;float&gt;(0.0f) from, vec3&lt;float&gt; to, int distanceModel)</code> passando como argumentos respectivamente a posição inicial do observador e a direção de visualização.</p>
+			<p>A classe "Emitter" é responsável por armazenar as informações de uma fonte que deve ser passada como argumento para um objeto da classe Audio por meio da função <code>setEmitters(std::vector&lt;Emitter&gt;& emitters)</code> - para permitir que um conjunto de emissores sejam enviados em apenas uma chamada, o argumento deve sempre ser um vetor de "Emitters". Exemplo:</p>
 			<code>
 				std::vector<Emitter> ambience = {<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;{Emitter("../assets/sfx/water.wav", vec3<float>(0.0f), 1.0f, 8.0f, 1.0f, 1.0f, AL_FORMAT_MONO16)}<br>
 				&nbsp;&nbsp;&nbsp;&nbsp;// Quantos mais emissores desejar...<br>
 				};<br>
-				Audio sfxList000;<br>
-				sfxList000.setEmitters(ambience);
+				Audio sfxList000(SFX, ambience);<br>
 			</code>
 			<p>Sendo os parâmetros do construtor de Emitter o caminho do arquivo de áudio, a posição da fonte, a distância de referência, a distância máxima, o fator de compensação de ganho, o ganho relativo e o formato á ser reproduzido.</p>
-			<p>Uma coisa a notar é o último parâmetro. <code>format</code> pode ser AL_FORMAT_MONO8, AL_FORMAT_MONO16, AL_FORMAT_STEREO8, AL_FORMAT_STEREO16, sendo que para que uma fonte tenha um comportamento tridimensional, OpenAL apenas suporta formatos mono, formatos estéreos desabilitarão as configurações de pan e atenuação.</p>
-			<h3>Reproduzindo som</h3>
-			<p>Uma vez que um objeto "Audio" esteja devidamente criado e inicializado, antes de acessar o laço principal, chame a função <code>play()</code> pertencente a classe Audio. Uma vez que os sons são selecionados para reprodução de acordo com a distância entre a fonte e o ouvinte, a função <code>play()</code> é útil para auxiliar que o algoritmo de seleção por distância possa deduzir qual será o estado inicial de uma fonte(se deve ser reproduzida ou não). Por último, atualize a posição do ouvinte a cada novo quadro - o ouvinte tem as mesmas coordenadas que o observador - posição e orientação. Veja o exemplo:</p>
+			<p>O construtor para Audio recebe dois parâmetros:</p>
+			<ul>
+				<li>Audio_Container_Type flag: determina que a instância de Audio deve ser armazenada na pilha de amostras para 'AL_FORMAT_STEREO16' se for igual a 'SFX' ou para pilha de formatos 'AL_FORMAT_MONO16' se igual a 'BGM'. Pilhas distintas permite gerenciar efeitos sonoros e músicas de plano de fundo de forma independente.</li>
+				<li>std::vector&lt;Emitter&gt;& emitters: recebe a passagem de um vetor do tipo Emitter(internamente atribuida pela função setter).</li>
+			</ul>
+			<h3>Reproduzindo</h3>
+			<p>Uma vez que um objeto 'Audio' esteja devidamente inicializado, antes de acessar o laço principal, chame a função <code>play()</code> quando for conveniente reproduzir os sons. Por último, atualize a posição do ouvinte a cada novo quadro - o ouvinte tem as mesmas coordenadas que o observador - posição e orientação -, e chame <code>Audio::selectByDistance(vec3&lt;float&gt; position)</code> para iniciar/parar o processamento das fontes de tipo mono de acordo com a distância do ouvinte. Veja o exemplo abaixo:</p>
 			<code>
-				...
-				// Dentro do laço principal, após atualizar a câmera<br>
-				Audio::updateListener(fpsCam.getPosition(), fpsCam.getTarget());
+				...<br>
+				// - Dentro do laço principal, após atualizar a câmera<br>
+				Audio::updateListener(fpsCam.getPosition(), fpsCam.getTarget());<br>
+				Audio::selectByDistance(fpsCam.getPosition());
 			</code>
+			<h3>Visualizando fontes emissoras no espaço mundial</h3>
+			<p>Poder observar a posição e o alcance de uma fonte pode ser útil para o desenvolvedor por tanto ImCreate disponibiliza a função <code>render()</code> para renderizar tais informações de fontes em um container 'Audio':</p>
+			<code>
+				...<br>
+				// - No loop de renderização<br>
+				bgmList000.renderSources();<br>
+				sfxList000.renderSources();
+			</code>
+			<h3>Atualizações futuras</h3>
+			<ul>
+				<li>Posições dinâmicas:</li>
+				<p>Ainda não há uma abstração para que emissores possam deslocar-se pelo espaço a cada quadro. Não haver uma abstração não significa não poder fazê-lá, mas ainda é pouco intuitivo e desorganizado. Em uma revisão posterior pretendo escrever uma forma mais atraente para isso.</p>
+				<li>Parâmetros de ouvinte:</li>
+				<p>O controle dos parâmetros de um ouvinte ainda é limitado à apenas manipular seu ganho. Há outros parâmetros de interesse e deverão ser disponéveis em um futuro próximo.</p>
+				<li>Seleção por distância:</li>
+				<p>O algoritmo de seleção por distância ainda é um diamante não lapidado. Para evitar que cortes abruptos ocorram no som atualemte é preciso realizar testes com diferentes amostras para determinar como o ganho relativo e o fator de compensação afetam o corte assim como seu alcance máximo. Isso ao meu ver é muita conversa e deve ser simplificado.</p>
+				</ul>
 		</section>
-
 
 		<section class="col-s-12 col-t-12 col-d-12 content GUI">
 			<h2>Interface Gráfica de Usuário - GUI</h2>
@@ -357,6 +400,7 @@
 			<p>Obs.: Perceba a chamada a <code>setUniform1f</code>. O que isso faz é determinar o quão metálico uma superfície se parece. Idealmente, cada conjunto de texturas deveria ter o seu respectivo material metálico, contudo, usar apenas um flutuador como entrada metálica, faz com que todo terreno assuma o comportamento de um metal quando a luz irradiar sobre ele. Apesar de uma limitação para simulação visual, é suficiente.</p>
 			<p>Uma vez que o programa esteja para ser encerrado, chame a função <code>free()</code> da classe <code>Terrain</code> para realizar o desalocamento de recursos.</code>	
 		</section>
+
 		<section class="col-s-12 col-t-12 col-d-12 content Auxiliary-Libraries">
 			<h2>Bibliotecas auxilíares</h2>
 			<h3>Matemática</h3>
@@ -400,7 +444,6 @@
 			</ul>
 			<p>Uma descrição detalhada sobre será feita em breve.</p>
 		</section>
-
 
 		<footer class="col-s-12 col-t-12 col-d-12">
 			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>

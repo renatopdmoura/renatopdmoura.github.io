@@ -33,7 +33,7 @@
 			<ol>
 				<li>Gerenciador de sombreadores</li>
 					<ul>
-						<p>Funcionalidade atribuida a classe SRW, nela funções como geração de sombreadores e objetos de programa mais inicialização de dados uniformes
+						<p>Funcionalidade atribuida a classe SRW, nela funções como geração de sombreadores e objetos de programa além da inicialização de dados uniformes
 						são realizadas. SRW funciona como classe base para a grande maioria das demais classes.</p>
 					</ul>
 				<li>Carregador de modelos</li>
@@ -45,18 +45,23 @@
 					<ul>
 						<p>Classe Terrain, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de SRW, uniformes são inicializados a partir de chamadas as funções da classe base</p>
 					</ul>
-				<li>Renderização de textos</li>
+				<li>Interface de Usuário</li>
 					<ul>
 						<p>Classe Text, usa FreeType como núcleo de funcionalidade. Permite carregamento de texto de forma otimizada usando um identificador de texturas, ou métodos que 
 						carregam caracteres em tempo de execução - como comandos de console.
 						</p>
 					</ul>
+				<li>Áudio 3D</li>
+					<ul>
+						<p>Audio é um wrapper para as chamadas da API OpenAL permitindo reproduzir efeitos espaciais.</p>
+					</ul>
 			</ol>
 			<h2>Tecnologias</h2>
 			<ul>
-				<li class="tech-item">OpenGL</li>
 				<li class="tech-item">SDL</li>
+				<li class="tech-item">OpenGL</li>
 				<li class="tech-item">FreeType</li>
+				<li class="tech-item">OpenAL</li>
 			</ul>
 		</section>
 		<footer class="col-s-12 col-t-12 col-d-12">

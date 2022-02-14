@@ -27,66 +27,8 @@
 			</nav>
 		</header>
 		<section>
-			<div id="text-1" hidden>
-				<p>Protótipo 1:</p>
-				<p class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path)</code></p>
-				<p>Um gerador de programa de sombreamento de fabrica. É util para definir objetos de programas que serão compartilhados por diferentes instâncias.</p>
-				<p>Exemplo:<p>
-				<p class="prot-func"><code>
-					unsigned int program = SRW::genProgramShader("vs.glsl", "fs.glsl");
-				</code></p>
-				<p>Protótipo 2:</p>
-				<p class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</code></p>
-				<p>Um gerador de programa de sombreamento para situaçãos em que se faz necessário um sombreador de geometria.</p>
-				<p>Exemplo:</p>
-				<p class="prot-func"><code>
-					unsigned int program = SRW::genProgramShader("vs.glsl", "fs.glsl", "gs.glsl");
-				</code></p>
-				<p>Protótipo 3:</p>
-				<p class="prot-func"><code>static void genProgramShaders()</code></p>
-				<p>Gera os programas de sombreamentos definidos internamente.</p>
-				<p class="prot-func"><code>
-					SRW::genProgramShaders();
-				</code></p>
-				<p>A chamada dessa função deve preceder o uso de qualquer program do vetor <code>SRW::programs</code>.</p>
-			</div>
-			<div id="text-2" hidden>
-				<p>Protótipo:</p>
-				<p class="prot-func"><code>static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)</code></p>
-				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
-				<p>Exemplo:</p>
-				<p class="prot-func"><code>
-					unsigned int gBuffer, gDepth, gPosition, gNormal, gAlbedo, width, height;
-					SRW::genGeometryBuffer(gBuffer, gPosition, gNormal, gAlbedo, width, height);
-				</code></p>
-			</div>
-			<div id="text-3" hidden>
-				<p>Protótipo 1:</p>
-				<p class="prot-func"><code>static void sharedUniforms(mat4<float>& matrix, vec3<float>& cameraPos, Sun* sun, std::vector<PointLight>* pointLightArray, std::vector<SpotLight>* spotLightArray = NULL)</code></p>
-				<p>Chame essa função para definir um local de memória compartilhavel para atributos de câmera e dados de iluminação da qual todos objetos possam realizar a leitura.</p>
-				<p>Exemplo:</p>
-				<p class="prot-func"><code>
-					Camera fpsCam(vec3<float>(0.0f, 4.0f, 0.0f), vec3<float>(0.0f, -1.0f, -1.0f), 45.0f, 0.1f, 100.0f);<br>
-					Sun mySun = {vec4<float>(0.0f, 1.0f, 0.0f), vec4<float>(0.2f, 0.2f, 0.2f)};<br>
-					std::vector<PointLight> myPointLightArray = {{vec4<float>(0.0f, 2.0f, 8.0f),  vec4<float>(20.0f, 0.0f, 0.0f)}};<br>
-					std::vector<SpotLight> mySpotLightArray   = {{vec4<float>(0.0f, 1.0f, 0.0f, 0.65f), vec4<float>(0.0f, 4.0f, 0.0f, 0.35f), vec4<float>(20.0f, 20.0f, 20.0f)}};<br>	
-					SRW::sharedUniforms(fpsCam.getViewAndProjection(), fpsCam.getPosition, &mySun, &myPointLightArray, &mySpotLightArray);
-				</code></p>
-				<p>Protótipo 2:</p>
-				<p class="prot-func"><code>static void sharedUniforms(mat4<float>& viewProj, vec3<float>& cameraPos, bool update = true)</code></p>
-				<p>Método para atualizar a matriz de visualização e a posição da câmera no buffer uniforme.</p>
-				<p>Essa função precisa ser chamada a cada iteração do loop de renderização.</p>
-				<p class="prot-func"><code>
-					Camera fpsCam(vec3<float>(0.0f, 4.0f, 0.0f), vec3<float>(0.0f, -1.0f, -1.0f), 45.0f, 0.1f, 100.0f);<br>
-					while(!quit){<br>
-						{<br>
-						// pool events<br>
-						}<br>
-						SRW:sharedUniforms(fpsCam.getViewAndProjection(), fpsCam.getPosition());<br>
-					}
-				</code></p>
-
-			</div>
+		
+			
 			<div id="text-4" hidden>
 				<p>Protótipo:</p>
 				<p class="prot-func"><code>void setUniform1b(std::string, bool value)</code></p>
@@ -211,13 +153,14 @@
 				<p>Exibe informações sobre os dados definidos em um objeto direto ou derivado da classe SRW.
 			</div>
 		</section>
+
 		<aside id="ref-class-list" class="col-s-12 col-t-12 col-d-3">
 			<details id="srw">
 				<summary>Shader Resource Wrapper</summary>
 				<ul id="func-list">
-					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="switch_article(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
-					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="switch_article(2)">genGeometryBuffer</button><article id="mobile-view-2"></article></li>
-					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="switch_article(3)">sharedUniforms</button><article id="mobile-view-3"></article></li>
+					<li><button id="btn-func-ls-1" class="btn-func-ls" onclick="show(1)">genProgramShader</button><article id="mobile-view-1"></article></li>
+					<li><button id="btn-func-ls-2" class="btn-func-ls" onclick="show(2)">genGeometryBuffer</button><article id="mobile-view-2"></article></li>
+					<li><button id="btn-func-ls-3" class="btn-func-ls" onclick="show(3)">sharedUniforms</button><article id="mobile-view-3"></article></li>
 					<li><button id="btn-func-ls-4" class="btn-func-ls" onclick="switch_article(4)">setUniform1b</button><article id="mobile-view-4"></article></li>
 					<li><button id="btn-func-ls-5" class="btn-func-ls" onclick="switch_article(5)">setUniform1f</button><article id="mobile-view-5"></article></li>
 					<li><button id="btn-func-ls-6" class="btn-func-ls" onclick="switch_article(6)">setUniform3f</button><article id="mobile-view-6"></article></li>
@@ -285,31 +228,130 @@
 			</details>
 		</aside>
 		<section id="ref-description" class="col-s-12 col-t-12 col-d-8 row">
-			<article id="desktop-view-1"></article>
-			<article id="desktop-view-2"></article>
-			<article id="desktop-view-3"></article>
-			<article id="desktop-view-4"></article>
-			<article id="desktop-view-5"></article>
-			<article id="desktop-view-6"></article>
-			<article id="desktop-view-7"></article>
-			<article id="desktop-view-8"></article>
-			<article id="desktop-view-9"></article>
-			<article id="desktop-view-10"></article>
+			<article id="desktop-view-1">
+					<p>Protótipo 1:</p>
+					<p class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path)</code></p>
+					<p>Um gerador de programa de sombreamento de fabrica. É util para definir objetos de programas que serão compartilhados por diferentes instâncias.</p>
+					<p>Exemplo:<p>
+					<p class="prot-func"><code>unsigned int program = SRW::genProgramShader("vs.glsl", "fs.glsl");</code></p>
+					<p>Protótipo 2:</p>
+					<p class="prot-func"><code>static uint genProgramShader(std::string vs_path, std::string fs_path, std::string gs_path)</code></p>
+					<p>Um gerador de programa de sombreamento para situaçãos em que se faz necessário um sombreador de geometria.</p>
+					<p>Exemplo:</p>
+					<p class="prot-func"><code>unsigned int program = SRW::genProgramShader("vs.glsl", "fs.glsl", "gs.glsl");</code></p>
+					<p>Protótipo 3:</p>
+					<p class="prot-func"><code>static void genProgramShaders()</code></p>
+					<p>Gera os programas de sombreamentos definidos internamente.</p>
+					<p class="prot-func"><code>SRW::genProgramShaders();</code></p>
+					<p>A chamada dessa função deve preceder o uso de qualquer program do vetor <code>SRW::programs</code>.</p>
+			</article>
+
+			<article id="desktop-view-2">		
+				<p>Protótipo:</p>
+					<p class="prot-func">
+					<code>
+						static void genGeometryBuffer(uint& gBuffer, uint& gDepth, uint& gPosition, uint& gNormal, uint& gAlbedo, uint width, uint height)
+					</code>
+				</p>
+				<p>Constroi texturas para serem usadas no passe de renderização como buffer de dados da geometria em cena. Esse método deve ser chamado se a intenção for usar renderização diferida.</p>
+				<p>Exemplo:</p>
+				<p class="prot-func">
+					<code>
+						unsigned int gBuffer, gDepth, gPosition, gNormal, gAlbedo, width, height;
+						SRW::genGeometryBuffer(gBuffer, gPosition, gNormal, gAlbedo, width, height);
+					</code>
+				</p>
+			</article>			
+
+			<article id="desktop-view-3">
+				<p>Protótipo 1:</p>
+				<p class="prot-func"><code>static void sharedUniforms(mat4<float>& matrix, vec3<float>& cameraPos, Sun* sun, std::vector<PointLight>* pointLightArray, std::vector<SpotLight>* spotLightArray = NULL)</code></p>
+				<p>Chame essa função para definir um local de memória compartilhavel para atributos de câmera e dados de iluminação da qual todos objetos possam realizar a leitura.</p>
+				<p>Exemplo:</p>
+				<p class="prot-func">
+					<code>
+						Camera fpsCam(vec3<float>(0.0f, 4.0f, 0.0f), vec3<float>(0.0f, -1.0f, -1.0f), 45.0f, 0.1f, 100.0f);<br>
+						Sun mySun = {vec4<float>(0.0f, 1.0f, 0.0f), vec4<float>(0.2f, 0.2f, 0.2f)};<br>
+						std::vector<PointLight> myPointLightArray = {{vec4<float>(0.0f, 2.0f, 8.0f),  vec4<float>(20.0f, 0.0f, 0.0f)}};<br>
+						std::vector<SpotLight> mySpotLightArray   = {{vec4<float>(0.0f, 1.0f, 0.0f, 0.65f), vec4<float>(0.0f, 4.0f, 0.0f, 0.35f), vec4<float>(20.0f, 20.0f, 20.0f)}};<br>	
+						SRW::sharedUniforms(fpsCam.getViewAndProjection(), fpsCam.getPosition, &mySun, &myPointLightArray, &mySpotLightArray);
+					</code>
+				</p>
+				<p>Protótipo 2:</p>
+				<p class="prot-func"><code>static void sharedUniforms(mat4<float>& viewProj, vec3<float>& cameraPos, bool update = true)</code></p>
+				<p>Método para atualizar a matriz de visualização e a posição da câmera no buffer uniforme.</p>
+				<p>Essa função precisa ser chamada a cada iteração do loop de renderização.</p>
+				<p class="prot-func">
+					<code>
+						Camera fpsCam(vec3<float>(0.0f, 4.0f, 0.0f), vec3<float>(0.0f, -1.0f, -1.0f), 45.0f, 0.1f, 100.0f);<br>
+						while(!quit){<br>
+							{<br>
+							// pool events<br>
+							}<br>
+							SRW:sharedUniforms(fpsCam.getViewAndProjection(), fpsCam.getPosition());<br>
+						}
+					</code>
+				</p>
+			</article>
+			
+			<article id="desktop-view-4">
+				
+			</article>
+			
+			<article id="desktop-view-5">
+
+			</article>
+			
+			<article id="desktop-view-6">
+
+			</article>
+			
+			<article id="desktop-view-7">
+
+			</article>
+			
+			<article id="desktop-view-8">
+
+			</article>
+			
+			<article id="desktop-view-9">
+
+			</article>
+			
+			<article id="desktop-view-10">
+
+			</article>
+			
 			<article id="desktop-view-11"></article>
+			
 			<article id="desktop-view-12"></article>
+			
 			<article id="desktop-view-13"></article>
+			
 			<article id="desktop-view-14"></article>
+			
 			<article id="desktop-view-15"></article>
+			
 			<article id="desktop-view-16"></article>
+			
 			<article id="desktop-view-17"></article>
+			
 			<article id="desktop-view-18"></article>
+			
 			<article id="desktop-view-19"></article>
+			
 			<article id="desktop-view-20"></article>
+			
 			<article id="desktop-view-21"></article>
+			
 			<article id="desktop-view-22"></article>
+			
 			<article id="desktop-view-23"></article>
+			
 			<article id="desktop-view-24"></article>
+			
 			<article id="desktop-view-25"></article>
+			
 			<article id="desktop-view-26"></article>
 		</section>
 		<footer class="col-s-12 col-t-12 col-d-12">
