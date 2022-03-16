@@ -1,0 +1,135 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<title>ImCreate</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Referência">
+	<meta name="keywords" content="Programação, C++, OpenGL">
+	<meta name="author" content="Renato Moura">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- include css -->
+	<link rel="stylesheet" href="css/common.css" type="text/css">
+	<link rel="stylesheet" href="css/tutoriais.css" type="text/css">
+	<!-- include javascript -->
+	<script type="text/javascript" src="js/javascript.js"></script>
+</head>
+<body>
+	<main id="main-container" class="row">
+		<header id="main-header" class="col-s-12 col-t-12 col-d-12">
+			<div id="main-title" class="col-s-12 col-t-5 col-d-5">
+				<h1>ImCreate</h1>
+			</div>
+			<nav class="col-s-12 col-t-7 col-d-7 row">
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="index.html" class="link-menu">Apresentação</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="tutoriais.html" class="link-menu">Tutoriais</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="reference.html" class="link-menu">Referência</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
+			</nav>
+		</header>
+		<section class="col-s-12 col-t-12 col-d-9 content Object">
+		<h2>Importando objetos</h2>
+		<p>A classe "Object" provê funções para carregar objetos do tipo wavefront - .obj -, configuração de materiais e texturas além de suporte a modelos animados e desenho instânciado de objetos.</p>
+		<p>O carregamento de objetos requer os seguintes cabeçalhos:</p>
+		<code>
+			<pre>
+			#include "Core.hpp"
+			#include "SRW.hpp"
+			#include "Camera.hpp"
+			#include "Object.hpp"
+			
+			int main(int agrv, char** args){
+				if(Core::initialize("Loading 3D Obects", 1280, 720)){
+					// - Inicialização de estados OpenGL como mistura, buffer de profundidade...
+					...<br>
+					Object obj000("assets/models/import/basic/cube.obj", UNIFORM_COLOR);
+					obj000.setMaterial(vec3&lt;float&gt;(1.0f), 0.1f, 1.0f, 0.0f);
+					// - Ou usando um estrutura de dados declarada no cabeçalho Datatype.hpp
+					Material mtl000 = {vec3&lt;float&gt;(1.0f, 1.0f, 1.0f), 0.1f, 1.0f, 0.0f};
+					obj000.setMaterial(mtl000);
+				}
+			}
+			</pre>
+		</code>
+		<p>Tanto os parâmetros em setMaterial e sua versão que recebe uma estrutura de dados são: um tripleto de floats para representar ar cor, um float para representar a rugosidade da superfíce(0 para totalmente liso), um float para a oclusão de ambiente(o quanto a superfíce se auto sombrea) e um float para determinar sua caracterisitica metálica.</p>
+		<p>O construtor aqui simplesmente recebe o caminho do arquivo para carregar e o sombreador a ser usado, nesse caso UNIFORM_COLOR corresponde ao identificador de um sombreador para cores uniformes.</p>
+		<p>Objetos também pode ser usados colando texturas em suas superfíces:</p>
+		<code>		
+			<pre>
+			int main(int agrv, char** args){
+				if(Core::initialize("Loading 3D Obects", 1280, 720)){
+					...
+					Object obj000("assets/models/import/basic/cube.obj", TEXTURIZED);
+					obj000.setTextures("albedo.jpg", "roughness.jpg", "ao.jpg", "metallic.jpg");
+				}
+			}
+			</pre>
+		</code>
+		<p>Como antes o construtor leva o caminho do arquivo a ser lido e o sinalizador para usar um sombreador de texturas.</p>
+		<p>A função setTextures espera receber o caminho para as texturas de acordo com o pipeline de iluminação PBR.</p>
+
+		<p>Em casos que múltpilas versões de um objeto que apenas diferem em posição(como gramas, rochas e árvores) é possivél definir tais instãncias por meio de parâmetros de construtor:</p>
+		<code>
+			<pre>
+			int main(int agrv, char** args){
+				if(Core::initialize("Loading 3D Obects", 1280, 720)){
+					...
+					std::vector&lt;mat4&lt;float&gt;&gt; cube_matrices(100);
+					for(uint i = 0; i &lt; 10; ++i){
+						for(uint j = 0; j &lt; 10; ++j)
+							cube_matrices[i * 10 + j] = rotateY(angle) * translate(vec3<float>(5.0f + j, 0.0f, 5.0f + i));
+					}
+					Object obj000("assets/models/import/basic/cube.obj", TEXTURIZED, &cube_matrices, UNIFORM_BLOCK);
+					obj000.setTextures("albedo.jpg", "roughness.jpg", "ao.jpg", "metallic.jpg");
+				}
+			}
+			</pre>		
+		</code>
+		<p>O terceiro parâmetro espera um vetor de matrizes do tipo mat4<float> enquanto o ultimo parâmetro diz como as instâncias devem ser geradas. Existem duas formais possíveis:</p>
+		<p>Usando UNIFORM_BLOCK: quando muitas instâncias forem requeridas, esse sinalizador instrui a aplicação a usar o método com maior desempenho de processamento.</p>
+		<p>Usando UNIFORM_ARRAY: quando poucas instâncias forem requeridas e o custo de processamento antevir ao custo de armazenamento.</p>
+		<p>As posições de objetos instânciados podem ser atualizadas por quadro chamando a função <code>objectName.updateInstances()</code>. Quando o sinalizador UNIFORM_ARRAY é passado para o construtor da classe não há necessidade de chamar <code>updateInstances()</code> para atualizar o vetor de matrizes.</p>
+		<p>Um objeto individual pode ser deslocado, escalonado e rotacionado a partir do acesso a sua matriz de transformações por meio de sua função membro:</p>
+		<code>
+			<pre>
+			...
+			obj000.getModel() = scale(vec3<float>(2.0f)) * rotateY(45.0f) * translate(vec3<float>(0.0f, 0.0f, -5.0f));
+			</pre>
+		</code>
+		<p>Em Chamadas consecutivas a esta função, apenas a última chamada será válida.</p>
+
+		<p>Objetos animados também são suportados. O construtor da classe espera que um caminho contendo uma coleção de arquivos .obj sejá fornecido. É preciso que o tamanho em bytes entre os arquivos seja sempre o mesmo, caso contrário o interpretador mostrará comportamento indefinido e na pior das hipóteses gerará exceções abortando a aplicação.</p>
+		<code>
+			<pre>
+			...
+			Object obj000("assets/models/import/basic/animated_cube", TEXTURIZED);
+			</pre>
+		</code>
+		<h3>Exibindo na tela</h3>
+		<p>Renderizar objetos exige distinguir durante sua instânciação. Objetos estáticos, devem chamar a função <code>render()</code> enquanto sua versão instãnciada recebe um parâmetro para a quantidade de instâncias à desenhar: <code>render(uint instances)</code>.</p>
+		<p>Objetos não estáticos(animados) devem chamar <code>render(bool repeat, bool msBegin)</code>, onde repeat determina se deve ou não haver loop na animação e msBegin o tempo até que uma animação inicie. A versão instânciada leva o parametro adicional de instâncias: <code>render(bool repeat, uint msBegin, uint instances)</code>.</p>
+		<p>Antes de realizar um chamada de renderização, certifique-se de ter chamado SRW::useShader(uint prog). Tal permite que um grupo de objetos que usam um mesmo sombreador reutilizem o mesmo indicador de programa em apenas uma chamada. <code>uint prog</code> pode ser qualquer programa válido definido pelo usuário ou um dos programas internos acessados por meio de <code>SRW::programs[TEXTURIZED]</code> por exemplo. Caso omita essa chamada, os objetos não serão desenhados(exceto para versões instânciadas que por possuir caracterisiticas singulares(posições) podem desenhar apenas com a simples chamada de renderização adequada).</p>
+		<p>Lembre-se: toda chamada de animação deve ser feita no laço do jogo.</p>
+		<p>Uma vez que o uso de um objeto tenha chegado ao fim, chame o método <code>free()</code> para liberar os recursos alocados por ele.</p>
+
+		<h3>Atenção</h3>
+		<p>Nunca aloque objetos dinâmicamente. As relações internas da classe não o permite e tentativas gerarão falha.</p>
+
+		<h3>Lista de tarefas</h3>
+		<P>Objetos complexos demandam memória e processamento demasiado para ser carregados, sobre tudo para para os animados.</P>
+		<p>Há funções para teste de colisão esféra vs esféra, AABB vs AABB e esféra vs AABB contudo ainda não são úteis para uma caso de aplicação real.
+		<p>Há recursos de depuração para visualização de normais e visualização do buffer de profundidade, porém, ainda são instáveis.</p>
+		<p>Um gerenciador de matrizes de transformação é implementado, contudo ainda não permite um controle flexível para operações matrizes-matrizes.</p>
+		<p>Um método de seleção está dísponivel mas ainda instável.</p>
+		<p>Verfique o arquivo em "libraries/Object/Object.hpp" para maiores esclarecimentos.</p>
+	</section>	
+		
+		<footer class="col-s-12 col-t-12 col-d-12">
+			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="reference.html">Referência</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank">Download</a></span>
+			<span id="copyright" class="col-s-12 col-t-12 col-d-12">&copy 2022 ImCreate</span>
+		</footer>
+	</main>
+</body>
+</html>

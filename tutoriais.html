@@ -56,7 +56,6 @@
 			</ul>
 		</div>
 
-
 		<section class="col-s-12 col-t-12 col-d-12 content Initialize">
 			<h2>Inicialização</h2>
 			<p>Para começar a usar os recursos da biblioteca a inclusão do arquivo em "libraries/Common/Core.hpp" deve serfeita.</p>
@@ -445,6 +444,108 @@
 			<p>Uma descrição detalhada sobre será feita em breve.</p>
 		</section>
 
+		<section class="col-s-12 col-t-12 col-d-12 content Math-Concept">
+		<h2>Conceitos matemáticos essênciais</h2>
+		<p>Essa é uma seção dedicada a explorar conceitos mátematicos que abrangem o campo de exploração da computação gráfica e fortuitamente o desenvolvimento de jogos.</p>
+		<p>Atenção: os conceitos não estão dispostos linearmente de modo que uma seção não necessáriamente possuí vínculos construtivos as seções posteriores/anteriores.</p>
+		<h3>Ray Casting</h3>
+		<p>Esse é potêncialmente o gênises da física de um mecânismo de renderização. Ray Casting - traduzido para lançador de raios - consistem em projetar linhas em uma direção arbitrária para cumprir determinado fim. Um caso simples é quando precisamos selecionar algo em cena - um objeto de interação por exemplo.
+		<p></p>A tecnica de ray casting em si é simples. A primeira coisa a fazer é determinar a direção de um raio. Essa direção pode ser a direção imediata para onde o observado está olhando ou a posição para onde o mouse aponta. Para esse momento, vamos desenvolver a ideia de usar a direção que o mouse aponta já que isso é de extrema relevância - poder selecionar um objeto em cena para operar por exemplo transformações lineares em tempo de execução é mais intuitivo do que determinar suas matrizes de transformação em tempo de compilação.</p>
+
+		<h3>Analise técnica</h3>
+		<p>Vamos precisar de conversões, básicamente ir de trás para frente no pipeline de renderização. Lembrando:</p>
+		<p>Os dados dos vertices no <em>espaço de modelo</em> serão transformados para o <em>espaço de mundo</em>, após a <em>matriz de visualização</em> orientará o "mundo" de modo que pareça que a câmera está a se movimentar, e por fim, a matriz de projeção "deformará" os objetos tridimensionais para uma imagem 2D - a tela do monitor - fazendo que sua cena se pareça como 3D.</p>
+		<p>O processo de retorno é portanto:</p>
+		<ul>
+			<li>Obtenha as coordenas de tela no intervalo [0, largura da tela], [0, altura da tela] e os converta para o NDC - estágio imediatamente anterior a rasterização de um fragmento.</li>
+			<li>Desfaça a "deformação" do ponto para que retornem ao estado tridimensional correto. Isso é obtido multplicando o ponto pelo inverso da matriz de projeção - aquela que "deforma" coerentemente para que o 3D seja um "bom" 2D.</li>
+			<li>Então retorne o ponto para coordenadas mundiais pois fazer esses calculos no espaço de visualização é contra intuitivo. Fazer isso é a simples tarefa de pegar nosso ponto em questão e multiplicá-lo pelo inverso da matriz de visualização.</li>
+		</ul>
+		<p>Seguido esses passos você tera um ponto - vamos precisar de mais alguns no meio do caminho -, porém a primeira dificuldade se aprensenta. Como calcular a matriz inversa?</p>
+		<p>Suponho que você está suficiente encorajado a reinventar a roda e deixou de lado bibliotecas que fariam as coisas por você a fim de atingir um alto nível de compreensão e alcaçar o nirvana matemático. Calcular um algoritmo para inversão de matriz é bastante simples:</p>
+		<p>Vamos precisar determinar os cofatores da matriz que desejamos inverter. Portanto:</p>
+		<ul>
+			<li>Escreva dois laços for, uma para controlar o deslocamento em linhas e outro para controlar o deslocamento em colunas.</li>
+			<li>Dentro do laço for que controla o deslocamento de colunas, crie outros dois laços for, para linhas e colunas novamente.</li>
+			<li>Para calcular o cafator, precisar gerar uma matriz 3x3, pois sempre que a linha processada for igual a linha no laço for de pai, ou a coluna for igual a coluna do laço for pai, ignoramos os calculos e leremos o proximo elemento.</li>
+			<li>Uma vez que tenha salvo a matriz 3x3 obtida, após sair dos laços for internos, aumente a matriz 3x3 para calcular a determinante pela regra de Sarrus - a soma do produto das diagonais principais menos a soma do produto das diagonais secundárias.</li>
+			<li>Então, em uma nova matriz para os cofatores, o elemento atual é o elemento indicado pelos indices dos laços for pais recebe o resultado da determinante vezes a -1 elavado a potência i + j - indices controlados pelos laços for pais.</li>
+			<li>Uma vez que o processo anterior ocorra para todos os elementos na matriz, teremos a matriz de cofatores necessária. Basta calcular o determinante da matriz que queremos inverter - escolha uma coluna/linha, multiplique os elementos correspondentes da matriz a ser invertida pelo elemento na matriz de cofatores, some os resultados.</li>
+			<li>Finalmente, transponha a matriz de cofatores e a multplique pelo inverso da determinante da matriz a ser invertida (1 / det). Retorne a matriz e voilá.</li>
+			<li>Lembre-se também de adicionar uma garantia de que a matriz não seja singular para poder inverte-la.</li>
+		</ul>
+		<p>Agora podemmos andar de trás para frente no pipeline de renderização tranquilament.</p>	
+		<p>Agora precisamo traçar uma linha(da posição em que estamos observando para o pixel no framebuffer convertido para espaço de mundo). A posição do observador é facil de deduzir(se você têm uma câmera, provavelmente pode obter a sua translação), e o pixel no buffer é aquele que obtemos a partir das coordenadas de telas capturadas pela posição atual do mouse, convertida para o NDC, desprojetadas e levadas de volta ao espaço de mundo. Note que obter o mouse apenas pode indicar as coordenas x, y, de um pixel, a coordenada z armazena a profundiade do pixel, logo, como determinar o Z? Isso é bastante simples, Z deve ser igual a 1. Por que igual? 1 representa uma direção positiva, a matriz de visualização naturalmente tem a capacidade de inverter tudo(o mundo observado é sempre em relação a -Z), tornar Z igual a 1 fará com que Z torna-se -Z e -Z -> Z. Veja, 1, porque nossa posição do observador estrá olhando para -1, e é para lá que devemos lançar nosso raio. [Essa é uma boa teoira sobre por que ser 1 xD].</p>
+		<p>Lembre de aplicar a divisão da perspectiva após cada multiplicação vetor matriz.</p>
+		
+		<p>Agora falta verificarmos se um ponto cruza um determinado raio de uma determinada esfera. O que precisaremos é:</p>
+		
+		<li>A.A direção entre a origem da esfera no espaço de mundo a partir do nosso observador(o ponto de partida do raio lançado).</li>
+		<li>B.A magnitude do raio(você vai notar por que isso importa).</li>
+		<li>C.A projeção da do raio no vetor direção raio-sphere.</li>
+		<li>D.O raio de uma esfera.</li>
+		
+		<p>O item A é a diferença entre dois vetores(do centro de uma esfera qualquer menos a posição do observador).</p>
+		<p>Para o item B bastas realizar a dirença entre componentes de dois pontos(nesse caso, o ponto final do raio e o ponto de partida do raio), elevar à potência 2, somar e obter a raiz quadrada.</p>
+		<p>Para o item C, usaremos o produto escalar. O produto escalar quando usamos um vetor de direção não normalizado e um vetor de direção normalizado, retorna a projeção do vetor A(normalizado) em b. Isso tem o potêncial de determinarmos se hávera, em algum momento um ponto nessa direção que cruze com o raio interno da esfera e isso é puramente matemática, não vamos precisar iterar várias vezes deslocando um raio até que ele encontre um objeto colisor em potencial. Veja a famigerada fórmula: O + D * t. Traduzindo isso, siginifica: um ponto, partindo da origem O, em direção D * t. t é uma váriavel que significa deslocamento. Uma vez que t é o resultado da projeção do vetor A sobre B.</p>
+		<p>t quando menor q 0, significa que o raio lançado aponta na mesma direção que o vetor de da esferá para o observador aponta(cos = -1(180°) por exemplo), logo, nunca ocorreria uma interseção do raio lançado com o raio da esfera. E o que acontece se apontarmos para um objeto que está além do limite renderizavel? Sabemos previamente sua posição por isso podemos determinar que apontaos para algo, porém coisas muito longe além do limite de renderização são gravadas no buffer de profundidade com o valor 1(mais distante possivel) logo está além do que nosso raio idealmente alcançaria(perda de precisão é uma razão de ter que avaliar sobre). É ai que entra o item B, se t for maior que a maguinitude do raio, o objeto está além dos limites de visuliação e portanto nunca colidira com nosso raio finito. Uma vez que t, pode ser maior que a maginutede do raio, outro significado pode ser tomado para entender quando então o raio pode coledir com algo. Na física, a projeção escalar pode ser interpretada como a influência de um vetor A sobre um vetor B(de maior força). Se um vetor normalizado parte em direções divergentes ao do vetor não normalizado, a sua força sera de [0, 1] influência(isso pode ser correlacionado ao ângulo entre vetores), uma vez, que o ângulo seja igual a zero graus, o cossenos entre os vetores será 1, o que siginifica que o produto escalar será a distancia entre o observador e a esfera, e isso acabará resultando em uma colisão.</p>
+
+		<p>Bem, isso é suficiente motivador para permitir alguém escrever um algoritmo de seleção usando a relação raio-esfera. Hora de codificar.</p>		
+		</section>
+
+		<section class="col-s-12 col-t-12 col-d-12 content Compiler-Concepts">
+			<h2>Conceitos de Compilação</h2>
+			<p>Antes de comerçarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p><br>
+			<p>Naegando pelas pastas de aplicações para computador, você concerteza irá se deperar com arquivos .a, .lib, .dll... Afinal, qual é a importância desses formatos no dia dia de qualquer programador?</p>
+			<p>Vamos por partes:</p>
+			<p>Quando estamos trabalhando em um projeto, não são poucas as séries de funções que estão dispóniveis para nosso uso. Em diferentes arquivos estas funções podem ser acessadas de modo que exista apenas um lugar(ou espandidas como um macro) de declaração e implementação para elas. Isso só é possível pela existência de bibliotecas(como um conjunto de funções dispostos a resolver uma determinada área de problemas), e essas bibliotecas podem ser ditas como: estáticas ou dinâmicas.</p>
+			<h3>Bibliotecas estaticas</h3>
+			<p>Bibliotecas estáticas tem a extensão .a ou .lib(essa variação depende do compilador usado para gerá-las). Bibliotecas estáticas são feitas para serem usadas em qualquer program apenas com a diretiva de inclusão "#include" adicionando o caminho dos arquivos de cabeçalho a serem acessados. O que é singular sobre um biblioteca estática é, que para cada arquivo em seu projeto que a inclua será gerada um copia em tempo de compilação dos recursos da biblioteca estática para o escopo do arquivo que a inclui. Isso tem por efeito, que uma vez gerado um executável, a biblioteca fará parte do contéudo do executavel de modo que se possiveis atualizações futuras da biblioteca forem necessárias, deve-se recompilar todo o código fonte.</p>
+			<p>A vantagem é na garantia de não corrupção dos arquivos como ocorre com as dlls(uma biblioteca estática compilada ao código fonte só para se o executavél parar), além de suas funções serem mais rápidas de acessar pois a busca pelos protótipos estão no escopo do arquivo em contrapartida a bibliotecas dinâmicas, as quais funcioanam como recurso externo.</p>
+			<h3>Bibliotecas dinâmicas</h3>
+
+			<p>Bibliotecas dinâmicas não sofrem dos mesmos males de um biblioteca estática. Elas são normalmente referidas pela extensão .dll e têm o potêncial de serem economicas. Bibliotecas dinâmicas diferentemente das estáticas não são anexadas ao escopo dos arquivos que fazem chamadas as suas funções, mas sim o programa todo geraria apenas uma copia em tempo de compilação de seus recursos. Como mencionado anteriormente, elas atuam como um meio externo de modo que quando as associamos aos nossos proejtos, chamadas as suas funções demandariam um tempo extra para desviar o fluxo de leitura atual para fora do executável solicitando o uso de determinadas funções. O ônus de uma dll está em sua portabilidade e eficiência. Usar dlls reduz o peso do arquivo final, já que não serão feitas cópias para cada arquivo que usa seus recursos, e do ponto de vista da eficiência, caso novas alterações sejam necessárias para a biblioteca, desde que o fluxo de trabalho não mude não a necessidade de recompilar todo código fonte do seu projeto e sim apenas substiruir a dll no diretório de origem.</p>
+			<p>Bibliotecas dinâmicas são também compartilhadas. Se você for até o diretório system32, verá muitas dlls, seria impressionante dizer que diferentes programas que usamos associam-se a uma mesma dll paralelamente?</p>
+
+			<p>A conclusão sobre qual tipo de biblioteca usar depende em si do modo que ela será distribuída. Caso seja um recurso com baixa probalidade de ser mutável e focado a atender tarefas especificas de uma determinada aplicação bibliotecas estáticas são uma boa escolha. Bibliotecas dinâmicas funcionam no outro lado da moeda. No fim, provavelmente você irá usar um misto em seus projetos(principalmente porque fazemos usos de bibliotecas desenvolvidas por terceiros), é (quase)sempre será uma questão de analise do seu projeto e o quanto ele pode ser reaproveitado por futuros projetos além do peso entre eficiência de espaço(bibliotecas dinâmicas) e eficiência de processamento(bibliotecas estaticas).</p>
+			
+			<h3>Extensões</h3>
+			<p>Para gerar bibliotecas dinâmicas, é preciso obter:</p>
+			<ul>
+				<li>.o: arquivo de objeto, é a primeira sáida direta que um compilador deve emitir e a primeira entrada de um vinculador.</li>
+				<li>.so/.dll: a biblioteca dinâmica em si gerada apartir do arquivo .o e tendo os devidos sinalizadores configurados.</li>
+			</ul>
+			<p>Para gera bibliotecas estáticas, é preciso obter:</p>
+			<ul>
+				<li>.o: já mencionado.</li>
+				<li>.a: arquivo "arquivos"(análgos aos arquivos zip, porém sem compatação). Consistem em um ou um grupo de arquivos .o(ou qualquer outro) empacotados como uma biblioteca e que deverão ser inseridos no vinculador.</li>
+			</u>
+			<p>Vamos usar o mingw-w64 para compilar construir nossas bibliotecas.</p>
+			<p>Gerando uma biblioteca dinâmica:</p>
+			<code>
+				g++ output.cpp -c -fpic<br>
+				g++ output.o -shaded -o output.dll<br>
+			</code>
+			<p>Em sistemas Unix, .so são equivalentes as .dll do windows.</p>
+			<p>Gerando uma biblioteca dinâmica</p>
+
+			<code>
+				g++ output.cpp -c -fpic<br>
+				# aqui geramos um arquivo .o<br><br>
+				
+				# apartir do arquivo.o, criaremos um arquivo de "arquivos". <br>
+				ar rcs liboutput.a output.o<br><br>
+				
+				g++ main.cpp -L. -lstd=c++03 -loutput -o main.exe<br>
+				# vinculamos a nossa biblioteca estatica ao arquivo "main.cpp"<br>
+				# -L. indica que todos os arquivos necessários para compilação estão no diretório atual<br>
+				# -lstd=c++03 deve ser indicada caso use cabeçalhos da linguagem na sua biblioteca<br>
+				# -loutput, -l indica que incluiremos arquivos de biblioteca, nesse caso, liboutput.a(note a omissão do prefixo "lib" e sufixo "a", o compilador é capaz de antecipar essas informações).<br>
+			</code>
+			<p> .a é definida para sistemas Unix, enquanto no windows, o equivalente a bibliotecas estáticas é .lib.</p>
+			<p>.lib são usadas para vincular algum código a uma dll gerada o MS Visual C++(compilador prpietário do Windos). Elas contém "wrrapers" simples que invocam a dll respectiva. Em sistemas Unix, o linker é inteligente o suficiente para gerá-los em tempo real, por isso você não terá que definir um (equivalente) .a para vincular uma dll em seu projeto.</p>
+		</section>
+		
 		<footer class="col-s-12 col-t-12 col-d-12">
 			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
 			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>

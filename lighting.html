@@ -1,0 +1,70 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<title>ImCreate</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Referência">
+	<meta name="keywords" content="Programação, C++, OpenGL">
+	<meta name="author" content="Renato Moura">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- include css -->
+	<link rel="stylesheet" href="css/common.css" type="text/css">
+	<link rel="stylesheet" href="css/tutoriais.css" type="text/css">
+	<!-- include javascript -->
+	<script type="text/javascript" src="js/javascript.js"></script>
+</head>
+<body>
+	<main id="main-container" class="row">
+		<header id="main-header" class="col-s-12 col-t-12 col-d-12">
+			<div id="main-title" class="col-s-12 col-t-5 col-d-5">
+				<h1>ImCreate</h1>
+			</div>
+			<nav class="col-s-12 col-t-7 col-d-7 row">
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="index.html" class="link-menu">Apresentação</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="tutoriais.html" class="link-menu">Tutoriais</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="reference.html" class="link-menu">Referência</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
+			</nav>
+		</header>
+		<section class="col-s-12 col-t-12 col-d-9 content Object">
+		<h3>Iluminando</h3>
+		<p>Luzes são cruciais para renderizar uma cena. Sem elas, nada será vísivel e na melhor das hipoteses tudo será um borrão preto.</p>
+		<p>A iluminação pode ser gerada por 3 tipos de luzes:</p>
+		<p>Pontual: onde os raios de luz espalham-se em todas as direções e conforme percorrem determinada distância vão sendo atenuados.</p>
+		<p>Holofotes: onde os raios de luz partem de um ponto e percorrem uma direção especifica abrindo-se em formato de cone definindo uma área circular iluminada.</p>
+		<p>Direcionais: são luzes(como pontuais) mas por sua alta radiança percorrem longas distâncias sem sofrer atenuação(tal como o sol).</p>
+
+		<p>Para toda luz criada(até a versão atual da biblioteca), deve-se manter compartilhada seus dados com todos os objetos em cena(todos são possivelmente propensos a serem iluminados). Para tal tarefa, passe os parâmetros adequadas para a seguinte função:</p>
+		<code>
+			<pre>
+			SRW::sharedUniforms(fpsCam.getViewAndProjectionMatrix(), fpsCam.getPosition(), &sun, &pointLights, &spotLights);
+			</pre>
+		</code>
+		<p>Em que sun, pointLights e spotLights devem corresponder aos seguintes vetores:</p>
+		<code>
+			<pre>
+				Sun sun = {vec4<float>(0.0f, 1.0f, 0.0f), vec4<float>(1.0f, 1.0f, 1.0f)};
+				std::vector<PointLight> pointLightArray = {
+					{vec4<float>(0.0f, 5.0f, 0.0f), vec4<float>(80.0f, 80.0f, 80.0f)}
+				};
+				std::vector<SpotLight> spotLightArray = {
+					{vec4<float>(0.0f, 1.0f, 0.0f, 0.65f), vec4<float>(-4.0f, 5.0f, -4.0f, 0.35f), vec4<float>(80.0f, 80.0f, 80.0f)}
+				};
+			</pre>
+		</code>
+		<p>Os dois primeiros parâmetros da função são de suma importância uma vez que definem o espaço de visualização. Veja em <a href="#">Configurando uma câmera</a>.</p>
+		<h3>Lista de tarefas</h3>
+		<p>Atualização de buffer de luzes.</p>
+
+		</section>	
+		
+		<footer class="col-s-12 col-t-12 col-d-12">
+			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="reference.html">Referência</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank">Download</a></span>
+			<span id="copyright" class="col-s-12 col-t-12 col-d-12">&copy 2022 ImCreate</span>
+		</footer>
+	</main>
+</body>
+</html>

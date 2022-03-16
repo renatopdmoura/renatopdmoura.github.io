@@ -1,4 +1,4 @@
-@charset utf-8;
+@charset "UTF-8";
 
 .img-ex{
 	margin-left: auto;
@@ -28,24 +28,30 @@ pre{
 }
 
 .Core{
-	/*display:  none;*/
+	display:  none;
 }
 
-
 .Initialize{
-	/*display:  none;*/
+	display:  none;
 }
 
 .Camera{
-	/*display: none;*/
+	display: none;
 }
 
 .GUI{
-	/*display: none;*/
+	display: none;
 }
 
 .Terrain{
-	/*display:  none;*/
+	display:  none;
+}
+
+pre{
+	background-color: #eee;
+	padding: 10px;
+	border-left: 6px solid #444;
+	tab-size: 4px;
 }
 
 @media only screen and (max-width: 768px){
