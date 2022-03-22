@@ -47,6 +47,22 @@ pre{
 	display:  none;
 }
 
+.Audio{
+	display: none;
+}
+
+.Auxiliary-Libraries{
+	display: none;
+}
+
+.Math-Concept{
+	display: none;
+}
+
+.Compiler-Concepts{
+	display: none;
+}
+
 pre{
 	background-color: #eee;
 	padding: 10px;
