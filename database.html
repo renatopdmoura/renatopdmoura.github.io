@@ -1,0 +1,151 @@
+<!DOCTYPE html>	
+<html>
+<head>
+	<title>ImCreate</title>
+	<meta charset="UTF-8">
+	<meta name="description" content="Referência">
+	<meta name="keywords" content="Programação, C++, OpenGL">
+	<meta name="author" content="Renato Moura">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!-- include css -->
+	<link rel="stylesheet" href="css/common.css" type="text/css">
+	<link rel="stylesheet" href="css/tutoriais.css" type="text/css">
+	<!-- include javascript -->
+	<script type="text/javascript" src="js/javascript.js"></script>
+</head>
+<body>
+	<main id="main-container" class="row">
+		<header id="main-header" class="col-s-12 col-t-12 col-d-12">
+			<div id="main-title" class="col-s-12 col-t-5 col-d-5">
+				<h1>ImCreate</h1>
+			</div>
+			<nav class="col-s-12 col-t-7 col-d-7 row">
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="index.html" class="link-menu">Apresentação</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="tutoriais.html" class="link-menu">Tutoriais</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="reference.html" class="link-menu">Referência</a></span>
+				<span class="col-s-12 col-t-12 col-d-3 item-menu"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank" accesskey="t" class="link-menu">Download</a></span>
+			</nav>
+		</header>
+		<section class="col-s-12 col-t-12 col-d-9 content Object">
+		<h3>Banco de Dados</h3>
+        <p>ImCreate é compativel com SQLite3 e disponibiliza uma classe simples, mas útil para trabalhar com bancos de dados SQL.</p>
+        <p>O código fonte da classe localiza-se em "libraries/Database/Database.hpp". Nesse diretório você irá notar um pequeno executavel chamado "shell", esse programa é uma interface para o desenvolvedor enviar requisões SQL e gerenciar seus banco de dados.</p>
+        <p>As funções internas da classe de gerenciamento de banco de dados do projeto ImCreate atualmente resumem-se em:</p>
+        <ul>
+            <li><var>execute(std::string query)</var></li>
+            <li><var>read(int column, std::string query, std::string& value)</var></li>
+            <li><var>read(int column, std::string query, std::vector<std::string>& value)</var></li>
+        </ul>
+        <p><var>execute</var> é a função para qual suas requisões SQL devem ser feitas(como CREATE, DROP, ALTER, INSERT...).</p>
+        <p><var>read</var> possuí duas váriações e em geral devem ser chamadas quando um solicitção produz um tipo de retorno(como SELECT). O parâmetro <var>column</var> é a coluna de resultados desejada para a consulta(atualmente deve ser sempre 0) enquanto <var>value</var> é onde armazenar o dado lido(note que <var>value</var> é uma string para 1 linha de retorno ou um vetor para n linhas de retorno) .</p>
+        <p>Abaixo, um programa de linha de comando implementa um sistema de login de usuários básico:</p>
+        <code>
+        <pre>
+            #include "Database.hpp"
+            int main(){
+                Database account("db");
+                account.execute("CREATE TABLE IF NOT EXISTS user(userID INTEGER PRIMARY KEY AUTOINCREMENT, email, TEXT, name TEXT, password TEXT)");
+                account.execute("CREATE TABLE IF NOT EXISTS schedule(scheduleID INTEGER PRIMARY KEY AUTOINCREMENT, description TEXT, make TEXT, state TEXT, taskill INTEGER, FOREIGN KEY(taskill) REFERENCES user(userID))");
+                system("cls");
+                int user_option = -1;
+                bool user_valid = false;
+                std::string user_name, user_email, user_password;
+                std::cout << "=================CHOOSE OPTION=================" << std::endl;
+                std::cout << "[1] - Register" << std::endl;
+                std::cout << "[2] - Login"    << std::endl;
+                std::cout << "===============================================" << std::endl;
+                std::cout << "> ";
+                std::cin >> user_option;
+                switch(user_option){
+                    case 1:
+                        std::cout << "email: ";
+                        std::cin >> user_email;
+                        std::cout << "name: ";
+                        std::cin >> user_name;
+                        std::cout << "password: ";
+                        std::cin >> user_password;
+                        account.execute("INSERT INTO user(email, name, password) VALUES('" + user_email + "', '" + user_name + "', '" + user_password + "')");
+                        user_valid = true;
+                        break;
+                    case 2:
+                        std::cout << "email: ";
+                        std::cin >> user_email;
+                        std::cout << "password: ";
+                        std::cin >> user_password;
+                        if(account.read(0, "SELECT name FROM user WHERE email = '" + user_email + "' AND password = '" + user_password + "'", user_name)){
+                            user_valid = true;
+                        }            
+                        break;
+                }
+                if(user_valid){
+                    bool quit = false;
+                    while(!quit){
+                        std::string user_id;
+                        if(!account.read(0, "SELECT userID FROM user WHERE email = '" + user_email + "'", user_id))
+                            exit(1);
+                        system("cls");
+                        std::cout << "Wellcome " + user_name << "!" << std::endl;
+                        std::cout << "=================MANAGER TASKILLS================" << std::endl;
+                        std::cout << "[1] - Create taskill"    << std::endl;
+                        std::cout << "[2] - Delete taskill"    << std::endl;
+                        std::cout << "[3] - Show all taskills" << std::endl;
+                        std::cout << "[0] - Exit" << std::endl;
+                        std::cout << "=================================================" << std::endl;
+                        std::cout << "> ";
+                        std::cin >> user_option;
+                        switch(user_option){
+                            case 0:
+                                exit(0);
+                                break;
+                            case 1:{
+                                std::cin.ignore();
+                                std::string description, make, state;
+                                std::cout << "<Description>\n";
+                                std::getline(std::cin, description);
+                                std::cout << "<Make at>\n";
+                                std::getline(std::cin, make);
+                                std::cout << "<State>\n";
+                                std::getline(std::cin, state);
+                                account.execute("INSERT INTO schedule(description, make, state, taskill) VALUES('" + description + "', '" + make + "', '" + state + "'," + user_id + ")");
+                                break;
+                            }
+                            case 2:
+                                break;
+                            case 3:
+                                bool readed_line = false;
+                                std::string column_value;
+                                std::vector<std::string> description, make, state;
+                                // account.read(0, "SELECT schedule.description FROM schedule INNER JOIN user ON " + user_id + " = taskill", column_value);
+                                if(account.read(0, "SELECT schedule.description FROM schedule WHERE taskill = " + user_id, description)){
+                                    if(account.read(0, "SELECT schedule.make FROM schedule WHERE taskill = " + user_id, make))
+                                        if(account.read(0, "SELECT schedule.state FROM schedule WHERE taskill = " + user_id, state))
+                                            readed_line = true;
+                                }
+                                system("cls");
+                                std::cout << "List Taskill<Description><Make><State>" << std::endl;
+                                std::cout << "=================================================" << std::endl;
+                                for(unsigned i = 0; i < description.size(); ++i){
+                                    std::cout << description[i] << " | " << make[i] << " | " << state[i] << std::endl;
+                                }
+                                break;
+                        }
+                        system("pause");
+                    }
+                }
+                account.close();                
+                return 0;
+            }
+        </pre>
+        </code>
+		</section>	
+		
+		<footer class="col-s-12 col-t-12 col-d-12">
+			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="reference.html">Referência</a></span>
+			<span class="col-s-12 col-t-12 col-d-12"><a href="https://github.com/renatopdmoura/pura-project.git" target="_blank">Download</a></span>
+			<span id="copyright" class="col-s-12 col-t-12 col-d-12">&copy 2022 ImCreate</span>
+		</footer>
+	</main>
+</body>
+</html>

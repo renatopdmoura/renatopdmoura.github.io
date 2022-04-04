@@ -7,7 +7,9 @@
 }
 
 pre{
-	tab-size: 2;
+	white-space: pre-line;
+	word-wrap: break-word;
+	text-align: justify;
 }
 
 .code-block{

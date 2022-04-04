@@ -121,6 +121,19 @@
 		<p>Um gerenciador de matrizes de transformação é implementado, contudo ainda não permite um controle flexível para operações matrizes-matrizes.</p>
 		<p>Um método de seleção está dísponivel mas ainda instável.</p>
 		<p>Verfique o arquivo em "libraries/Object/Object.hpp" para maiores esclarecimentos.</p>
+		<h3>Nota do desenvolvedor</h3>
+		<p>Atualmente, o fluxo de renderização está sendo modificado. As seguintes tarefas foram alteradas:</p>
+		<ul>
+			<li>O gerenciamento de luzes é propriedade da classe "Scene", que descreve a iluminação vigente e a geração de sombras respectivas.</li>
+			<li>"Scene" trabalha com luzes globais, pontuais e holofotes.</li>
+			<li>O bloco de uniformes compartilhados dedicados aos dados de luz deve ser criado a partir do escopo da classe "Scene".</li>
+			<li>Iluminação HDR sendo implementada, de modo que a cena acabe em uma unica textura de amostragem.</li>
+		</ul>
+		<p>Modificar o fluxo de renderização trás suas vantagens, como:</p>
+		<ol>
+			<li>Flexibilizar o gerenciamento de luzes e a geração de mapas de sombras.</li>
+			<li>Passar de renderização direta para diferida.</li>
+		</ol>
 	</section>	
 		
 		<footer class="col-s-12 col-t-12 col-d-12">
