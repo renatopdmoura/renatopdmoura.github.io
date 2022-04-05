@@ -29,37 +29,36 @@
 		<section class="col-s-12 col-t-12 col-d-12 content">
 			<h2>O que é</h2>
 			<p>ImCreate é um conjunto de arquivos programados em C++ que fornecem uma série de recursos pertencentes ao pipeline de renderização gráfica. 
-			Definem as seguintes caracteriticas:</p>
+			Definem as seguintes caracteríticas:</p>
 			<ol>
 				<li>Gerenciador de sombreadores</li>
 					<ul>
-						<p>Funcionalidade atribuida a classe SRW, nela funções como geração de sombreadores e objetos de programa além da inicialização de dados uniformes
+						<p>Funcionalidade atribuida a classe <var>SRW</var>, nela funções como geração de sombreadores e objetos de programa além da inicialização de dados uniformes
 						são realizadas. SRW funciona como classe base para a grande maioria das demais classes.</p>
 					</ul>
 				<li>Carregador de modelos</li>
 					<ul>
-						<p>A classe Object é responsável por realizar o carregamento de modelos 3D a partir da interpretação de arquivos .obj. É classe derivada de SRW, carregamentos
+						<p>A classe <var>Object</var> é responsável por realizar o carregamento de modelos 3D a partir da interpretação de arquivos .obj. É classe derivada de <var>SRW</var>, carregamentos
 						texturas e/ou definição de cores uniformes são feitas a partir das chamadas as funções de inicialização de uniformes da classe base.</p>
 					</ul>
 				<li>Carregador de terrenos</li>
 					<ul>
-						<p>Classe Terrain, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de SRW, uniformes são inicializados a partir de chamadas as funções da classe base</p>
+						<p>Classe <var>Terrain</var>, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de <var>SRW</var>, uniformes são inicializados a partir de chamadas as funções da classe base</p>
 					</ul>
 				<li>Interface de Usuário</li>
 					<ul>
-						<p>Classe Text, usa FreeType como núcleo de funcionalidade. Permite carregamento de texto de forma otimizada usando um identificador de texturas, ou métodos que 
-						carregam caracteres em tempo de execução - como comandos de console.
+						<p>Classe <var>Text</var> usa FreeType como núcleo de funcionalidade. Permite carregamento de texto de forma otimizada usando um único identificador de texturas, ou métodos que 
+						carregam caractéres em tempo de execução - como comandos de console e mensagens de chat.
 						</p>
 					</ul>
 				<li>Áudio 3D</li>
 					<ul>
-						<p>A classe "Audio" é um wrapper para as chamadas da API OpenAL permitindo reproduzir efeitos espaciais.</p>
+						<p>A classe <var>Audio</var> é um wrapper para as chamadas da API OpenAL permitindo reproduzir efeitos espaciais.</p>
 					</ul>
 				<li>Banco de Dados</li>
 				<ul>
-					<p>SQLite3 é usado para flexibilizar o gerenciamento de dados para programador garantindo a consitência das regras de ciência de dados imposta pelo *padrão SQL.</p>
+					<p>SQLite3 é usado para flexibilizar o gerenciamento de dados para programador garantindo a consitência das regras de ciência de dados imposta pelo *padrão SQL. Bancos de dados são gerados por instânciação de objetos da classe <var>Database</var>.</p>
 				</ul>
-				
 			</ol>
 			<h2>Tecnologias</h2>
 			<ul>
@@ -80,3 +79,27 @@
 	</main>
 </body>
 </html>
+
+<!-- 
+Classes Refatoradas:
+	-> SRW
+	-> Camera
+	-> Object*
+	-> Scene*
+	-> Database
+	-> GUI
+		-> Panel
+		-> Checkbox
+		-> Text
+		-> Dialog
+Auxiliáres
+	-> Common
+	-> Math
+	-> Datatype
+Pendentes
+	-> Audio
+	-> Terrain
+	-> Quad
+	-> Graphics
+	-> CommandLine
+ -->
