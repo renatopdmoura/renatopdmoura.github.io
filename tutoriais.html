@@ -34,6 +34,7 @@
 				<li><a href="lighting.html">Iluminação</a></li>
 				<li><a href="object.html">Objetos</a></li>
 				<li><a href="database.html">Banco de Dados</a></li>
+				<li><a href="compiler.html">Compilando seus arquivos</a></li>
 				<p><em>Atualizdo em 16/03/2022</em></p>
 			</ul>
 		</div>
@@ -489,59 +490,6 @@
 		<p>Bem, isso é suficiente motivador para permitir alguém escrever um algoritmo de seleção usando a relação raio-esfera. Hora de codificar.</p>		
 		</section>
 
-		<section class="col-s-12 col-t-12 col-d-12 content Compiler-Concepts">
-			<h2>Conceitos de Compilação</h2>
-			<p>Antes de comerçarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p><br>
-			<p>Naegando pelas pastas de aplicações para computador, você concerteza irá se deperar com arquivos .a, .lib, .dll... Afinal, qual é a importância desses formatos no dia dia de qualquer programador?</p>
-			<p>Vamos por partes:</p>
-			<p>Quando estamos trabalhando em um projeto, não são poucas as séries de funções que estão dispóniveis para nosso uso. Em diferentes arquivos estas funções podem ser acessadas de modo que exista apenas um lugar(ou espandidas como um macro) de declaração e implementação para elas. Isso só é possível pela existência de bibliotecas(como um conjunto de funções dispostos a resolver uma determinada área de problemas), e essas bibliotecas podem ser ditas como: estáticas ou dinâmicas.</p>
-			<h3>Bibliotecas estaticas</h3>
-			<p>Bibliotecas estáticas tem a extensão .a ou .lib(essa variação depende do compilador usado para gerá-las). Bibliotecas estáticas são feitas para serem usadas em qualquer program apenas com a diretiva de inclusão "#include" adicionando o caminho dos arquivos de cabeçalho a serem acessados. O que é singular sobre um biblioteca estática é, que para cada arquivo em seu projeto que a inclua será gerada um copia em tempo de compilação dos recursos da biblioteca estática para o escopo do arquivo que a inclui. Isso tem por efeito, que uma vez gerado um executável, a biblioteca fará parte do contéudo do executavel de modo que se possiveis atualizações futuras da biblioteca forem necessárias, deve-se recompilar todo o código fonte.</p>
-			<p>A vantagem é na garantia de não corrupção dos arquivos como ocorre com as dlls(uma biblioteca estática compilada ao código fonte só para se o executavél parar), além de suas funções serem mais rápidas de acessar pois a busca pelos protótipos estão no escopo do arquivo em contrapartida a bibliotecas dinâmicas, as quais funcioanam como recurso externo.</p>
-			<h3>Bibliotecas dinâmicas</h3>
-
-			<p>Bibliotecas dinâmicas não sofrem dos mesmos males de um biblioteca estática. Elas são normalmente referidas pela extensão .dll e têm o potêncial de serem economicas. Bibliotecas dinâmicas diferentemente das estáticas não são anexadas ao escopo dos arquivos que fazem chamadas as suas funções, mas sim o programa todo geraria apenas uma copia em tempo de compilação de seus recursos. Como mencionado anteriormente, elas atuam como um meio externo de modo que quando as associamos aos nossos proejtos, chamadas as suas funções demandariam um tempo extra para desviar o fluxo de leitura atual para fora do executável solicitando o uso de determinadas funções. O ônus de uma dll está em sua portabilidade e eficiência. Usar dlls reduz o peso do arquivo final, já que não serão feitas cópias para cada arquivo que usa seus recursos, e do ponto de vista da eficiência, caso novas alterações sejam necessárias para a biblioteca, desde que o fluxo de trabalho não mude não a necessidade de recompilar todo código fonte do seu projeto e sim apenas substiruir a dll no diretório de origem.</p>
-			<p>Bibliotecas dinâmicas são também compartilhadas. Se você for até o diretório system32, verá muitas dlls, seria impressionante dizer que diferentes programas que usamos associam-se a uma mesma dll paralelamente?</p>
-
-			<p>A conclusão sobre qual tipo de biblioteca usar depende em si do modo que ela será distribuída. Caso seja um recurso com baixa probalidade de ser mutável e focado a atender tarefas especificas de uma determinada aplicação bibliotecas estáticas são uma boa escolha. Bibliotecas dinâmicas funcionam no outro lado da moeda. No fim, provavelmente você irá usar um misto em seus projetos(principalmente porque fazemos usos de bibliotecas desenvolvidas por terceiros), é (quase)sempre será uma questão de analise do seu projeto e o quanto ele pode ser reaproveitado por futuros projetos além do peso entre eficiência de espaço(bibliotecas dinâmicas) e eficiência de processamento(bibliotecas estaticas).</p>
-			
-			<h3>Extensões</h3>
-			<p>Para gerar bibliotecas dinâmicas, é preciso obter:</p>
-			<ul>
-				<li>.o: arquivo de objeto, é a primeira sáida direta que um compilador deve emitir e a primeira entrada de um vinculador.</li>
-				<li>.so/.dll: a biblioteca dinâmica em si gerada apartir do arquivo .o e tendo os devidos sinalizadores configurados.</li>
-			</ul>
-			<p>Para gera bibliotecas estáticas, é preciso obter:</p>
-			<ul>
-				<li>.o: já mencionado.</li>
-				<li>.a: arquivo "arquivos"(análgos aos arquivos zip, porém sem compatação). Consistem em um ou um grupo de arquivos .o(ou qualquer outro) empacotados como uma biblioteca e que deverão ser inseridos no vinculador.</li>
-			</u>
-			<p>Vamos usar o mingw-w64 para compilar construir nossas bibliotecas.</p>
-			<p>Gerando uma biblioteca dinâmica:</p>
-			<code>
-				g++ output.cpp -c -fpic<br>
-				g++ output.o -shaded -o output.dll<br>
-			</code>
-			<p>Em sistemas Unix, .so são equivalentes as .dll do windows.</p>
-			<p>Gerando uma biblioteca dinâmica</p>
-
-			<code>
-				g++ output.cpp -c -fpic<br>
-				# aqui geramos um arquivo .o<br><br>
-				
-				# apartir do arquivo.o, criaremos um arquivo de "arquivos". <br>
-				ar rcs liboutput.a output.o<br><br>
-				
-				g++ main.cpp -L. -lstd=c++03 -loutput -o main.exe<br>
-				# vinculamos a nossa biblioteca estatica ao arquivo "main.cpp"<br>
-				# -L. indica que todos os arquivos necessários para compilação estão no diretório atual<br>
-				# -lstd=c++03 deve ser indicada caso use cabeçalhos da linguagem na sua biblioteca<br>
-				# -loutput, -l indica que incluiremos arquivos de biblioteca, nesse caso, liboutput.a(note a omissão do prefixo "lib" e sufixo "a", o compilador é capaz de antecipar essas informações).<br>
-			</code>
-			<p> .a é definida para sistemas Unix, enquanto no windows, o equivalente a bibliotecas estáticas é .lib.</p>
-			<p>.lib são usadas para vincular algum código a uma dll gerada o MS Visual C++(compilador prpietário do Windos). Elas contém "wrrapers" simples que invocam a dll respectiva. Em sistemas Unix, o linker é inteligente o suficiente para gerá-los em tempo real, por isso você não terá que definir um (equivalente) .a para vincular uma dll em seu projeto.</p>
-		</section>
-		
 		<footer class="col-s-12 col-t-12 col-d-12">
 			<span class="col-s-12 col-t-12 col-d-2"><a href="index.html">Apresentação</a></span>
 			<span class="col-s-12 col-t-12 col-d-12"><a href="tutoriais.html">Tutoriais</a></span>

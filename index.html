@@ -36,6 +36,10 @@
 						<p>Funcionalidade atribuida a classe <var>SRW</var>, nela funções como geração de sombreadores e objetos de programa além da inicialização de dados uniformes
 						são realizadas. SRW funciona como classe base para a grande maioria das demais classes.</p>
 					</ul>
+				<li>Observador virtual</li>
+					<ul>
+						<p>Um observador virtual é responsável por determinar a porção da cena vísivel para renderização. Um observador virtual é definido por um instância da classe <var>Camera</var>. Atualmente, o suporte para observadores virtuais é limitado ao modelo First Personal Shooter(FPS).</p>
+					</ul>
 				<li>Carregador de modelos</li>
 					<ul>
 						<p>A classe <var>Object</var> é responsável por realizar o carregamento de modelos 3D a partir da interpretação de arquivos .obj. É classe derivada de <var>SRW</var>, carregamentos
@@ -43,10 +47,13 @@
 					</ul>
 				<li>Carregador de terrenos</li>
 					<ul>
-						<p>Classe <var>Terrain</var>, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de <var>SRW</var>, uniformes são inicializados a partir de chamadas as funções da classe base</p>
+						<p>Classe <var>Terrain</var>, terrenos são carregados a partir de mapas de altura em formato ".raw" - como no photoshop, ou ".r8" - alternativamente do krita. É classe derivada de <var>SRW</var>, uniformes são inicializados a partir de chamadas as funções da classe base.</p>
 					</ul>
 				<li>Interface de Usuário</li>
 					<ul>
+						<p>Dispõe de classes que descrevem painés, checkbox e texto. Instâncias dos tipos de widgets mantém um relação semântica herdada.</p>
+						<p>Classe <var>Panel</var> é especializada em criar painés que serviram de contâiner para outros objetos de Interface gráfica.</p>
+						<p>Class <var>Checkbox</var> faz parte do conjunto de botões disponibilizados pela biblioteca e permite criar relações de grupo para um conjunto de caixas de seleção.</p>
 						<p>Classe <var>Text</var> usa FreeType como núcleo de funcionalidade. Permite carregamento de texto de forma otimizada usando um único identificador de texturas, ou métodos que 
 						carregam caractéres em tempo de execução - como comandos de console e mensagens de chat.
 						</p>
@@ -81,7 +88,7 @@
 </html>
 
 <!-- 
-Classes Refatoradas:
+Classes Refatoradas para serem compatíveis com MSVC:
 	-> SRW
 	-> Camera
 	-> Object*
