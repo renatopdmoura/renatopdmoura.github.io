@@ -29,71 +29,61 @@
 		<section class="col-s-12 col-t-12 col-d-12 content">
 			<h2>Conceitos de Compilação</h2>
 			<p>Antes de comerçarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p>
-			
-			<var>&lt;Escrever sobre o funcionamento de um compilador&gt;</var>
-
-			<p>Um compilador é um software capaz de transformar código fonte em linguagens de alto nível em código de linguagens de baixo nível chamado de <var>código binário</var>(como código de máquina e assembly). O código então gerado é voltado ao uso de determinado tipo de arquitetura de processamento(CISC ou RISC).</p>
-
-			<p>Um compilador possui um pipeline de estágios, onde a saída de um estágio anterior é a entrada para o próximo estágio.</p>
-			<p>A compilação possui duas fases, sendo elas:</p>
-			<ul>
-				<h3>Análise</h3>
-				<p>Análise léxica: o código fonte original é transformado em um fluxo de caracteres que será convertido em lexemas(a menor unidade simbólica de um linguagem) conhecidos como <var>tokens</var>. A tradução a tokens depende da linguagem de alto nível utilizado, por exemplo em C++:</p>
-				<ul>
-					<code>
-						<pre>
-						unsigned int value = 8;
-						// unsigned int é um token "keyword"
-						// value é um token "identifier"
-						// = é um token "operator"
-						// 8 é um token "constant"
-						// ; é um token "symbol"
-						</pre>
-					</code>
-				</ul>
-				<p>Análise sintática: busca por tokens inválidos que o analisador léxico tenha julgado como corretos. O analisador sintático busca por símbolos não terminais(como variáveis), símbolos terminais(determinados pela linguagem), regras combinatórias para terminais e não terminais gerarem <var>strings</var> e símbolos de partida.</p>
-				<p>Análise semântica: verifica se há coerência linguística entre os tokens definidos, se váriaveis foram declaradas e inicializadas...</p>
-				<h3>Síntese</h3>
-				<p>Código intermediário: após as traduções das etapas de análise, um código independente de máquina é gerado para então o compliador gerar um código especifico para determianda arquitetura. Essa fase de gerar código intermediário aumenta a portabilidade e seguementação de código pois torna menos complexo a conversão para linguagem de máquina.</p>
-				<p>Otimização de código independente de máquina: o compilador toma liberdade em realizar ajustes uma vez que reescrever o código de tal modo diminua a carga em processamento e gerenciamento de memória.</p>
-				<p>A etapa final pode ser descrita como a geração do código em si em linguagem de baixo nível, o qual carrega o exato significado do código fonte original e otimizado de acordo.</p>
-			</ul>
-			<p>A saída final direta de um compilador são designados como arquivos de objeto e são o código binário respectivo do código fonte de alto nível gerado no processo de compilação. Esses arquivos são conhecidos por ter extensão .o(gcc) ou .obj(MSVC), e por vezes, um conjunto de arquivos de objeto podem ser armazenados em um mesmo lote de arquivo afim de permitir otimizações no momento da vinculação do código binário. Esse conjunto de arquivos de objetos pode ser referido como uma <var>biblioteca</var> e são comumente arquivados(analogamente a arquivos zip) sob a extensão de arquivo .a(gcc) ou .lib(MSVC) afim de serem usados no processo de <var>vinculação</var>. A etapa de vinculação é tida, de forma resumida, como o momento final antes da geração de um executavel. O vinculador recebe arquivos .o/.obj, .a/.lib .so/.dll e realiza um processo de linkedição determinada pelos sinalizadores definidos na linha de comando gerando um arquivo de objeto de saída que torna-se-á o executavel final.</p>
+			<p>Um compilador é um software capaz de transformar código fonte de linguagem de alto nível em código de linguagem de baixo nível chamado de <var>código binário</var>(como código de máquina e assembly). O código então gerado é voltado ao uso em determinado tipo de arquitetura de processamento(CISC ou RISC). Um compilador possui um pipeline de estágios, onde a saída de um estágio anterior é a entrada para o próximo estágio.</p>
+			<p>A compilação pode ser dividida em duas fases, sendo elas:</p>
+			<h3>Análise</h3>
+				<p>Análise léxica: o código fonte original é transformado em um fluxo de caracteres que será convertido em lexemas(a menor unidade simbólica de uma linguagem) conhecidos como <var>tokens</var>. A tradução para tokens depende da linguagem de alto nível utilizada, por exemplo em C++:</p>
+				<code>
+					<pre>
+					unsigned int value = 8;
+					// unsigned int é um token "keyword"
+					// value é um token "identifier"
+					// = é um token "operator"
+					// 8 é um token "constant"
+					// ; é um token "symbol"
+				</pre>
+			</code>
+			<p>Análise sintática: nessa etapa, é feita a busca por tokens inválidos que o analisador léxico tenha julgado como corretos. O analisador sintático busca por símbolos não terminais(como variáveis), símbolos terminais(determinados pela linguagem), regras combinatórias para terminais e não terminais gerarem <var>strings</var> e símbolos de partida.</p>
+			<p>Análise semântica: essa análise verifica se há coerência linguística entre os tokens definidos, se váriaveis foram declaradas e inicializadas.</p>
+			<h3>Síntese</h3>
+			<p>Código intermediário: após as traduções das etapas de análise, um código independente de máquina é gerado para então o compliador gerar um código especifico para determianda arquitetura. Essa fase de gerar código intermediário aumenta a portabilidade e seguementação de código pois torna menos complexo a conversão para linguagem de máquina.</p>
+			<p>Otimização de código independente de máquina: nesse ponto, o compilador toma liberdade em realizar ajustes para reescrever o código de tal modo que diminua a carga em processamento e gerenciamento de memória.</p>
+			<p>A etapa final pode ser descrita como a geração do código em si em linguagem de baixo nível, o qual carrega o exato significado do código fonte original e otimizado de acordo.</p>
+			<p>A saída final direta de um compilador é designada como <var>arquivo de objeto</var> sendo o respectivo código binário do código fonte de alto nível. Arquivos objeto são conhecidos por ter extensão .o(GCC) ou .obj(MSVC), e por vezes, um conjunto de arquivos de objeto podem ser armazenados em um mesmo lote de arquivo afim de permitir otimizações no momento da vinculação do código binário. Esse conjunto de arquivos de objetos pode ser referido como uma <var>biblioteca</var> e são comumente arquivados(analogamente a arquivos zip) sob a extensão de arquivo .a(GCC) ou .lib(MSVC) afim de serem usados no processo de <var>vinculação</var>. A etapa de vinculação é tida, de forma resumida, como o momento final antes da geração de um executavel. O vinculador recebe arquivos .o/.obj, .a/.lib .so/.dll e realiza um processo de linkedição determinada pelos sinalizadores definidos pelo programador afim de gerar um arquivo de objeto de saída que torna-se-á o executavel final.</p>
 				
-			<p>Com essa introdução, temos um breve, mas suficiente entendimento para aprender a compilar nossos projetos. Um bom primeiro passo e começar explanando sobre a geração de bibliotecas.</p>
+			<p>Com essa introdução, temos um breve, mas suficiente entendimento para aprender a compilar nossos projetos. Um bom primeiro passo é começar explanando sobre a geração de bibliotecas.</p>
 
 			<h3>Indo por partes</h3>
-			<p>Quando estamos trabalhando em um projeto, não são poucas as séries de funções que estão dispóniveis para nosso uso. Em diferentes arquivos estas funções podem ser acessadas de modo que exista apenas um lugar(ou espandidas como um macro) de declaração e implementação para elas. Isso só é possível pela existência de bibliotecas(como um conjunto de funções dispostos a resolver uma determinada área de problemas), e essas bibliotecas podem ser ditas como: estáticas ou dinâmicas.</p>
+			<p>Quando estamos trabalhando em um projeto, não são poucas as séries de funções que estão disponíveis para nosso uso. Em diferentes arquivos estas funções podem ser acessadas de modo que exista apenas um lugar de declaração e implementação para elas. Isso só é possível pela existência de bibliotecas(como um conjunto de funções dispostos a resolver uma determinada área de problemas), e essas bibliotecas podem ser ditas como: estáticas ou dinâmicas.</p>
 			<h3>Bibliotecas estáticas</h3>
-			<p>Bibliotecas estáticas tem a extensão .a ou .lib(essa variação depende do compilador usado para gerá-las). Bibliotecas estáticas são feitas para serem usadas em qualquer programa apenas com a diretiva de inclusão "#include" adicionando o caminho dos arquivos de cabeçalho a serem acessados. O que é singular sobre uma biblioteca estática é, que para cada arquivo em seu projeto que a inclua será gerada um cópia em tempo de compilação dos recursos da biblioteca estática para o escopo do arquivo que a inclui. Isso tem por efeito, que uma vez gerado um executável, a biblioteca fará parte do contéudo do executavel de modo que se possíveis atualizações futuras da biblioteca forem necessárias, deve-se recompilar todo o código fonte.</p>
-			<p>A vantagem é na garantia de não corrupção dos arquivos como ocorre com as dlls(uma biblioteca estática compilada ao código fonte só para se o executavél parar), além de suas funções serem mais rápidas de acessar pois a busca pelos protótipos estão no escopo do arquivo em contrapartida a bibliotecas dinâmicas, as quais funcioanam como recurso externo.</p>
+			<p> As bibliotecas estáticas tem a extensão .a ou .lib(essa variação depende do compilador usado para gerá-las). Bibliotecas estáticas são feitas para serem usadas em qualquer programa apenas com a diretiva de inclusão "#include" adicionando o caminho dos arquivos de cabeçalho da biblioteca a serem acessados após serem devidamente vinculadas. O que é singular sobre uma biblioteca estática é que, para cada arquivo em seu projeto que a inclua, uma cópia em tempo de compilação dos recursos da biblioteca estática para o escopo do arquivo que a inclui será gerada. Isso tem por efeito, que uma vez criado um executável, as funçoes chamadas da biblioteca fará parte do contéudo do executavel de modo que se possíveis atualizações futuras da biblioteca forem necessárias, deve-se recompilar todo o código fonte.</p>
+			<p>A vantagem é na garantia de não corrupção dos arquivos como ocorre com as bibliotecas dinâmicas(uma biblioteca estática compilada ao código fonte só para se o executavél parar), além de suas funções serem mais rápidas de acessar, pois a busca pelos protótipos é realizada no escopo do arquivo em contrapartida a bibliotecas dinâmicas, as quais funcioanam como recurso externo.</p>
 			
 			<h3>Bibliotecas dinâmicas</h3>
-			<p>Bibliotecas dinâmicas não sofrem dos mesmos males de um biblioteca estática. Elas são normalmente referidas pela extensão .dll e têm o potêncial de serem economicas. Bibliotecas dinâmicas diferentemente das estáticas não são anexadas ao escopo dos arquivos que fazem chamadas as suas funções, mas sim o programa gera apenas uma cópia em tempo de compilação de seus recursos. Como mencionado anteriormente, elas atuam como um meio externo de modo que quando as associamos aos nossos projetos, chamadas as suas funções demandariam um tempo extra para desviar o fluxo de leitura atual para fora do executável solicitando o uso de determinadas funções. O bônus de uma dll está em sua portabilidade e eficiência. Usar dlls reduz o peso do arquivo final, já que não serão feitas cópias para cada arquivo que usa seus recursos, e, do ponto de vista da eficiência, caso novas alterações sejam necessárias para a biblioteca, desde que o fluxo de trabalho não mude não há necessidade de recompilar todo código fonte do seu projeto e sim apenas substiruir a dll no diretório de origem.</p>
-			<p>Bibliotecas dinâmicas são também compartilhadas. Se você for até o diretório system32, verá muitas dlls, seria impressionante dizer que diferentes programas que usamos associam-se a uma mesma dll paralelamente?</p>
+			<p>As bibliotecas dinâmicas são normalmente referidas pela extensão .dll(MSVC) e têm o potêncial de serem economicas. Bibliotecas dinâmicas diferentemente das estáticas não são anexadas ao escopo dos arquivos que fazem chamadas as suas funções, pelo contrário, o programa gera apenas uma cópia em tempo de compilação de seus recursos. Como mencionado anteriormente, elas atuam como um meio externo de modo que quando as associamos aos nossos projetos, chamadas as suas funções demandariam um tempo extra para desviar o fluxo de leitura atual para fora do executável solicitando o uso de determinadas funções. O ganho de uma biblioteca dinâmica está em sua portabilidade. Usar bibliotecas dinâmicas reduz o peso do arquivo final, já que não serão feitas cópias para cada arquivo que usa seus recursos, e, do ponto de vista da eficiência, caso novas alterações sejam necessárias para a biblioteca, desde que o fluxo de trabalho não mude não há necessidade de recompilar todo código fonte do seu projeto e sim apenas substiruir a <var>dll</var> no diretório de origem.</p>
+			<p>Bibliotecas dinâmicas são também compartilhadas. Se você for até o diretório system32, verá muitas <var>dlls</var>, seria impressionante dizer que diferentes programas que usamos associam-se a uma mesma <var>dll</var> paralelamente?</p>
 
-			<p>A conclusão sobre qual tipo de biblioteca usar depende em si do modo que ela será distribuída. Caso seja um recurso com baixa probalidade de ser mutável e focado a atender tarefas especificas de uma determinada aplicação, bibliotecas estáticas são uma boa escolha. Bibliotecas dinâmicas funcionam no outro lado da moeda. No fim, provavelmente você irá usar um misto em seus projetos(principalmente porque fazemos usos de bibliotecas desenvolvidas por terceiros), e (quase)sempre será uma questão de analise do seu projeto e o quanto ele pode ser reaproveitado por futuros projetos além de pesar entre eficiência de espaço(bibliotecas dinâmicas) e eficiência de processamento(bibliotecas estáticas).</p>
+			<p>A conclusão sobre qual tipo de biblioteca usar depende em si do modo que ela será distribuída. Caso seja um recurso com baixa probalidade de ser mutável e focado em atender tarefas específicas de uma determinada aplicação, bibliotecas estáticas são uma boa escolha. Bibliotecas dinâmicas funcionam no outro lado da moeda. No fim, provavelmente você irá usar um misto em seus projetos(principalmente porque fazemos uso de bibliotecas desenvolvidas por terceiros), e (quase)sempre será uma questão de análise do seu projeto e o quanto ele pode ser reaproveitado por futuros projetos pesando também entre eficiência de espaço(bibliotecas dinâmicas) e eficiência de processamento(bibliotecas estáticas).</p>
 
 			<h2>Resumindo</h2>
-			
-			<p>Caso seja muita informação para assimilar, resalto que o importante à saber é:</p>
+			<p>O que é importante lembrar:</p>
 
 			<h3>Bibliotecas estáticas</h3>
-			<P>Cada arquivo que os inclui fará uma cópia de suas funções/dados para o escopo do arquivo em tempo de compilação.</P>
-			<p>Uma vez gerado o executavel, as funções/dados da biblioteca estática só podem ser atualizados por recompilação.</p>
-			<h4>Vantagens</h4>
-			<p>Não corrompem(pois estão atreladas ao binário do executavel.</p>
+			<P>Cada arquivo que as inclui fará uma cópia de suas funções/dados para o escopo do arquivo em tempo de compilação.</P>
+			<p>Uma vez gerado o executável, as funções/dados da biblioteca estática só podem ser atualizados por recompilação.</p>
+			<p>Bibliotecas estáticas não corrompem(pois estão atreladas ao binário do executavel).</p>
 			<p>São rápidas de acessar(pois existem no escopo do arquivo que as inclui permitindo otimizações de chamada se possível).</p>
 			<p>Enquanto salvam processamento, consomem espaço.</p>
+			
 			<h3>Bibliotecas Dinâmicas</h3>
-			<p>As funções/dados de uma biblioteca dinâmica existem em um arquivo separado ao executavel que as usa. Assim, múltiplos arquivos em um executável acessam uma única cópia das funções/dados determinada em tempo de compilação.</p>
+			<p>As funções/dados de uma biblioteca dinâmica existem em um arquivo separado ao executável que as usa. Assim, múltiplos arquivos em um executável acessam uma única cópia das funções/dados determinada em tempo de compilação.</p>
 			<p>Bibliotecas dinâmicas podem ser atualizadas sem a necessidade de recompilação.</p>
 			<p>São econômicas, pois um único arquivo é usado por toda aplicação, contudo, perdem em desempenho uma vez que é preciso desviar o fluxo de execução para um arquivo externo durante as chamadas à funções da biblioteca.</p>
 			<p>São sucetiveis a corrupção de arquivos.</p>
-			<p>Uma mesma dll(biblioteca dinâmica) pode ser usada paralelamente por multiplos programas.</p>
+			<p>Uma mesma dll(biblioteca dinâmica) pode ser usada paralelamente por múltiplos programas.</p>
 			
 			<h2>Praticando</h2>
-			<p>Estamos preparados para ter alguma pratica. Vamos começar gerando bibliotecas estáticas usando dois compiladores distintos, sendo o MSVC e o GCC. Os executáveis gerados pelos diferentes compiladores deverão funcionar da mesma forma. Por fim, vamos também criar um biblioteca dinâmica como exemplo.</p>
+			<p>Estamos preparados para ter alguma prática. Vamos começar gerando bibliotecas estáticas usando dois compiladores distintos, sendo o MSVC e o GCC. Os executáveis gerados pelos diferentes compiladores deverão funcionar da mesma forma. Por fim, vamos também criar uma biblioteca dinâmica como exemplo.</p>
 
 			<h3>Usando o MSVC</h3>
 			<p>O MSVC é um compilador pertencente a Microsoft. Ele costuma acompanhar a IDE do Visual Studio. Você pode fazer o download da IDE <a href="https://visualstudio.microsoft.com/pt-br/downloads/">aqui</a>.</p>
@@ -163,16 +153,16 @@
 			<p>Esse código mantém-se o mesmo independente de qual compilador usarmos.</p>
 			<p>Abra o seu prompt de comando do VS SUTDIO 20**, copie o diretório do seu código fonte e cole na linha de comando como segue abaixo:</p>
 			<code>CD C:/meu_diretorio</code>
-			<p>O argumento CD seguido por um caminho(no caso a localização do seu .cpp) define em que diretório o prompt de comando deve realizar seu trabalho.</p>
+			<p>O argumento CD seguido por um caminho(no caso a localização do seu "arquivo.cpp") define em que diretório o prompt de comando deve realizar seu trabalho.</p>
 
-			<p>Ao usar o comando <var>CL</var> na linha de comando, estamos invocando o compilador cl.exe. Os argumento de linha de comando para compilação usando cl.exe seguem a seguinte regra:</p>
+			<p>Ao usar o comando <var>CL</var> na linha de comando, estamos invocando o compilador CL.exe. Os argumento de linha de comando para compilação usando CL.exe seguem a seguinte regra:</p>
 			<code>CL [opção...] arquivo... [opção | arquivo]... [lib...] [@arquivo-de-comando] [/link opção-de-vinculador...]</code>
 			<p>Uma vez que:</p>
 			<ul>
 				<li>opção: uma ou mais opções do compilador. A tabela completa pode ser vista <a href="https://docs.microsoft.com/pt-br/cpp/build/reference/compiler-options-listed-by-category?view=msvc-170">aqui</a>. As opções também podem ser verificadas digitando <code>CL /HELP</code></li>
 				<li>arquivo: um ou mais arquivos de origem(código fonte), arquivos .obj ou bibliotecas. O CL compila os arquivos de origem e passa os .obj e bibliotecas para o vinculador.</li>
 				<li>biblioteca: uma ou mais nomes de bibliotecas. Esses nomes serão passados ao vinculador.</li>
-				<li>arquivo-de-comando: um arquivo contendo varias opções e nomes de arquivo. Arquivos de comando são úteis pos permitem definir as configurações de compilação em mais de uma linha de argumentos uma vez que a chamada ao CL.exe aceita o limite de 1024 caractéres.</li>
+				<li>arquivo-de-comando: um arquivo contendo varias opções e nomes de arquivo. Arquivos de comando são úteis porque permitem definir as configurações de compilação em mais de uma linha de argumentos uma vez que a chamada ao CL.exe sem arquivos de comando aceita o limite de 1024 caractéres sem quebras de linha.</li>
 				<li>opção-de-vinculador: uma ou mais opções de vinculador. Essas opções serão passadas pelo CL ao vinculador.</li>
 			</ul>
 			
@@ -185,12 +175,102 @@
 			</ul>
 			<p>Após escrever o comando, pressione enter para compilar. Nesse ponto, você deve obter dois arquivos de saída:</p>
 			<ol>
-				<li>Um arquivo .obj gerado a partir do código fonte. É importante não excluí-lo, se uma recompilação for necessária uma vez que o código fonte tenha sido atualizado, o compilador será capaz de avaliar quais partes no código binário mudaram e trabalhar apenas nisso salvando tempo no processo. Podemos indicar para o compilar que desejamos armazenar os arquivos .obj gerados em uma pasta especifica com intuito de melhor organizar nossos arquivos. Veremos adiante.</li>
+				<li>Um arquivo .obj gerado a partir do código fonte. É importante não excluí-lo, se uma recompilação for necessária uma vez que o código fonte tenha sido atualizado, o compilador será capaz de avaliar quais partes no código binário mudaram e trabalhar apenas nisso salvando tempo no processo. Podemos indicar para o compilador que desejamos armazenar os arquivos .obj gerados em uma pasta especifica com intuito de melhor organizar nossos arquivos. Veremos adiante.</li>
 				<li>O executável própriamente dito, nesses caso, calculator.exe.</li>
 			</ol>
-			<p>Com isso temos uma noção de como gerar executáveis com compilador CL. Vamos começar a construir nossa primeira biblioteca estática.</p>
-			<p>O princípio de uma biblioteca estática é disponibilizar uma série de funções bastantes usuais em um arquivo e poder inclui-las em nossos projetos sempre quando demandarmos uso de suas funções. Vamos fazer isso de modo bastante simples movendo nossas funções de operações básicas com inteiros para um arquivo separado chamado "math.cpp"</p>
-			<var>Write at 10/04/2022</var>
+			<p>Com isso temos uma noção de como gerar executáveis com o compilador CL. Vamos começar a construir nossa primeira biblioteca estática.</p>
+			<p>O princípio de uma biblioteca estática é disponibilizar uma série de funções bastante usuais em um arquivo e poder inclui-las em nossos projetos sempre quando demandarmos uso de suas funções. Vamos fazer isso de modo bastante simples movendo nossas funções de operações básicas com inteiros para um arquivo separado chamado "math.cpp", também definiremos um arquivo de cabeçalho onde declaramos os protótipos de nossas funções. Note, o compilador precisa estar "preparado" para usar funções de arquivos externos, por isso usamos a diretiva "#include "math.hpp" para dizer que há funções definidas externamente sendo demandadas no arquivo atual.</p>
+			<code>
+				<pre>
+				// - math.hpp
+				#ifndef MATH_HPP
+				#define MATH_HPP
+				int sum(int a, int b);
+				int subtract(int a, int b);
+				int multiply(int a, int b);
+				int division(int a, int b);
+				#endif
+				</pre>
+				<pre>
+					// - math.cpp
+					#include "math.hpp"
+
+					int sum(int a, int b){
+						return a + b;
+					}
+
+					int subtract(int a, int b){
+						return a - b;
+					}
+
+					int multiply(int a, int b){
+						return a * b;
+					}
+
+					int division(int a, int b){
+						return a / b;
+					}
+				</pre>
+			</code>
+
+			<p>Começaremos gerando o código binário da nossa biblioteca. Fazemos isso atráves do seguinte comando:</p>
+			<code>CL /EShc math.cpp</code>
+			<p>Em seguida chamamos o vinculador para gerar a biblioteca estática(.lib):</p>
+			<code>LIB math.lib</code>
+			<p>Por último associamos nossa biblioteca ao código fonte:</p>
+			<code>CL /EHsc calculator.cpp math.lib</code>
+			<p>Lembre-se de incluir o cabeçalho "math.hpp" em seu arquivo de origem, de outro modo, o compilador não poderá enontrar os símbolos para as funções da biblioteca vinculada.</p>
+			<code>
+				<pre>
+				// - calculator.cpp
+				#include "math.hpp"
+
+				#include &lt;iostream&gt;
+					
+				int main(){
+					system("cls");
+					// - Variables definition
+					char option = '\0';
+					int valueA = 0, valueB = 0, result = 0;
+					
+					// - Values input
+					std::cout << "Insert value A: ";
+					std::cin >> valueA;
+					std::cout << "Insert value B: ";
+					std::cin >> valueB; 
+					
+					system("cls");
+				
+					// - Operation input
+					std::cout << "Choose how to operate " << valueA << " and " << valueB << ": [+][-][*][/]\n";
+					std::cout << "> ";
+					std::cin >> option;
+					switch(option){
+						case '+':{
+							result = sum(valueA, valueB);			
+							break;
+						}
+						case '-':{
+							result = subtract(valueA, valueB);			
+							break;
+						}
+						case '*':{
+							result = multiply(valueA, valueB);			
+							break;
+						}
+						case '/':{
+							result = division(valueA, valueB);			
+							break;
+						}
+					}
+					std::cout << valueA << option << valueB << "=" << result << std::endl;
+					return 0;
+				}
+				</pre>
+			</code>
+
+			<var>Revisar texto até aqui, após escrever sobre a criação de bibliotecas dinâmicas.</var><br>
+			<var>Write at 11/04/2022</var>
 
 			<div hidden>
 			<h3>Extensões</h3>
