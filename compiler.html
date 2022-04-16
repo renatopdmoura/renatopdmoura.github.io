@@ -28,20 +28,20 @@
 		</header>
 		<section class="col-s-12 col-t-12 col-d-12 content">
 			<h2>Conceitos de Compilação</h2>
-			<p>Antes de comerçarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p>
+			<p>Antes de começarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p>
 			<p>Um compilador é um software capaz de transformar código fonte de linguagem de alto nível em código de linguagem de baixo nível chamado de <var>código binário</var>(como código de máquina e assembly). O código então gerado é voltado ao uso em determinado tipo de arquitetura de processamento(CISC ou RISC). Um compilador possui um pipeline de estágios, onde a saída de um estágio anterior é a entrada para o próximo estágio.</p>
 			<p>A compilação pode ser dividida em duas fases, sendo elas:</p>
 			<h3>Análise</h3>
 				<p>Análise léxica: o código fonte original é transformado em um fluxo de caracteres que será convertido em lexemas(a menor unidade simbólica de uma linguagem) conhecidos como <var>tokens</var>. A tradução para tokens depende da linguagem de alto nível utilizada, por exemplo em C++:</p>
-				<code>
-					<pre>
-					unsigned int value = 8;
-					// unsigned int é um token "keyword"
-					// value é um token "identifier"
-					// = é um token "operator"
-					// 8 é um token "constant"
-					// ; é um token "symbol"
-				</pre>
+			<code>
+				<div class="code-snippet">
+					unsigned int value = 8;<br>
+					// unsigned int é um token "keyword"<br>
+					// value é um token "identifier"<br>
+					// = é um token "operator"<br>
+					// 8 é um token "constant"<br>
+					// ; é um token "symbol"<br>
+				</div>
 			</code>
 			<p>Análise sintática: nessa etapa, é feita a busca por tokens inválidos que o analisador léxico tenha julgado como corretos. O analisador sintático busca por símbolos não terminais(como variáveis), símbolos terminais(determinados pela linguagem), regras combinatórias para terminais e não terminais gerarem <var>strings</var> e símbolos de partida.</p>
 			<p>Análise semântica: essa análise verifica se há coerência linguística entre os tokens definidos, se váriaveis foram declaradas e inicializadas.</p>
@@ -66,21 +66,22 @@
 			<p>A conclusão sobre qual tipo de biblioteca usar depende em si do modo que ela será distribuída. Caso seja um recurso com baixa probalidade de ser mutável e focado em atender tarefas específicas de uma determinada aplicação, bibliotecas estáticas são uma boa escolha. Bibliotecas dinâmicas funcionam no outro lado da moeda. No fim, provavelmente você irá usar um misto em seus projetos(principalmente porque fazemos uso de bibliotecas desenvolvidas por terceiros), e (quase)sempre será uma questão de análise do seu projeto e o quanto ele pode ser reaproveitado por futuros projetos pesando também entre eficiência de espaço(bibliotecas dinâmicas) e eficiência de processamento(bibliotecas estáticas).</p>
 
 			<h2>Resumindo</h2>
-			<p>O que é importante lembrar:</p>
-
-			<h3>Bibliotecas estáticas</h3>
-			<P>Cada arquivo que as inclui fará uma cópia de suas funções/dados para o escopo do arquivo em tempo de compilação.</P>
-			<p>Uma vez gerado o executável, as funções/dados da biblioteca estática só podem ser atualizados por recompilação.</p>
-			<p>Bibliotecas estáticas não corrompem(pois estão atreladas ao binário do executavel).</p>
-			<p>São rápidas de acessar(pois existem no escopo do arquivo que as inclui permitindo otimizações de chamada se possível).</p>
-			<p>Enquanto salvam processamento, consomem espaço.</p>
-			
-			<h3>Bibliotecas Dinâmicas</h3>
-			<p>As funções/dados de uma biblioteca dinâmica existem em um arquivo separado ao executável que as usa. Assim, múltiplos arquivos em um executável acessam uma única cópia das funções/dados determinada em tempo de compilação.</p>
-			<p>Bibliotecas dinâmicas podem ser atualizadas sem a necessidade de recompilação.</p>
-			<p>São econômicas, pois um único arquivo é usado por toda aplicação, contudo, perdem em desempenho uma vez que é preciso desviar o fluxo de execução para um arquivo externo durante as chamadas à funções da biblioteca.</p>
-			<p>São sucetiveis a corrupção de arquivos.</p>
-			<p>Uma mesma dll(biblioteca dinâmica) pode ser usada paralelamente por múltiplos programas.</p>
+			<div class="card">
+				<h3>Bibliotecas estáticas</h3>
+				<P>Cada arquivo que as inclui fará uma cópia de suas funções/dados para o escopo do arquivo em tempo de compilação.</P>
+				<p>Uma vez gerado o executável, as funções/dados da biblioteca estática só podem ser atualizados por recompilação.</p>
+				<p>Bibliotecas estáticas não corrompem(pois estão atreladas ao binário do executavel).</p>
+				<p>São rápidas de acessar(pois existem no escopo do arquivo que as inclui permitindo otimizações de chamada se possível).</p>
+				<p>Enquanto salvam processamento, consomem espaço.</p>
+			</div>
+			<div class="card">
+				<h3>Bibliotecas Dinâmicas</h3>
+				<p>As funções/dados de uma biblioteca dinâmica existem em um arquivo separado ao executável que as usa. Assim, múltiplos arquivos em um executável acessam uma única cópia das funções/dados determinada em tempo de compilação.</p>
+				<p>Bibliotecas dinâmicas podem ser atualizadas sem a necessidade de recompilação.</p>
+				<p>São econômicas, pois um único arquivo é usado por toda aplicação, contudo, perdem em desempenho uma vez que é preciso desviar o fluxo de execução para um arquivo externo durante as chamadas à funções da biblioteca.</p>
+				<p>São sucetiveis a corrupção de arquivos.</p>
+				<p>Uma mesma dll(biblioteca dinâmica) pode ser usada paralelamente por múltiplos programas.</p>
+			</div>
 			
 			<h2>Praticando</h2>
 			<p>Estamos preparados para ter alguma prática. Vamos começar gerando bibliotecas estáticas usando dois compiladores distintos, sendo o MSVC e o GCC. Os executáveis gerados pelos diferentes compiladores deverão funcionar da mesma forma. Por fim, vamos também criar uma biblioteca dinâmica como exemplo.</p>
@@ -90,65 +91,77 @@
 			<p>Após instalar a IDE, navegue até encontrar a seção do Visual Studio, encontre sua pasta então escolha entre x64 Native Tools Command Prompt for VS 2019/x86 Native Tools Command Prompt for VS 2019 dependendo do seu sistema operacional(64 ou 32 bits respectivamente).</p>
 			<p>Iremos criar um simples programa para realizar cálculos de operações básicas com inteiros afim de experimentar os compiladores escolhidos. O código fonte será este:</p>
 			<code>
-				<pre>
-					#include &lt;iostream&gt;
-					
-					int sum(int a, int b){
-						return a + b;
+				<div class="code-snippet">
+					#include &lt;iostream&gt;<br>
+					<br>
+					int sum(int a, int b){<br>
+						<div class="code-block">return a + b;</div>
 					}
-						
-					int subtract(int a, int b){
-						return a - b;
+					<br>	
+					int subtract(int a, int b){<br>
+						<div class="code-block">return a - b;</div>
+					}<br>
+					<br>
+					int multiply(int a, int b){<br>
+						<div class="code-block">return a * b;</div>
+					}<br>
+					<br>	
+					int division(int a, int b){<br>
+						<div class="code-block">return a / b;</div>
+					}<br>
+					<br>
+					int main(){<br>
+						<div class="code-block">
+							system("cls");<br>
+							// - Variables definition<br>
+							char option = '\0';<br>
+							int valueA = 0, valueB = 0, result = 0;<br>
+							<br>
+							// - Values input<br>
+							std::cout << "Insert value A: ";<br>
+							std::cin >> valueA;<br>
+							std::cout << "Insert value B: ";<br>
+							std::cin >> valueB;<br>
+							<br>
+							system("cls");<br>
+							<br>
+							// - Operation input<br>
+							std::cout << "Choose how to operate " << valueA << " and " << valueB << ": [+][-][*][/]\n";<br>
+							std::cout << "> ";<br>
+							std::cin >> option;<br>
+							switch(option){<br>
+							<div class="code-block">
+									case '+':{<br>
+										<div class="code-block">
+											result = sum(valueA, valueB);<br>
+											break;<br>
+										</div>
+									}<br>
+									case '-':{<br>
+										<div class="code-block">
+											result = subtract(valueA, valueB);<br>
+											break;<br>
+										</div>
+									}<br>
+									case '*':{<br>
+										<div class="code-block">
+											result = multiply(valueA, valueB);<br>
+											break;<br>
+										</div>
+									}<br>
+									case '/':{<br>
+										<div class="code-block">
+											result = division(valueA, valueB);<br>
+											break;<br>
+										</div>
+									}<br>
+								</div>
+							}<br>
+							std::cout << valueA << option << valueB << "=" << result << std::endl;<br>
+							return 0;<br>
+						</div>
 					}
-					
-					int multiply(int a, int b){
-						return a * b;
-					}
-						
-					int division(int a, int b){
-						return a / b;
-					}
-						
-					int main(){
-						system("cls");
-						// - Variables definition
-						char option = '\0';
-						int valueA = 0, valueB = 0, result = 0;
-						
-						// - Values input
-						std::cout << "Insert value A: ";
-						std::cin >> valueA;
-						std::cout << "Insert value B: ";
-						std::cin >> valueB; 
-						
-						system("cls");
-					
-						// - Operation input
-						std::cout << "Choose how to operate " << valueA << " and " << valueB << ": [+][-][*][/]\n";
-						std::cout << "> ";
-						std::cin >> option;
-						switch(option){
-							case '+':{
-								result = sum(valueA, valueB);			
-								break;
-							}
-							case '-':{
-								result = subtract(valueA, valueB);			
-								break;
-							}
-							case '*':{
-								result = multiply(valueA, valueB);			
-								break;
-							}
-							case '/':{
-								result = division(valueA, valueB);			
-								break;
-							}
-						}
-						std::cout << valueA << option << valueB << "=" << result << std::endl;
-						return 0;
-					}
-				</pre>
+				</div>
 			</code>
 			<p>Esse código mantém-se o mesmo independente de qual compilador usarmos.</p>
 			<p>Abra o seu prompt de comando do VS SUTDIO 20**, copie o diretório do seu código fonte e cole na linha de comando como segue abaixo:</p>
@@ -181,36 +194,36 @@
 			<p>Com isso temos uma noção de como gerar executáveis com o compilador CL. Vamos começar a construir nossa primeira biblioteca estática.</p>
 			<p>O princípio de uma biblioteca estática é disponibilizar uma série de funções bastante usuais em um arquivo e poder inclui-las em nossos projetos sempre quando demandarmos uso de suas funções. Vamos fazer isso de modo bastante simples movendo nossas funções de operações básicas com inteiros para um arquivo separado chamado "math.cpp", também definiremos um arquivo de cabeçalho onde declaramos os protótipos de nossas funções. Note, o compilador precisa estar "preparado" para usar funções de arquivos externos, por isso usamos a diretiva "#include "math.hpp" para dizer que há funções definidas externamente sendo demandadas no arquivo atual.</p>
 			<code>
-				<pre>
-				// - math.hpp
-				#ifndef MATH_HPP
-				#define MATH_HPP
-				int sum(int a, int b);
-				int subtract(int a, int b);
-				int multiply(int a, int b);
-				int division(int a, int b);
-				#endif
-				</pre>
-				<pre>
-					// - math.cpp
-					#include "math.hpp"
-
-					int sum(int a, int b){
-						return a + b;
+				<div class="code-snippet">
+					// - math.hpp<br>
+					#ifndef MATH_HPP<br>
+					#define MATH_HPP<br><br>
+					int sum(int a, int b);<br>
+					int subtract(int a, int b);<br>
+					int multiply(int a, int b);<br>
+					int division(int a, int b);<br><br>
+					#endif<br>
+				</div>
+				<div class="code-snippet">				
+					// - math.cpp<br>
+					#include "math.hpp"<br>
+					<br>
+					int sum(int a, int b){<br>
+						<div class="code-block">return a + b;</div>
+					}<br>
+					<br>
+					int subtract(int a, int b){<br>
+						<div class="code-block">return a - b;</div>
+					}<br>
+					<br>
+					int multiply(int a, int b){<br>
+						<div class="code-block">return a * b;</div>
+					}<br>
+					<br>
+					int division(int a, int b){<br>
+						<div class="code-block">return a / b;</div>
 					}
-
-					int subtract(int a, int b){
-						return a - b;
-					}
-
-					int multiply(int a, int b){
-						return a * b;
-					}
-
-					int division(int a, int b){
-						return a / b;
-					}
-				</pre>
+				</div>
 			</code>
 
 			<p>Começaremos gerando o código binário da nossa biblioteca. Fazemos isso atráves do seguinte comando:</p>
@@ -220,53 +233,67 @@
 			<p>Por último associamos nossa biblioteca ao código fonte:</p>
 			<code>CL /EHsc calculator.cpp math.lib</code>
 			<p>Lembre-se de incluir o cabeçalho "math.hpp" em seu arquivo de origem, de outro modo, o compilador não poderá enontrar os símbolos para as funções da biblioteca vinculada.</p>
+			
 			<code>
-				<pre>
-				// - calculator.cpp
-				#include "math.hpp"
+				<div class="code-snippet">
+					// - calculator.cpp<br>
+					#include "math.hpp"<br>
+					<br>
+					#include &lt;iostream&gt;<br>
+					<br>						
+					int main(){<br>
+						<div class="code-block">
+							system("cls");<br>
+							// - Variables definition<br>
+							char option = '\0';<br>
+							int valueA = 0, valueB = 0, result = 0;<br>
+							<br>
+							// - Values input<br>
+							std::cout << "Insert value A: ";<br>
+							std::cin >> valueA;<br>
+							std::cout << "Insert value B: ";<br>
+							std::cin >> valueB; <br>
+							<br>
+							system("cls");<br>
+							<br>
+							// - Operation input<br>
+							std::cout << "Choose how to operate " << valueA << " and " << valueB << ": [+][-][*][/]\n";<br>
+							std::cout << "> ";<br>
+							std::cin >> option;<br>
+							switch(option){<br>
+								<div class="code-block">
+									case '+':{<br>
+										<div class="code-block">
+											result = sum(valueA, valueB);<br>		
+											break;<br>
+										</div>
+									}<br>
+									case '-':{<br>
+										<div class="code-block">
+											result = subtract(valueA, valueB);<br>			
+											break;<br>
+										</div>
 
-				#include &lt;iostream&gt;
-					
-				int main(){
-					system("cls");
-					// - Variables definition
-					char option = '\0';
-					int valueA = 0, valueB = 0, result = 0;
-					
-					// - Values input
-					std::cout << "Insert value A: ";
-					std::cin >> valueA;
-					std::cout << "Insert value B: ";
-					std::cin >> valueB; 
-					
-					system("cls");
-				
-					// - Operation input
-					std::cout << "Choose how to operate " << valueA << " and " << valueB << ": [+][-][*][/]\n";
-					std::cout << "> ";
-					std::cin >> option;
-					switch(option){
-						case '+':{
-							result = sum(valueA, valueB);			
-							break;
-						}
-						case '-':{
-							result = subtract(valueA, valueB);			
-							break;
-						}
-						case '*':{
-							result = multiply(valueA, valueB);			
-							break;
-						}
-						case '/':{
-							result = division(valueA, valueB);			
-							break;
-						}
-					}
-					std::cout << valueA << option << valueB << "=" << result << std::endl;
-					return 0;
-				}
-				</pre>
+									}<br>
+									case '*':{<br>
+										<div class="code-block">
+											result = multiply(valueA, valueB);<br>			
+											break;<br>
+										</div>
+									}<br>
+									case '/':{<br>
+										<div class="code-block">
+											result = division(valueA, valueB);<br>			
+											break;<br>
+										</div>
+									}<br>
+								</div>
+							}<br>
+							std::cout << valueA << option << valueB << "=" << result << std::endl;<br>
+							return 0;<br>
+						</div>
+					}<br>
+				</div>
 			</code>
 
 			<var>Revisar texto até aqui, após escrever sobre a criação de bibliotecas dinâmicas.</var><br>

@@ -10,15 +10,42 @@
 	<!-- include css -->
 	<link rel="stylesheet" href="css/common.css" type="text/css">
 	<link rel="stylesheet" href="css/index.css" type="text/css">
+    <!---include icon--->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	<!-- include javascript -->
 	<script type="text/javascript" src="js/javascript.js"></script>
     <style>
+        body{
+            font-size: 100%;
+        }
         p{
-            font-family: 'Courier New', Courier, monospace;
-            font-size: 18pt;
+            font-family: 'Helvética' sans-serif, Arial sans-serif;
+            font-size: 1.5em;
             color: rgb(0, 0, 0);
+            text-align: left;
+            text-indent: 50px;
+            letter-spacing: -1px;
+            text-shadow: 1px 1px #ddd;
+        }
+        #link-study{
+            background-color: rgb(32, 32, 32);
+            padding: 20px;
+            border: 2px solid rgb(32, 32, 32);
+            border-radius: 2px;
+            color: rgb(255, 255, 255);
+            text-decoration: none;
+            float: left;
+        }
+        #link-study:hover{
+            background-color: rgb(64, 64, 64);
+            text-decoration: underline;
+        }
+        #link-study:active{
+            color: rgb(128, 128, 128);
+            text-decoration: underline;
         }
         #panel{
+            max-width: 100%;
             background: rgb(255, 255, 255) url("C:/Users/Qital-PC/Desktop/Documents/Projects/ImCreate/assets/ui/settings.png") no-repeat scroll right;
             border: 2px dashed black;
             border-left: 4px solid rgb(32, 32, 32);
@@ -26,6 +53,69 @@
             margin-left: auto;
             padding: 10px;
             margin: 4px 0px 4px 0px;
+        }
+        .panel_img{   
+            max-width: 100%;
+            height: auto;
+            padding: 20px;
+            border: 4px solid #000;
+            outline-style: dashed;
+            outline-width: 6px;
+            outline-offset: 4px;
+            outline-color: #444;
+            margin: auto;
+            margin-top: 40px;
+        }
+        code{
+            font-family: "Courier";
+            font-style: normal;
+            font-size: 1em;
+        }
+        .block-code{
+            margin-left: 8%;
+        }
+        #background-properties{
+            list-style-type: square;
+            list-style-position: outside;
+        }
+        table{
+            border-bottom: 1px solid rgb(0, 0, 0);
+            border-collapse: collapse;
+            width: 50%;
+            margin-top: 50px;
+            margin-right: auto;
+            margin-bottom: 50px;
+            margin-left: auto;
+        }
+        th, td{
+            color: #000;
+            text-align: left;
+            padding: 5px;
+        }
+        tr:hover{
+            background-color: rgb(232, 232, 232);
+        }
+        #home-page{
+            left: 10px;
+            bottom: 10px;
+            position: fixed;
+            width: 64px;
+            height: 64px;
+        }
+        .gallery{
+            background-color: #fff;
+            display: inline-block;
+            position: relative;
+            left: 8.5vw;
+            width: 70%;
+            padding: 0;
+            border: 1px solid #222;
+            border-radius: 5px;
+        }
+        .img-block{
+            float: left;
+            width: 20%;
+            padding: 4px;
         }
     </style>
 </head>
@@ -44,28 +134,96 @@
 		</header>
 
 		<section class="col-s-12 col-t-12 col-d-12 content">
-		    <h2>ImCreate é um projeto independente para desenvolver jogos sem estresse.</h2>
-            <div id="panel">
-                <p>Neste bloco estou testando propriedades de plano de fundo!</p>
-                <ul>
-                    <li>background-image: url("rel_abs_path");</li>
-                    <li>background-repeat: [no-repeat, repeat-x, repeat-x];</li>
-                    <li>background-position: [right, left] [bottom, top];</li>
-                    <li>background-attachment: [scroll, fixed, local, initial, inherit];</li>
-                    <li>background: [background-color, background-image, background-repeat, background-attachment background-position]</li>
-                </ul>
+
+            <img  id="home-page" src="C:/Users/Qital-PC/Desktop/Documents/Projects/ImCreate/assets/ui/settings.png">
+		    
+            <div style = "text-align: right;">
+                <span class="material-icons">cloud</span>
+                <i>Atualizado em 12 de abril de 2022</i>
             </div>
 
+            <h2>ImCreate é um projeto independente para desenvolver jogos sem estresse.</h2>
             <div id="panel">
                 <p>Neste bloco estou testando propriedades de plano de fundo!</p>
-                <ul>
+                <ol id="background-properties">
                     <li>background-image: url("rel_abs_path");</li>
                     <li>background-repeat: [no-repeat, repeat-x, repeat-x];</li>
                     <li>background-position: [right, left] [bottom, top];</li>
                     <li>background-attachment: [scroll, fixed, local, initial, inherit];</li>
                     <li>background: [background-color, background-image, background-repeat, background-attachment background-position]</li>
-                </ul>
+                </ol>
             </div>
+
+            <div class="gallery">
+                <P style="text-align: center; text-indent: 0;">Desenvolva a partir do zero seus jogos utilizando recursos puramente desenvolvidos em C++ em conjunto de outras tecnologias de ponta!</P>
+                <img src="media/img/texLayer1.png" style="width: 100%; padding: 4px;">
+                <img class="img-block" src="media/img/texLayer1.png">
+                <img class="img-block" src="media/img/texLayer1.png">
+                <img class="img-block" src="media/img/texLayer1.png">
+                <img class="img-block" src="media/img/texLayer1.png">
+                <img class="img-block" src="media/img/texLayer1.png">
+            </div>
+            
+            <div style="width: 100%; margin: auto;">
+                <div class="panel_img" style="background: url('C:/Users/Qital-PC/Desktop/Documents/Projects/ImCreate/assets/ui/message.png') no-repeat scroll right;">
+                    <p>Verifique a seção de mensagens e mantenha-se atualizado.</p>
+                </div>
+                <div class="panel_img" style="background: url('C:/Users/Qital-PC/Desktop/Documents/Projects/ImCreate/assets/ui/help.png') no-repeat scroll right;">
+                    <p>Caso precise de suporte, contate nossos terminais na seção Ajuda.</p>
+                </div>
+                <div class="panel_img" style="background: url('C:/Users/Qital-PC/Desktop/Documents/Projects/ImCreate/assets/ui/window.png') no-repeat scroll right;">
+                    <p>Há muitas opções úteis na seção de janelas.</p>
+                </div>
+                <div class="panel_img" style="background: url('C:/Users/Qital-PC/Desktop/Documents/Projects/ImCreate/assets/ui/windowmode.png') no-repeat scroll right;">
+                    <p>Você pode escolher como iniciar sua aplicação: em modo janela ou em tela cheia.</p>
+                </div>
+            </div>
+            
+            <div class="panel_img"  style="overflow: auto;">
+                <p>Aqui está um simples trecho de código escrito em C++:</p>
+                <code>
+                   <pre>
+                    int main(){
+                        std::cout << "This is a test for break line using CSS3.\n";
+                    }
+                    </pre>
+                </code>
+            </div>
+
+            <div style="overflow-x: auto">
+                <table>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Email</th>
+                        <th>Senha</th>
+                    </tr>
+                    <tr>
+                        <td>imcreate@mail.com</td>
+                        <td>ImCreate_DEV</td>
+                        <td>tx87phd@1945</td>
+                    </tr>
+                    <tr>
+                        <td>renato.dmoura@hotmail.com</td>
+                        <td>Renato Moura</td>
+                        <td>fkgd8sej1</td>
+                    </tr>
+                </table>
+            </div>
+
+            <ul style="max-width: 50%; margin: auto;">
+                <p>Isso é uma lista exibida como um bloco.</p>
+                <li style="display: block;">Alpha</li>
+                <li style="display: block;">Beta</li>
+                <li style="display: block;">Gamma</li>
+            </ul>
+            <ul style="max-width: 50%; margin: auto">
+                <p>Isso é uma lista exibida em linha.</p>
+                <li style="display: inline;">Alpha</li>
+                <li style="display: inline;">Beta</li>
+                <li style="display: inline;">Gamma</li>
+            </ul>
+
+            <a id="link-study" href="https://www.w3schools.com/css/css_navbar.asp" target="blank">Current article</a>
 		</section>
 		
         <footer class="col-s-12 col-t-12 col-d-12">
@@ -78,8 +236,3 @@
 	</main>
 </body>
 </html>
-
-<!---	
-	W3School css content:
-	Current article: https://www.w3schools.com/css/css_dimension.asp
---->

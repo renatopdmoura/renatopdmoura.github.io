@@ -1,0 +1,373 @@
+<html>
+    <head>
+        <title>CSS Book</title>
+        <style>
+            @font-face{
+                font-family: 'Maiandra';
+                src: url(fonts/Maiandra.TTF);
+            }
+            body{
+                font-family: 'Arial', sans-serif;
+                font-size: 100%;
+                background-color: rgb(128, 128, 128);
+            }
+            p{
+                font-size: 1em;
+                text-align: justify;
+                text-indent: 50px;
+            }
+            #serif{
+                font-family: 'Times New Roman', serif;
+                font-size: 2em;
+            }
+            #sans-serif{
+                font-family: 'Arial', sans-serif;
+                font-size: 2em;
+            }
+            #monospace{
+                font-family: 'Courier New', monospace;
+                font-size: 2em;
+            }
+            #cursive{
+                font-family: 'Lucida Handwriting', cursive;
+                font-size: 2em;
+            }
+            #fantasy{
+                font-family: 'Papyrus', fantasy;
+                font-size: 2em;
+            }
+            .text-properties-ex{
+                display: inline-block;
+                font-family: 'Verdana', sans-serif;
+                font-size: 1.085em;
+                text-align: justify;
+                text-indent: 20px;
+                background-color: rgb(232, 232, 232);
+                width: 80%;
+                padding: 20px;
+                border: 1px solid rgb(0, 0, 0); 
+                border-radius: 5px;
+            }
+            .code-snippet{
+                overflow: auto; 
+                background-color: rgb(232, 232, 232); 
+                border-left: 6px solid rgb(32, 32 ,32);
+            }
+        </style>
+    </head>
+    <body>
+        <section style="width: 50%; padding: 20px 40px 20px 40px; margin: auto; background-color: rgb(255, 255, 255);">
+            <header>
+                <h1 style="border-bottom: 1px solid #000;">CSS Book- Capítulo sobre Textos</h1>
+            </header>
+            <p>Esse capítulo descreve noções essenciais para que seus paragrafos e títulos tenham uma aparência agradavel e moderna, como também um comportamento responsivo.</p>
+            <p>Textos podem ser trados dadas as seguinte propriedades:</p>
+            <ul>
+                <p>Fonte</p>
+                <li>font-family</li>
+                <li>font-size</li>
+                <li>font-size-adjust</li>
+                <li>font-style</li>
+                <li>!font-stretch</li>
+                <li>!font-kerning</li>
+                <li>!font-feature-settings</li>
+                <li>color</li>
+                
+                <p>Alinhamento</p>
+                <li>text-align</li>
+                <li>direction</li>
+                <li>unicode-bidi</li>
+                <li>vertical-align</li>
+                
+                <p>Espaçamento</p>
+                <li>text-indent</li>
+                <li>letter-spacing</li>
+                <li>letter-height</li>
+                <li>word-spacing</li>
+                <li>white-space</li>
+                
+                <p>Decoração</p>
+                <li>text-decoration</li>
+                <p>Espaçamento</p>
+                <li>text-transform</li>
+            </ul>
+            
+            <h2>Sobre Fontes</h2>
+            <h3>font-family</h3>
+            <p>A propriedade <code>font-family</code> define a fámilia da fonte do texto. Fontes podem ser distinguinda entre três grupos:</p>
+            <uL>
+                <li>Serif</li>
+                <li>Sans-Serif</li>
+                <li>Monospace</li>
+                <li>Cursive</li>
+                <li>Fantasy</li>
+            </ul>
+            <p id="serif">Serif</p>
+            <p>Fontes serifadas apresentam um detalhe em suas extremidades que lhes conferem um visual elegante.</p>
+            <p id="sans-serif">Sans-Serif</p>
+            <p>Fontes sem serifa possuem um visual limpo o que retrata um visual minimalista.</p>
+            <p id="monospace">Monospace</p>
+            <p>Fontes monoespaçadas apresentam o mesmo espaçamento entre caracteres. Essa caracteristica lhes da um aspecto mecânico.</p>
+            <p id="cursive">Cursive</p>
+            <p>Fontes cursivas imitam a calegrafia humana.</p>
+            <p id="fantasy">Fantasy</p>
+            <p>Fontes de fantasia trazem um toque do épico com tendência representativa ao que campo lúdico(filmes, séries, histórias, jogos...).</p>
+            <h3>font-size</h3>
+            <p>A propriedade <code>font-size</code> denota o tamanho da fonte. O tamanho pode ser dado em diferentes unidades como cm, px, em...</p>
+            <p class="text-properties-ex"><span style="font-size: 1em;">16</span>&nbsp;<span style="font-size: 2em;">32</span>&nbsp;<span style="font-size: 3em;">64</span></p>
+            <h3>font-style</h3>
+            <p>A propriedade <code>font-style</code> define o estilo de exbição de um texto. Seu valor pode ser <var>normal, italic</var> e <var>oblique</var>.</p>
+            <p class="text-properties-ex" style="font-style: normal;">Este é um texto que define a propriedade <code>font-style</code> para <code>normal</code>.</p>
+            <p class="text-properties-ex" style="font-style: italic;">Este é um texto que define a propriedade <code>font-style</code> para <code>italic</code>.</p>
+            <p class="text-properties-ex" style="font-style: oblique;">Este é um texto que define a propriedade <code>font-style</code> para <code>oblique</code>.</p>
+            <h3>font-variant</h3>
+            <p>Especifica se um letra deve ou não ser exibida em versalete. Letras minúsculas são convertidas em maúsculas enquanto letras maiúsculas são ligeiramente menores que as letras convertidas em versalete.</p>
+            <p class="text-properties-ex" style="font-variant: small-caps;">Este é um texto que define <code>font-variant</code> par <code>small-caps</code>.</p>
+            <h3>font-variant-caps</h3>
+            <p>A propriedade <code>fonte-variant-caps</code> controla o uso de glifos alternativos para letras maiúsculas.</p>
+            <p class="text-properties-ex" style="font-variant-caps: small-caps">Esse texto define <code>font-variant-caps</code> para <code>small-caps</code></p>
+            <p class="text-properties-ex" style="font-variant-caps: all-small-caps">Esse texto define <code>font-variant-caps</code> para <code>all-small-caps</code></p>
+            <p class="text-properties-ex" style="font-variant-caps: petite-caps">Esse texto define <code>font-variant-caps</code> para <code>petite-caps</code></p>
+            <p class="text-properties-ex" style="font-variant-caps: all-petite-caps">Esse texto define <code>font-variant-caps</code> para <code>all-petite-caps</code></p>
+            <p class="text-properties-ex" style="font-variant-caps: unicase">Esse texto define <code>font-variant-caps</code> para <code>unicase</code></p>
+            <p class="text-properties-ex" style="font-variant-caps: titling-caps">Esse texto define <code>font-variant-caps</code> para <code>titling-caps</code></p>
+
+            <h3>font-weight</h3>
+            <p>A propriedade <code>font-weight</code> especifica o peso do contorno de um texto. O valor de atribuição pode ser <var>normal</var> e <var>bold</var>.</p>
+            <p class="text-properties-ex" style="font-weight: normal;">Texto</p>
+            <p class="text-properties-ex" style="font-weight: bold;">Texto</p>
+            <h3>color</h3>
+            <p>A propriedade <code>color</code> define a cor de um texto. Cores podem ser definidas em formatos como <var>RGB, HEX, HSL</var> e suas variantes como <var>RGBA</var> e <var>HSLA</var> para uso do canal alfa.</p>            
+            
+            <h2>Sobre Alinhamento</h2>
+            <h3>text-align</h3>
+            <p>A propriedade <code>text-alig</code> define como um texto será alinhado ao bloco que pertence. Podendo ser:</p>
+            <ul>
+                <li>left: o texto será alinhado a esquerda.</li>
+                <li>right: o texto será alinhado a direita.</li>
+                <li>center: o texto será alinhado ao centro.</li>
+                <li>justify: o texto será ajustado para que ocupe todo o espaço dentro de uma linha sempre que for possível.</li>
+            </ul>
+            
+            <h3>text-align-last</h3>
+            <p>A propriedade <code>text-align-last</code> define como a última linha de um paragrafo deve ser alinhada. Seus valores são tais como em <code>text-align</code>. Exemplificando(à esquerda sem alinhar a última linha e a direita com alinhamento de última linha).</p>
+            <p class="text-properties-ex" style="text-align-last: left; width: 45%;">Alinhamentos são de grande importância pois determinar um bom fluxo de leitura é crucíal para o usuário enolver-se com a ideia de seu negócio.</p>
+            <p class="text-properties-ex" style="text-align-last: center; width: 45%;">Alinhamentos são de grande importância pois determinar um bom fluxo de leitura é crucíal para o usuário enolver-se com a ideia de seu negócio.</p>
+            <h3>direction</h3>
+            <p>A propriedade <code>direction</code> define a direção de escrita do texto. Os valores podem ser: <var>ltr</var> do inglês "left to right" ou <var>rtl</var> de "right to left" além de <var>initial</var> para definir o valor padrão e <var>inherit</var> em que a propriedade é herdada do elemento pai.</p>
+            <h3>unicode-bidi</h3>
+            <p><i>!pesquisar</i></p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        p.left{
+                            direction: ltr;
+                        }
+
+                        p.right{
+                            direction: rtl;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p class="text-properties-ex" style="direction: ltr; width: 45%;">Aqui está um texto escrito da esquerda para direita.</p>
+            <p class="text-properties-ex" style="direction: rtl; width: 45%;">Aqui está um texto escrito da direita para esquerda.</p>
+            <h3>vertical-align</h3>
+            <p>A propriedade <code>vertical-align</code> define o alinhamento vertical de um elemento em relação a um texto. Seus valores são respectivamente <var>baseline, text-top, text-bottom, sub, super</var> e <var>middle</var>. O comportamento dos valores da propriedade podem ser observados nos exemplos a seguir:</p>
+            <div style="max-width:60%; margin: auto;">
+                <p class="text-properties-ex">Definindo o alinhamento vertical para um elemento com valor <var>baseline</var><img src="images/news.png" style="width: 5%; margin-left: 10px; vertical-align: middle;"></p>
+                <p class="text-properties-ex">Definindo o alinhamento vertical para um elemento com valor <var>text-top</var><img src="images/news.png" style="width: 5%; margin-left: 10px; vertical-align: text-top;"></p>
+                <p class="text-properties-ex">Definindo o alinhamento vertical para um elemento com valor <var>text-bottom</var><img src="images/news.png" style="width: 5%; margin-left: 10px; vertical-align: text-bottom;"></p>
+                <p class="text-properties-ex">Definindo o alinhamento vertical para um elemento com valor <var>sub</var><img src="images/news.png" style="width: 5%; margin-left: 10px; vertical-align: sub;"></p>
+                <p class="text-properties-ex">Definindo o alinhamento vertical para um elemento com valor <var>super</var><img src="images/news.png" style="width: 5%; margin-left: 10px; vertical-align: middle;"></p>
+                <p class="text-properties-ex">Definindo o alinhamento vertical para um elemento com valor <var>middle</var><img src="images/news.png" style="width: 5%; margin-left: 10px; vertical-align: middle;"></p>
+            </div>
+
+            
+            <h2>Sobre espaçamento</h2>
+            <h3>text-indent</h3>
+            <p>A propriedade <code>text-ident</code> define o recuo de primeira linha para textos definidos sob a tag &lt;p&gt;</p>
+            <h3>letter-spacing</h3>
+            <p>A propriedade <code>letter-spacing</code> define a distância entre cada caráctere de uma palavra.</p>
+            <h3>letter-height</h3>
+            <p>A propriedade <code>letter-height</code> define o espaçamento entre linhas em um parágrafo.</p>
+            <h3>white-space</h3>
+            <p>!A propriedade <code>white-space</code> define o espaço ocupado por um caractere de espaço em branco.</p>     
+            <p>Veja um exemplo usando as propriedades <var>text-indent, letter-spacing</var> e <var>line-height</var>:</p>
+            <p class="text-properties-ex" style="letter-spacing: 4px; line-height: 1.5em;">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Odio suscipit nobis est! Error, ut asperiores molestias, quisquam non corrupti aut inventore nobis minus explicabo molestiae quam mollitia atque voluptatem dignissimos.</p>    
+            <h3>text-overflow</h3>
+            <p>Essa é uma propriedade que deve ser usada em conjunto com <code>white-space</code> e <code>overflow</code>(ainda não vista nesse capítulo). <code>text-overflow</code> é útil pois define como tratar textos que "estouram" o bloco que os contém. O tratamento pode ser feito das seguintes formas:</p>
+            <ul>
+                <li>clip: o valor padrão. O texto será recortado da visualização.</li>
+                <li>ellipsis: o texto "estourando" será renderizado como reticiências(...)</li>
+                <li>!string: renderiza uma string para representar o texto "estourando"</li>
+            </ul>
+            <p class="text-properties-ex" style="width: 60%; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">Lorem ipsum dolor sit amet consectetur adipisicing elit. Inventore earum aut sint voluptatum magnam, nisi reprehenderit doloremque nobis modi voluptas deserunt. Asperiores quae nulla assumenda eius dignissimos quam illum eaque?</p>
+            
+            <h2>Sobre transformação</h2>
+            <p>A propriedade <code>text-transform</code> especifica como um texto deve ser exibido. Seus valores são:</p>
+            <ul>
+                <li>none</li>
+                <li>uppercase</li>
+                <li>lowercase</li>
+                <li>capitalize</li>
+                <li>initial</li>
+                <li>inherit</li>
+            </ul>
+            <p>Verifque o exemplo:</p>
+            <p class="text-properties-ex" style="text-transform: capitalize;">este é um texto cuja letra inicial de cada palavra fora definida como maiúscula usando o valor <var>capitalize</var>.</p>
+            <p class="text-properties-ex" style="text-transform: uppercase;">este é um texto escrito em letras minúsclas cujo fora transformado para letras de caixa alta usando o valor <var>uppercase</var>.</p>
+            <p class="text-properties-ex" style="text-transform: lowercase;">este é um texto escrito em letras maiúsculas cujo fora transformado para letras minúsculas usando o valor <var>lowercase</var>.</p>
+            
+            <h2>Sobre decoração</h2>
+            <h3>text-decoration</h3>
+            <p>A propriedade <code>text-decoration</code> define a estilização de um texto. Os valores para a propriedade são descritos como:</p>
+            <ul>
+                <li>text-decoration-line</li>
+                <li>text-decoration-color</li>
+                <li>text-decoration-style</li>
+                <li>text-decoration-thickness</li>
+            </ul>
+            <h3>text-decoration-line</h3>
+            <p>A propriedade <code>text-decoration-line</code> adiciona uma linha de decoração ao texto. Os valores respectivos são:</p>
+            <ul>
+                <li>underline</li>
+                <li>overline</li>
+                <li>line-throught</li>
+            </ul>
+            <p>Note como os valores da propriedade podem ser combinados.</p>
+            <p class="text-properties-ex" style="text-decoration-line: underline line-through;">text-decoration</p>
+            <h3>text-decoration-color</h3>
+            <p>A propriedade <code>text-decoration-color</code> define a cor da linha de decoração. Seus valores podem ser escritos usando código RGB, HEX e HSL além de suas variantes com canal alfa.</p>
+            <h3>text-decoration-style</h3>
+            <p>A prorpriedade <code>text-decoration-style</code> define o estilo da linha de decoração. Seus valores são:</p>
+            <ul>
+                <li>solid</li>
+                <li>double</li>
+                <li>dotted</li>
+                <li>dashed</li>
+                <li>wavy</li>
+            </ul>
+            <p class="text-properties-ex" style="text-decoration-line: underline; text-decoration-style: solid;">text-decoration-style set to solid</p>
+            <p class="text-properties-ex" style="text-decoration-line: underline; text-decoration-style: double;">text-decoration-style set to double</p>
+            <p class="text-properties-ex" style="text-decoration-line: underline; text-decoration-style: dotted;">text-decoration-style set to dotted</p>
+            <p class="text-properties-ex" style="text-decoration-line: underline; text-decoration-style: dashed;">text-decoration-style set to dashed</p>
+            <p class="text-properties-ex" style="text-decoration-line: underline; text-decoration-style: wavy;">text-decoration-style set to wavy</p>
+            <h3>text-decoration-thickness</h3>
+            <p>A propriedade <code>text-decoration-thickness</code> define a espessura da linha de decoração. Seu valor é dado em cm, px, em...</p>
+
+            <p>O trecho de código abaixo exemplifica o uso das propriedades descritas:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        p{
+                            text-decoration-style: wavy;
+                            text-decoration-line: underline;
+                            text-decoration-color: #82d;
+                            text-decoration-thickness: 2px;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p class="text-properties-ex" style="text-decoration-line: underline; text-decoration-style: wavy; text-decoration-color: #82d; text-decoration-thickness: 2px;">Este exemplo combina as propriedades de <var>text-decoration</var></p>
+            
+            <h2>Sobre sombras</h2>
+            <h3>text-shadow</h3>
+            <p>A propriedade <code>text-shadow</code> adiciona sombra aos textos. Seu valor deve ser definido respeitando a ordem de parâmetros:</p>
+            <ul>
+                <p>Espalhamento horizontal e vertical</p>
+                <li>h-shadow</li>
+                <li>v-shadow</li>
+                <p>Borrão</p>
+                <li>blur-radius</li>
+                <p>Cor</p>
+                <li>color</li>
+            </ul>
+            <p>Verfique o exemplo abaixo:</p>
+            <p>O trecho de código abaixo exemplifica o uso das propriedades descritas:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        p{
+                            text-shadow: 2px 2px 1px 1px 2px #ddd;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p class="text-properties-ex" style="font-size: 2em; color: #fff; text-indent: 0; text-shadow: 2px 2px 2px #222;">CSS3</p>
+
+            <h2>Tratando fontes de forma responsiva</h2>
+            <p>Uma tecnica bastante simples de fazer com que a fonte de seus textos se redimensione conforme a janela de visualização é definir a propriedade <code>font-size</code> no seletor de <code>body</code> com o valor de 100% enquanto define a medida do tamanho da fonte em seus parágafros usando a unidade <var>em</var>. Como segue:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        body{
+                            font-size: 100%;
+                        }
+                        p{
+                            font-size: 1em;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p> <var>1em</var> equivale à 1/16 pontos. Na verdade <var>em</var> usa a DPI disponível pela resolução nativa do monitor. Comumente, monitores de alta DPI usam o equivalente a 16 pixels por polegada(dai a regra 1/16). Em monitores de baixa DPI, essa regra pode mudar, porém não é algo que precise de atenção por parte do desenvolvedor.</p>
+            <h2>Dicas</h2>
+            <h3>Fontes encadeadas</h3>
+            <p>Por vezes, ao definir uma família de fontes muito especifica para a propriedade <code>font-family</code> não há garantias de que estas fontes estejam dispoíveis na máquina do usuário. Para diminuir o impacto desse problema, a propriedade <code>font-family</code> aceita uma definição encadeada de nomes de fontes. Isso é útil já que pode ser usada uma fonte similiar sempre que a primeira fonte na cadeia(lida da esquerda para direita) esteja indísponivel. Veja o exemplo no trecho de código a seguir:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        P{
+                            font-family: 'Arial' sans serif, 'Verdana' sans-serif;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p>Eventualmente, usar fontes alternativas para substituir uma fonte indisponível por vezes pode resultar em uma fonte substituta com uma proporção maior que a desejada. Para manter a proporção usamos a propriedade<code>font-size-adjust</code> que obtém o valor de aspecto - calculado pela diferença de tamanho entre a letra minúscula "x" e maiúscula "X" da primeira fonte indicada.</p>
+            <p>Os valores para <code>font-size-adjust</code> são:</p>
+            <ul>
+                <li>none: sem auto ajuste.</li>
+                <li>number: um valor propocional especificado.</li>
+                <li>initial: o valor inicial.</li>
+                <li>inherit: o valor herdado.</li>
+            </ul>
+            <h3>Importando fontes</h3>
+            <p>A regra CSS <code>@font-face</code> permite que você importe suas própias fontes diretamente do seu diretório de arquivos. O uso de <code>@font-face</code> deve ser tal como segue:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        @font-face{
+                            font-family: 'Maiandra';
+                            src: url(fonts/Maiandra.TTF);
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p>Uma vez que <code>font-family</code> torna-se um nome de referência arbitrário dado a fonte importada enquanto <code>src: url(myfont)</code> espera o caminho para importação da fonte. Lembre-se de dar preferência a caminhos relativos ao invés de caminhos absolutos pois(muito provavelmente) seu arquivos serão armazendas em uma máquina externa.</p>
+            <p>Após definir uma regra <code>@font-face</code>, para usar a fonte importada basta especificar o nome de referência dado a fonte importada como valor da propriedade <code>font-family</code> de um elemento:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        p{
+                            font-family: 'Maiandra';
+                            font-szie: 2em;
+                            text-align: center;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p>O trecho de código anterior resulta na seguinte fonte:</p>
+            <p style="font-family: 'Maiandra'; font-size: 2em; text-align: center;">Maiandra</p>
+            <footer>
+                <p style="font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
+            </footer>
+        </section>
+    </body>
+</html>
+
+<!---
+    > Tarefas
+    1.Realizar revisão ortográfica do texto.
+    2.Tornar exemplos mais objetivos.
+    3.Escrever uma seção de propriedades e o suporte dado por diferentes navegadores.
+-->

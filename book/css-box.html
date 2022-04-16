@@ -1,0 +1,115 @@
+<html>
+    <head>
+        <title>CSS Book</title>
+        <style>
+            body{
+                font-family: 'Arial', sans-serif;
+                font-size: 100%;
+                background-color: rgb(128, 128, 128);
+            }
+            p{
+                font-size: 1em;
+                text-align: justify;
+                text-indent: 50px;
+            }
+            .css-box{
+                font-size: 2em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                background-color: #222;
+                color: #fff;
+                max-width: 20%;
+                padding: 10px;
+                border: 4px solid #f0f;
+                margin: auto;
+                outline-style: solid;
+                outline-width: 5px;
+                outline-color: #888;
+                overflow: hidden;
+            }
+            .code-snippet{
+                overflow: auto; 
+                background-color: rgb(232, 232, 232); 
+                border-left: 6px solid rgb(32, 32 ,32);
+            }
+        </style>
+    </head>
+    <body>
+        <section style="width: 50%; padding: 20px 40px 20px 40px; margin: auto; background-color: rgb(255, 255, 255);">
+            <header>
+                <h1 style="border-bottom: 1px solid #000;">CSS Book- Caixas CSS</h1>
+            </header>
+            <p>Seletores CSS são estruturados como caixas que contém algum conteúdo. Por vezes, não estamos interessados nos limites dessas caixas e apenas queremos ver o conteúdo referido, como ocorre com o seletor <var>p</var>. Por outro lado, as vezes desejamos criar blocos formatados para representar cartões, artigos ou paíneis. Para realizar essa tarefa com eficiência, é preciso entender o modelo de caixas CSS para seletores. Veja:</p>
+            <ul>
+                <p>Todo seletor CSS(uma tag HTML) possui dimensão(podendo ser dinâmica - em, vw, vh, % - ou estática - mm, cm, px):</p>
+                <li>width: determina a largura, o espaço real especificado para o conteúdo do seletor.</li>
+                <li>height: determina a altura, o espaço real especificado para o conteúdo do seletor.</li>
+                <li>padding: determina o preechimento interno. Na prática, esse preenchimento e adicionado ao espaço destinado ao conteúdo, contudo, o espaço de preenchimento não contera qualquer conteúdo.</li>
+                <li>border: determina a borda do seletor. A borda é definida após a soma dos valores para largura e altura com o preenchimento.</li>
+                <li>margin: a margem é o espaço externo do seletor. Margens são transparentes e interagem com os objetos próximos(cruzando margens e.g).</li>
+                <li>outline: são contornos adicionados aos seletores. As dimensões de contorno de um seletor não interferem na interação objeto-objeto e podem ser visto apenas como adorno visual. Contornos partem do fim da borda e do começo das margens.</li>
+            </ul>
+            <p>O exemplo a seguir usa tais propriedades definidas sob o seletor <var>p</var>. <var>p</var> envolve a palavra "Caixa CSS", a largura é definida para 20% do bloco que a contém, a altura é omitida portanto possui ajuste automático. A cor preta preenche o plano de fundo do espaço do conteúdo mais o preenchimento(padding). Em magenta está a borda do seletor com 4px de espessura. As margens são definidas automaticamente de modo que centralizam o objeto no bloco que o contém. Um contorno em cinza é adicionado: </p>
+            <p class="css-box" style="text-indent: 0; text-align: center; vertical-align: center;">Caixas CSS</p>
+            <p>Essas propriedades possuem valores próprios permitindo estilizar com maior flexibilidade a formatação dos elementos HTML. Vamos cobrir sobre nas seções seguintes.</p>
+            <h3>width e height</h3>
+            <p>Como já mensionado, <code>width</code> e <code>height</code> definem o espaço real do conteúdo. As unidades de media podem ser conforme descrito no capítulo <a href="#">Unidades de Medida</a>.</p>
+            <h3>padding</h3>
+            <p>A propriedade define o preenchimento entorno do conteúdo(por isso considerado preenchimento interno).<code>padding</code> é uma forma abreviada que leva em conta os valores para o preenchimento superior, direito, inferior e esquerdo, caso seja definido apenas um parâmtro, o preenchimento será o mesmo para todos os lados. <code>padding</code> pode ser acessado em sua forma especifica como:</p>
+            <ul>
+                <li>padding-top: preencher ao topo.</li>
+                <p style="text-indent: 0; background-color: #ddd; max-width: 20%; padding: 4px; padding-top: 10px; border: 1px solid #222; border-radius: 2px; margin: auto; margin-top: 10px;margin-bottom: 10px;">padding-top</p>
+                <li>padding-right: preencher à direita</li>
+                <p style="text-indent: 0; background-color: #ddd; max-width: 20%; padding: 4px; padding-right: 10px; border: 1px solid #222; border-radius: 2px; margin: auto; margin-top: 10px;margin-bottom: 10px;">padding-right</p>
+                <li>padding-bottom: preencher à baixo</li>
+                <p style="text-indent: 0; background-color: #ddd; max-width: 20%; padding: 4px; padding-bottom: 10px; border: 1px solid #222; border-radius: 2px; margin: auto; margin-top: 10px;margin-bottom: 10px;">padding-bottom</p>
+                <li>padding-left: preencher à ésquerda.</li>
+                <p style="text-indent: 0; background-color: #ddd; max-width: 20%; padding: 4px; padding-left: 10px; border: 1px solid #222; border-radius: 2px; margin: auto; margin-top: 10px; margin-bottom: 10px;">padding-left</p>
+                <li>padding: preencher ao topo, direita, esquerda e inferior uniformemente.</li>
+                <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width: 20%; padding: 10px; border: 1px solid #222; border-radius: 2px; margin: auto; margin-top: 10px; margin-bottom: 10px;">padding</p>
+            </ul>
+                   
+            <h3>border</h3>
+            <p>A propriedade <code>border</code> define bordas para um seletor.<code>border</code> assim como <code>padding</code> é uma forma abreviada da propriedade e pode ser especificada pelas variações:</p>
+            <ul>
+                <li>border-top: borda superior.</li>
+                <li>border-right: borda direita.</li>
+                <li>border-bottom: borda inferior.</li>
+                <li>border-left: borda esquerda.</li>
+            </ul>
+            <p>Cada especificação da propriedade <code>border-</code> possuem combinações para definir valores individuais como:</p>
+            <ul>
+                <li>border-[top|right|bottom|left]-style: podendo ser <var>solid, dashed, dotted</var>.</li>
+                <li>border-[top|right|bottom|left]-color: definido em RGB, RGBA, HEX, HSL e HSLA.</li>
+                <li>border-[top|right|bottom|left]-width: a espessura da borda em mm, cm, px, %...</li>
+            </ul>
+            <p>Uma vez que deseja-se formatar uniformemente todas as bordas, use a versão abreviada seguindo o modelo <code>border: width style color;</code></p>
+            <p>Para renderizar caixas com cantos arredondados, CSS disponibiliza a função <code>border-radius: [mm|cm|px|em|%];</code>. Veja alguns exemplos:</p>
+            <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width:20%; border-top: 2px solid #000; border-radius: 5px; margin: auto; margin-top: 10px; margin-bottom: 20px;">border-top</p>
+            <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width:20%; border-right: 2px solid #000; border-radius: 5px; margin: auto; margin-top: 10px; margin-bottom: 20px;">border-right</p>
+            <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width:20%; border-bottom: 2px solid #000; border-radius: 5px; margin: auto; margin-top: 10px; margin-bottom: 20px;">border-bottom</p>
+            <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width:20%; border-left: 2px solid #000; border-radius: 5px; margin: auto; margin-top: 10px; margin-bottom: 20px;">border-left</p>
+            <h3>margin</h3>
+            <p>A propriedade<code>margin</code> define as margens de um seletor CSS. As margens podem ser especificadas individualmente seguindo a definição:</p>      
+            <ul>
+                <li>margin-top: a margem superior.</li>
+                <li>margin-direita: a margem direita.</li>
+                <li>margin-inferior: a margem inferior.</li>
+                <li>margin-esquerda: a margem esquerda.</li>
+            </ul>
+            <div style="padding: 20px; border: 2px solid #000;">
+                <p style="text-indent: 0; text-align: center; max-width: 30%; margin: auto; margin-top: 20px; border: 2px solid #000;">margin-top</p>
+                <p style="text-indent: 0; text-align: center; max-width: 30%; margin: auto; margin-right: 20px; border: 2px solid #000;">margin-right</p>
+                <p style="text-indent: 0; text-align: center; max-width: 30%; margin: auto; margin-bottom: 20px; border: 2px solid #000;">margin-bottom</p>
+                <p style="text-indent: 0; text-align: center; max-width: 30%; margin: auto; margin-left: 20px; border: 2px solid #000;">margin-left</p>
+            </div>
+            <p>No exemplo acima, as margens são definidas a partir do centro do bloco contâiner. Note uma tecnica para alinha objetos ao centro dos objetos que os contém é usar o valor <code>auto</code> para propriedade <code>margin</code>: <code style="background-color: #ddd;">[selector]{ margin:auto; }</code>.</p>            
+
+            <h3>outline</h3>      
+
+            <footer>
+                <p style="font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
+            </footer>
+        </section>
+    </body>
+</html>

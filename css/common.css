@@ -12,6 +12,16 @@
 body{
 	background-color: #f6f8fa;
 	font-family:  Arial, sans-serif;
+	font-size: 100%;
+}
+
+p{
+	text-indent: 50px;
+	font-size: 1em;
+}
+
+h1, h2, h3, h4, h5, h6{
+	font-size: 1em;
 }
 
 footer{
@@ -29,6 +39,7 @@ footer a:hover{
 	color: #5f9de5;
 }
 
+/* - My Identifiers - */
 #main-container{
 	text-align: justify;
 	background-color: #fff;
@@ -48,6 +59,10 @@ footer a:hover{
 #main-title h1{
 	font-size: 48px;
 	margin-top: 20px;
+	text-align: center;
+}
+
+#copyright{
 	text-align: center;
 }
 
@@ -72,9 +87,7 @@ section.content{
 	color: #aaa;
 }
 
-#copyright{
-	text-align: center;
-}
+/* - Responsive - */
 
 [class*="col-"]{
 	float: left;
