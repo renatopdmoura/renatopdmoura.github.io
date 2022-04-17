@@ -105,10 +105,46 @@
             </div>
             <p>No exemplo acima, as margens são definidas a partir do centro do bloco contâiner. Note uma tecnica para alinha objetos ao centro dos objetos que os contém é usar o valor <code>auto</code> para propriedade <code>margin</code>: <code style="background-color: #ddd;">[selector]{ margin:auto; }</code>.</p>            
 
-            <h3>outline</h3>      
+            <h3>outline</h3>
+            <p>A propriedade <code>outline</code> define o contorno que envolve um seletor. Um contorno pode ser formatado a partir das propriedades variantes de <code>outline</code>. Tais são:</p>  
+            <ul>
+                <li>outline-color: a cor do contorno(RGB, RGBA, HEX, HSL, HSLA)</li>
+                <li>outline-width: a espessura do contorno(mm, cm, px)</li>
+                <li>outline-style: o estilo da linha de contorno(solid, dashed, dotted...)</li>       
+                <li>outline-offset: o deslocamento do contorno em relação as bordas do objeto.</li>
+            </ul>
+            <p style="text-indent: 0; text-align: center; max-width: 20%; padding: 10px; border: 2px solid #000; margin: auto; outline: #888 2px dashed; outline-offset: 2px;">outline</p>
+            <p>No exemplo acima, a linha tracejada denota o contorno do objeto com deslocamento de 2 pixels.</p>
 
+            <h2>Exibição</h2>
+            <p>Algumas tagas HTML quando tratas apenas levam em considerção o espaço denotado pelo conteúdo envolvido pela tag. Por vezes, como quando usamos listas para construir menus, desejamos que toda formatação como a largura, altura, preenchimento, bordas e margens sejam levadas em conta em nossa formatação. Para tanto, a propriedade <code>display</code> apresenta os seguintes valores:</p>
+            <ul>
+                <li>none: quando desejamos ocultar o objeto e desconsiderar qualquer interação deste com o meio.</li>
+                <li>inline: é o modo padrão para muitas das tags html. O conteúdo do elemento será avaliado como um elemento que ocupa apenas a linha em que é definido.</li>
+                <li>block: toda caixa CSS será levada em conta nos calculos de posicionamento. Após um elemento ser determinado como um bloco, uma quebra de linha será inserida.</li>
+                <li>block: toda caixa CSS será levada em conta nos calculos de posicionamento, entretanto, o elemento será julgado na linha em que reside.</li>
+            </ul>
+            <p>Atribuindo <code>block</code> à <code>display</code>:</p>
+            <ul style="background-color: #fff; max-width: 30%; padding: 20px; margin: auto;">
+                <li style="display: block; background-color: #ede; padding: 20px;">Home</li>
+                <li style="display: block; background-color: #ede; padding: 20px;">Products</li>
+                <li style="display: block; background-color: #ede; padding: 20px;">About</li>
+            </ul>
+            <p>Atribuindo <code>inline</code> à <code>display</code>:</p>
+            <ul style="background-color: #fff; max-width: 30%; padding: 20px; margin: auto;">
+                <li style="display: inline; background-color: #ede; padding: 20px;">Home</li>
+                <li style="display: inline; background-color: #ede; padding: 20px;">Products</li>
+                <li style="display: inline; background-color: #ede; padding: 20px;">About</li>
+            </ul>
+            <p>Atribuindo <code>inline-block</code> à <code>display</code>:</p>
+            <ul style="background-color: #fff; max-width: 30%; padding: 20px; margin: auto;">
+                <li style="display: inline-block; background-color: #ede; padding: 20px;">Home</li>
+                <li style="display: inline-block; background-color: #ede; padding: 20px;">Products</li>
+                <li style="display: inline-block; background-color: #ede; padding: 20px;">About</li>
+            </ul>
+            <p>A principal diferença entre <code>inline</code> e <code>inline-block</code> é percebida quando ampliamos nossa página. Note que quando os elementos da &lt;ul&gt; quebram, para <code>inline</code> apenas o conteúdo direto da &lt;li&gt; desloca-se uma linha para baixo respeitando a altura limite dos objetos. Já para <code>inline-bloc</code> não só o espaço denotado pelo conteúdo mas também o preenchimento, bordas e margens são levados em conta de modo que não haja sobreposições entre os blocos de cada &lt;li&gt; na lista.</p>
             <footer>
-                <p style="font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
+                <p style="text-indent: 0; font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
             </footer>
         </section>
     </body>
