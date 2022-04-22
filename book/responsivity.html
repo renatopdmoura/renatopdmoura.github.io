@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <title>CSS Book</title>
+        <style>
+            body{
+                font-family: 'Arial', sans-serif;
+                font-size: 100%;
+                background-color: rgb(128, 128, 128);
+            }
+            p{
+                text-align: left;
+                font-size: 1em;
+                margin: auto;
+            }
+            .css-box{
+                font-size: 2em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                background-color: #222;
+                color: #fff;
+                max-width: 20%;
+                padding: 10px;
+                border: 4px solid #f0f;
+                margin: auto;
+                outline-style: solid;
+                outline-width: 5px;
+                outline-color: #888;
+                overflow: hidden;
+            }
+            .code-snippet{
+                overflow: auto; 
+                background-color: rgb(232, 232, 232); 
+                border-left: 6px solid rgb(32, 32 ,32);
+            }
+        </style>
+    </head>
+    <body>
+        <section style="width: 50%; padding: 20px 40px 20px 40px; margin: auto; background-color: rgb(255, 255, 255);">
+            <header>
+                <h1 style="border-bottom: 1px solid #000;">CSS Book- Responsividade</h1>
+            </header>
+            
+            <h2>Consultas de Mídia</h2>
+            <p>Uma regra @media permite definir diferentes formatações para diferentes mídias. Usando a regra @media podemos por exemplo definir um padrão de cores diferentes para quando o usuário abre o seu site em um dispositivo mobile ou no computador como também carregar layouts diferentes para seu site dependendo do dispositivo em que ele é acessado. Traduzindo o termo "media query" obtemos um significado claro e objetivo do que tal regra é capaz de realizar, ou seja consultas de mídia. As consultas bastante comuns de serem realizadas são, não limitadas à:</p>
+            <ul>
+                <li>verificar a largura e altura da viewport.</li>
+                <li>verificar a largura e altura do dispositivo.</li>
+                <li>verificar o modo de orientação de um dispositivo.</li>
+                <li>verificar a resolução atual.</li>
+            </ul>
+            <p>Dado tal, por pordermos verificar caracteristicas dos dispositivos em que o site opera, @media é fundamental quando tocamos no assunto de responsividade. Vamos verificar um exemplo abaixo:</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        @media screen and (max-width: 600px){
+                            body{
+                                background-color: #fdd;
+                            }
+                        }
+                        @media screen and (min-width: 600px){
+                            body{
+                                background-color: #ddd;
+                            }
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p>Nesse exemplo, definimos duas regras especificando a mídia como <code>screen</code> e especificamos uma condição para regra: caso a largura máxima da tela do dispositivo seja 600px. Em caso verdadeiro, definimos o plano de fundo da tag <var>body</var> para um tom rosado. A segunda regra @media é similiar, contudo a condição do lado direito do operador relacional "and" define que a regra deve ser aplicada sempre que o tamanho mínimo da largura do dispositivo sejá igual a 600px.</p>
+
+            <p>Com uma pequena ideia de como uma @media funciona, vamos explorar sua definição sintática:</p>
+
+            <code>@media mediatype and|not|only (expressions)</code>
+            <p>Onde:</p>
+            <ul>
+                <li>@media: declarado ao definir uma regra de consulta de mídia.</li>
+                <li>mediatype: a variável de mídia a ser verificada, sendo:</li>
+                    <ul>
+                        <li>all: não discrimina entre dispositivos. O padrão.</li>
+                        <li>print: define que as consultas serão válidas para impressoras.</li>
+                        <li>screen: define que as consultas serão válidas para telas de computadores, smart-phones, tablets...</li>
+                        <li>speech: define que as consultas serão válidas para leitores de tela.</li>
+                    </ul>
+            </ul>
+            <li>and | not | only: definem operadores relacionais. Para mais informações sobre consulte <a href="#">Apêndice A: Operadores Relacionais</a>.</li>
+            <li>expressions: uma ou mais expressões condicionais ligadas a consulta de mídias.</li>
+
+            <p>Existem diversas expressões em CSS. As expressões mais notórias são discutidas a seguir:</p>
+
+            
+           <p>Uma página responsiva construida usando consultas de mídia pode ser visualizada no seguinte <a href="debug.html" target="blank">link</a>.</p>
+           <h3>max-width</h3>
+           <p>Uma expressão que retorna o tamanho máximo da janela de exibição do navegador.</p>
+           <h3>min-width</h3>
+           <p>Uma expressão que retorno o tamanho mínimo da janela de exibição do navegador.</p>
+           <h3>orientation</h3>
+           <p>Uma expressão que verifica a orientação do dispositivo, se em modo paisagem ou em modo retrato.</p>
+           <h3>resoltution</h3>
+           <p>Uma expressão que verifica a resolução do dispositivo de saída.</p>
+           
+            <footer>
+                <p style="text-indent: 0; font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
+            </footer>
+        </section>
+    </body>
+</html>

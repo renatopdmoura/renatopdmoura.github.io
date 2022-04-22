@@ -1,0 +1,297 @@
+<html>
+    <head>
+        <title>CSS Book</title>
+        <style>
+            body{
+                font-family: 'Arial', sans-serif;
+                font-size: 100%;
+                background-color: rgb(128, 128, 128);
+            }
+            p{
+                text-align: left;
+                font-size: 1em;
+                margin: auto;
+            }
+            .css-box{
+                font-size: 2em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                background-color: #222;
+                color: #fff;
+                max-width: 20%;
+                padding: 10px;
+                border: 4px solid #f0f;
+                margin: auto;
+                outline-style: solid;
+                outline-width: 5px;
+                outline-color: #888;
+                overflow: hidden;
+            }
+            .code-snippet{
+                overflow: auto; 
+                background-color: rgb(232, 232, 232); 
+                border-left: 6px solid rgb(32, 32 ,32);
+            }
+            .pos-debug-father{
+                text-align: center;
+                background-color: antiquewhite;
+                max-width: 80%;
+                height: auto;
+                padding: 20px;
+                border: 2px solid #000;
+                border-radius: 5px;
+                margin: auto;
+                margin-top: 20px;
+                margin-bottom: 20px;
+                position: relative;
+            }
+            .pos-debug-children{
+                text-align: center;
+                background-color: aliceblue;
+                box-sizing: border-box;
+                width: 20%;
+                height: auto;
+                padding: 20px;
+                border: 2px solid #000;
+                border-radius: 5px;
+            }
+        </style>
+    </head>
+    <body>
+        <section style="width: 50%; padding: 20px 40px 20px 40px; margin: auto; background-color: rgb(255, 255, 255);">
+            <header>
+                <h1 style="border-bottom: 1px solid #000;">CSS Book- Arranjamento de layout</h1>
+            </header>
+            
+            <h2>Dispondo elementos</h2>
+
+            <p>A seguir lista-se propriedades que organizam o layout do seu site:</p>
+            <ol>
+                <li>position</li>
+                <li>float</li>
+                <li>z-index</li>
+            </ol>
+            
+            <h3>position</h3>
+            <p>A propriedade position define a posição de um elemento na página. Os valores para a propriedade são:</p>
+            <ul>
+                <li>sticky</li>
+                    <ul>
+                        <p>Ao definir <code>sticky</code> para propriedade <code>position</code>, ao rolar a página, o elemento se prenderá ao topo/inferior(para rolagem vertical, ou no lado esquerdo/direito para rolagem horizontal).</p>
+                        <div class="code-snippet">
+                            <code>
+                                <pre>
+                                    .pos-debug-father{
+                                        text-align: center;
+                                        background-color: antiquewhite;
+                                        box-sizing: border-box;
+                                        max-width: 100%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                        margin: auto;
+                                        margin-top: 20px;
+                                        margin-bottom: 20px;
+                                        position: sticky;
+                                        top: 0;
+                                    }
+                                    .pos-debug-children{
+                                        text-align: center;
+                                        background-color: aliceblue;
+                                        box-sizing: border-box;
+                                        max-width: 20%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                    }
+                                </pre>                            
+                            </code>
+                        </div>
+                    </ul>
+
+                <li>static</li>
+                    <ul>
+                        <p>Ao definir <code>static</code> para propriedade <code>position</code> de um elemento, o elemento não apresentará qualquer comportamento especial e sua posição permanecerá a mesma.</p>
+                        <div class="code-snippet">
+                            <code>
+                                <pre>
+                                    .pos-debug-father{
+                                        text-align: center;
+                                        background-color: antiquewhite;
+                                        box-sizing: border-box;
+                                        max-width: 100%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                        margin: auto;
+                                        margin-top: 20px;
+                                        margin-bottom: 20px;
+                                        position: static;
+                                        left: 100px;
+                                    }
+                                    .pos-debug-children{
+                                        text-align: center;
+                                        background-color: aliceblue;
+                                        box-sizing: border-box;
+                                        max-width: 20%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                    }
+                                </pre>                            
+                            </code>
+                        </div>
+                        <p>Note como um deslocamento para esquerda de 100 pixels(left: 100px) resulta em um noup.</p>
+                    </ul>
+               
+                <li>absolute</li>
+                    <ul>
+                        <p>Ao definir <code>absolute</code> para propriedade <code>position</code>, o elemento terá sua posição definida em função de seu elemento ancestral direto e caso não houver, a tah &lt;body&gt; será usada como referência.</p>
+                        <div class="code-snippet">
+                            <code>
+                                <pre>
+                                    .pos-debug-father{
+                                        text-align: center;
+                                        background-color: antiquewhite;
+                                        box-sizing: border-box;
+                                        max-width: 100%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                        margin: auto;
+                                        margin-top: 20px;
+                                        margin-bottom: 20px;
+                                        position: relative;
+                                    }
+                                    .pos-debug-children{
+                                        text-align: center;
+                                        background-color: aliceblue;
+                                        box-sizing: border-box;
+                                        max-width: 20%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                        position: absolute;
+                                        top: -2px;
+                                        left: -2px;
+                                    }
+                                </pre>                            
+                            </code>
+                        </div>
+                    </ul>
+                    
+                <li>relative</li>
+                    <ul>
+                        <p>Ao definir <code>relative</code> para propriedade <code>position</code>, o elemento terá sua posição relativa a posição no fluxo de dados da página na qual fora definido.</p>
+                        <div class="code-snippet">
+                            <code>
+                                <pre>
+                                    .pos-debug-father{
+                                        text-align: center;
+                                        background-color: antiquewhite;
+                                        box-sizing: border-box;
+                                        max-width: 100%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                        margin: auto;
+                                        margin-top: 20px;
+                                        margin-bottom: 20px;
+                                        position: relative;
+                                        left: 20px;
+                                    }
+                                    .pos-debug-children{
+                                        text-align: center;
+                                        background-color: aliceblue;
+                                        box-sizing: border-box;
+                                        max-width: 20%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                    }
+                                </pre>                            
+                            </code>
+                        </div>
+                    </ul>
+                
+                <li>fixed</li>
+                    <ul>
+                        <p>Ao definir <code>fixed</code> para propriedade <code>position</code>, o elemento manterá sua posição fixa independente da rolagem página.</p>
+                        <div class="code-snippet">
+                            <code>
+                                <pre>
+                                    .pos-debug-father{
+                                        text-align: center;
+                                        background-color: antiquewhite;
+                                        box-sizing: border-box;
+                                        max-width: 100%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                        margin: auto;
+                                        margin-top: 20px;
+                                        margin-bottom: 20px;
+                                        position: fixed;
+                                        top: 0;
+                                    }
+                                    .pos-debug-children{
+                                        text-align: center;
+                                        background-color: aliceblue;
+                                        box-sizing: border-box;
+                                        max-width: 20%;
+                                        height: auto;
+                                        padding: 20px;
+                                        border: 2px solid #000;
+                                        border-radius: 5px;
+                                    }
+                                </pre>                            
+                            </code>
+                        </div>
+                    </ul>
+            </ul>
+            <p>As propriedades que determinam as posições explicitamente de um elemento são:</p>
+            <ul>
+                <li>top</li>
+                <li>left</li>
+                <li>right</li>
+                <li>bottom</li>
+            </ul>
+            <p>Essas propriedades se comportaram diferentemente para cada valor de <code>position</code> pois cada valor de <code>position</code> define um referêncial distinto. As unidades de medidas aceitas para cada valor são descritas no capítulo <a href="measurement-units.html">Unidades de Medidas</a>.</p>
+
+            <h3>float</h3>
+            <p>Definir  a propriedade <code>float</code> para um elemento determina que esse elemento deve flutuar de modo que o conteúdo que o procede ocupe dinâmicamente o espaço disponível.</p>
+            <p>Flutuações podem ocorrer em suma para dois sentidos:</p>
+            <ul>
+                <li>right: o elemento flutuará para direita.</li>
+                <li>left: o elemento flutuará para esquerda.</li>
+            </ul>
+
+            <h3>clear</h3>
+            <p>Determina como um elemento adjacente a um elemente flutuante deve se comportar. <code>clear</code> pode receber os seguintes valores:</p>
+            <ul>
+                <li>none: o elemento adjacente não será empurrado para a esquerda ou direita do elemento flutuante.</li>
+                <li>left: o elemento é empurrado abaixo dos elementos flutuantes à esquerda.</li>
+                <li>right: o elemento é empurrado abaixo dos elementos flutuantes à direita.</li>
+                <li>both: o elemento é empurrado abaixo dos elementos flutuantes à esquerda e direita.</li>
+                <li><var>inherit: herda o valor de seu elemento pai.</var></li>
+            </ul>
+            <p><code>clear</code> deve ser definida sempre após uma propriedade <code>float</code> .</p>
+
+            <h3>z-index</h3>
+            <p>A proprieda <code>z-index</code> resolve o problema de sobreposição de elementos. Por padrão, o elemento com maior prioridade visual é aquele definido por último(como uma pilha de livros, o ultimo elemento é(idealmente) o primeiro a ser avaliado quando desejamos manipular a pilha). <code>z-index</code> possui valores os quais em ordem crescente representa a prioridade de sobreposição na página. Por exemplo, se definirmos para uma <var>divA</var> <code>z-index: 1</code> e para uma <var>divB</var> <code>z-index: 2</code> a <var>divA</var> se sobreporá a <var>divB</var> uma vez que dividem o mesmo ou parte do mesmo espaço no documento.</p>
+           
+            <footer>
+                <p style="text-indent: 0; font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
+            </footer>
+        </section>
+    </body>
+</html>

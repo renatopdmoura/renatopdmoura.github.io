@@ -1,0 +1,93 @@
+<html>
+    <head>
+        <title>CSS Book</title>
+        <style>
+            body{
+                font-family: 'Arial', sans-serif;
+                font-size: 100%;
+                background-color: rgb(128, 128, 128);
+            }
+            p{
+                text-align: left;
+                font-size: 1em;
+                margin: auto;
+            }
+            .css-box{
+                font-size: 2em;
+                white-space: nowrap;
+                text-overflow: ellipsis;
+                background-color: #222;
+                color: #fff;
+                max-width: 20%;
+                padding: 10px;
+                border: 4px solid #f0f;
+                margin: auto;
+                outline-style: solid;
+                outline-width: 5px;
+                outline-color: #888;
+                overflow: hidden;
+            }
+            .code-snippet{
+                overflow: auto; 
+                background-color: rgb(232, 232, 232); 
+                border-left: 6px solid rgb(32, 32 ,32);
+            }
+        </style>
+    </head>
+    <body>
+        <section style="width: 50%; padding: 20px 40px 20px 40px; margin: auto; background-color: rgb(255, 255, 255);">
+            <header>
+                <h1 style="border-bottom: 1px solid #000;">CSS Book- Debug</h1>
+            </header>
+            
+            <h2>Unidades absolutas</h2>
+            <p>Unidades absolutas são independetnes de resolução. São direcionadas ao uso de páginas para impressão ou para dispositivos cuja resolução de saída seja conhecida.</p>
+            <ul>
+                <li>cm: corresponde a centimetros.</li>
+                <li>mm: corresponde a milimetros.</li>
+                <li>in: corresponde a polegadas onde cada polegada é igual à 96 que são iguais a 2.54cm.</li>
+                <li>px: corresponde a pixels onde cada pixel é igual à 1/96 de uma polegada.</li>
+                <li>pc: corresponde a picas onde cada pica é igual à 12 pontos.</li>
+            </ul>
+            
+            <h2>Unidades relativas</h2>
+            <p>Unidades relativas são aquelas que respondem dinâmicamente a mudança de resolução com base em critérios matemáticos definidos para cada unidade singular. Abaixo segue uma breve explicação sobre as unidades juntamente com exemplos objetivos do comportamento de tais unidades.</p>
+
+            <h3>ch</h3>
+            <p>A unidade minima é definida pela largura do caractere 0 da fonte atual:</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2ch; width: 4ch;">ch</p>
+
+            <h3>ex</h3>
+            <p>A unidade minima é definida pela altura do caractere x da fonte atual:</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2ex; width: 4ex;">ex</p>
+           
+            <h3>em</h3>
+            <p>A unidade minima é o tamanho da fonte atual para um elemento:</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2em; width: 4em;">em</p>
+
+            <h3>rem</h3>
+            <p>A unidade minima é o tamanho da fonte do elemento raiz.</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2rem; width: 4rem;">rem</p>
+
+            <h3>vw/vh</h3>
+            <p>Relativo a largura da viewport e altura da viewport respectivamente.</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2vw; width: 10vw;">vw/vh</p>
+
+            <h3>vmin</h3>
+            <p>Relativo a menor resolução de janela de visualização.</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2vmin; width: 10vmin;">vmin</p>
+            
+            <h3>vmax</h3>
+            <p>Relativo a maior resolução de janela de visualização.</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 2vmax; width: 10vmax;">vmax</p>
+            
+            <h3>%</h3>
+            <p>Medida relativa as dimensões do elemento pai.</p>
+            <p style="text-align:center; background-color: #ddd; font-size: 100%; width: 10%;">%</p>          
+
+            <footer>
+                <p style="text-indent: 0; font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
+            </footer>
+        </section>
+    </body>
+</html>

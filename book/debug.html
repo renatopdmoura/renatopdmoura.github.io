@@ -1,0 +1,125 @@
+<html>
+    <head>
+        <title>CSS Book</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <style>
+            *{
+                box-sizing: border-box;
+            }
+            body{
+                font-family: 'Arial', sans-serif;
+                font-size: 100%;
+                background-color: #ddd;
+            }
+            p{
+                text-indent: 50px;
+                font-size: 1em;
+                /* text-align: justify; */
+                line-height: 30px;
+            }
+            #content{
+                margin: 40px;
+            }
+            /* media query debug */
+            @media screen and (max-width: 1280px){
+                /* modible divices */
+                *{
+                    border: 1px solid rgba(0, 0, 0, 0);
+                }
+                #canvas{
+                    max-width: 100%;
+                    padding: 0;
+                    margin: auto;
+                    background-color: #fff;
+                }
+                header{
+                    background-color: blanchedalmond;
+                    box-sizing: border-box;
+                    max-width: 100%;
+                    height: auto;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    margin: 0;
+                }
+                header h1{
+                    text-align: center;
+                    max-width: 100%;
+                    height: auto;
+                    padding: 20px;                    
+                }
+                header nav ul{
+                    list-style: none;
+                    text-align: center;
+                    padding: 0;
+                }
+                .menu{
+                    max-width: 100%;
+                    height: auto;
+                    padding: 20px;
+                    border-bottom: 2px solid #000;
+                }
+            }
+            @media screen and (min-width: 1280px){
+                /* desktop */
+                #canvas{
+                    max-width: 60%;
+                    padding: 0;
+                    margin: auto;
+                    background-color: rgb(255, 255, 255);
+                }
+                header{
+                    background-color: blanchedalmond;
+                    box-sizing: border-box;
+                    max-width: 100%;
+                    height: auto;
+                    padding-right: 20px;
+                    padding-left: 20px;
+                    margin: 0;
+                }
+                header h1{
+                    box-sizing: border-box;
+                    display: inline;
+                    position: relative;
+                    float: left;
+                    max-width: 100%;
+                    height: auto;
+                }
+                header nav{
+                    text-align: right;
+                    max-width: 100%;
+                }
+                .menu{
+                    box-sizing: border-box;
+                    display: inline-block;
+                    height: auto;
+                    padding: 20px;
+                    border-bottom: 2px solid #000;
+                }
+                .menu:hover{
+                    border-bottom: 2px solid #ddd;
+                }
+            }
+        </style>
+    </head>
+    <body style="border: 0px;">
+        <section id="canvas">
+            <header>
+                <h1>CSS Book - Responsive Page</h1>
+                <nav>
+                    <ul>
+                        <li class="menu">Início</li>
+                        <li class="menu">Produtos</li>
+                        <li class="menu">Sobre</li>
+                    </ul>
+                </nav>
+            </header>
+            <section id="content">
+                <h2>Usando @media para responsividade</h2>
+                <p>Esta é uma página exemplo, você pode realizar os teste cabíveis aqui. @media possuí uma variedade de parâmtros, essa pagina é construída de modo que adeque-se tanto à dispositivos portáteis quanto a computadores de mesa. Verifique o comportamento depurando a página através da tecla F12.</p>
+                <footer style="padding: 10px; border-top: 1px solid #000;">
+                    <p style="text-indent: 0; font-size: 0.95em; color: #000; text-align: center;">CSS Book 2022 - Exemplos</p>
+                </footer>
+            </section>
+        </section>
+    </body>
+</html>
