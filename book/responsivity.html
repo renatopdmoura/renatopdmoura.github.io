@@ -96,7 +96,22 @@
            <p>Uma expressão que verifica a orientação do dispositivo, se em modo paisagem ou em modo retrato.</p>
            <h3>resoltution</h3>
            <p>Uma expressão que verifica a resolução do dispositivo de saída.</p>
-           
+
+           <p>O exemplo a seguir mostra como encadear consultas de mídia:</p>
+           <div class="code-snippet">
+               <code>
+                   <pre>
+                       @media screen and (max-width: 1280){
+                           @media screen and (orientation: landscape){
+                               body{
+                                   background-color: antiquewhite;
+                               }
+                           }
+                       }
+                   </pre>
+               </code>
+           </div>
+           <p>O trecho de código a seguir define que para toda janela de visualização cuja largura máxima seja igual à 1280 pixels e a orientação do dispositivo seja em modo paisagem, o corpo da página terá uma cor com tom de branco envelhecido.</p>           
             <footer>
                 <p style="text-indent: 0; font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
             </footer>
