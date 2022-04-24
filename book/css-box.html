@@ -1,17 +1,8 @@
 <html>
     <head>
         <title>CSS Book</title>
+        <link rel="stylesheet" href="css/common.css">
         <style>
-            body{
-                font-family: 'Arial', sans-serif;
-                font-size: 100%;
-                background-color: rgb(128, 128, 128);
-            }
-            p{
-                font-size: 1em;
-                text-align: justify;
-                text-indent: 50px;
-            }
             .css-box{
                 font-size: 2em;
                 white-space: nowrap;
@@ -22,15 +13,12 @@
                 padding: 10px;
                 border: 4px solid #f0f;
                 margin: auto;
+                margin-top: 20px;
+                margin-bottom: 20px;
                 outline-style: solid;
                 outline-width: 5px;
                 outline-color: #888;
                 overflow: hidden;
-            }
-            .code-snippet{
-                overflow: auto; 
-                background-color: rgb(232, 232, 232); 
-                border-left: 6px solid rgb(32, 32 ,32);
             }
         </style>
     </head>
@@ -51,11 +39,11 @@
             </ul>
             <p>O exemplo a seguir usa tais propriedades definidas sob o seletor <var>p</var>. <var>p</var> envolve a palavra "Caixa CSS", a largura é definida para 20% do bloco que a contém, a altura é omitida portanto possui ajuste automático. A cor preta preenche o plano de fundo do espaço do conteúdo mais o preenchimento(padding). Em magenta está a borda do seletor com 4px de espessura. As margens são definidas automaticamente de modo que centralizam o objeto no bloco que o contém. Um contorno em cinza é adicionado: </p>
             <p class="css-box" style="text-indent: 0; text-align: center; vertical-align: center;">Caixas CSS</p>
-            <p>Essas propriedades possuem valores próprios permitindo estilizar com maior flexibilidade a formatação dos elementos HTML. Vamos cobrir sobre nas seções seguintes.</p>
+            <p>Essas propriedades possuem valores próprios permitindo estilizar e controlar com maior flexibilidade a formatação dos elementos HTML. Vamos cobrir sobre nas seções seguintes.</p>
             <h3>width e height</h3>
             <p>Como já mensionado, <code>width</code> e <code>height</code> definem o espaço real do conteúdo. As unidades de media podem ser conforme descrito no capítulo <a href="#">Unidades de Medida</a>.</p>
             <h3>padding</h3>
-            <p>A propriedade define o preenchimento entorno do conteúdo(por isso considerado preenchimento interno).<code>padding</code> é uma forma abreviada que leva em conta os valores para o preenchimento superior, direito, inferior e esquerdo, caso seja definido apenas um parâmtro, o preenchimento será o mesmo para todos os lados. <code>padding</code> pode ser acessado em sua forma especifica como:</p>
+            <p>A propriedade define o preenchimento em torno do conteúdo(por isso considerado preenchimento interno). <code>padding</code> é uma forma abreviada que leva em conta os valores para o preenchimento superior, direito, inferior e esquerdo. Caso seja definido apenas um parâmtro, o preenchimento será o mesmo para todos os lados. <code>padding</code> pode ser acessado em sua forma especifica como:</p>
             <ul>
                 <li>padding-top: preencher ao topo.</li>
                 <p style="text-indent: 0; background-color: #ddd; max-width: 20%; padding: 4px; padding-top: 10px; border: 1px solid #222; border-radius: 2px; margin: auto; margin-top: 10px;margin-bottom: 10px;">padding-top</p>
@@ -70,7 +58,7 @@
             </ul>
                    
             <h3>border</h3>
-            <p>A propriedade <code>border</code> define bordas para um seletor.<code>border</code> assim como <code>padding</code> é uma forma abreviada da propriedade e pode ser especificada pelas variações:</p>
+            <p>A propriedade <code>border</code> define bordas para um seletor. <code>border</code> assim como <code>padding</code> é uma forma abreviada da propriedade e pode ser especificada pelas variações:</p>
             <ul>
                 <li>border-top: borda superior.</li>
                 <li>border-right: borda direita.</li>
@@ -90,7 +78,7 @@
             <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width:20%; border-bottom: 2px solid #000; border-radius: 5px; margin: auto; margin-top: 10px; margin-bottom: 20px;">border-bottom</p>
             <p style="text-indent: 0; text-align: center; background-color: #ddd; max-width:20%; border-left: 2px solid #000; border-radius: 5px; margin: auto; margin-top: 10px; margin-bottom: 20px;">border-left</p>
             <h3>margin</h3>
-            <p>A propriedade<code>margin</code> define as margens de um seletor CSS. As margens podem ser especificadas individualmente seguindo a definição:</p>      
+            <p>A propriedade <code>margin</code> define as margens de um seletor CSS. As margens podem ser especificadas individualmente seguindo a definição:</p>      
             <ul>
                 <li>margin-top: a margem superior.</li>
                 <li>margin-direita: a margem direita.</li>
@@ -117,12 +105,12 @@
             <p>No exemplo acima, a linha tracejada denota o contorno do objeto com deslocamento de 2 pixels.</p>
 
             <h2>Exibição</h2>
-            <p>Algumas tagas HTML quando tratas apenas levam em considerção o espaço denotado pelo conteúdo envolvido pela tag. Por vezes, como quando usamos listas para construir menus, desejamos que toda formatação como a largura, altura, preenchimento, bordas e margens sejam levadas em conta em nossa formatação. Para tanto, a propriedade <code>display</code> apresenta os seguintes valores:</p>
+            <p>Algumas tagas HTML quando tratadas apenas levam em considerção o espaço denotado pelo conteúdo envolvido pela tag. Por vezes, como quando usamos listas para construir menus, desejamos que toda formatação como a largura, altura, preenchimento, bordas e margens sejam levadas em conta em nossa formatação. Para tanto, a propriedade <code>display</code> apresenta os seguintes valores:</p>
             <ul>
                 <li>none: quando desejamos ocultar o objeto e desconsiderar qualquer interação deste com o meio.</li>
                 <li>inline: é o modo padrão para muitas das tags html. O conteúdo do elemento será avaliado como um elemento que ocupa apenas a linha em que é definido.</li>
                 <li>block: toda caixa CSS será levada em conta nos calculos de posicionamento. Após um elemento ser determinado como um bloco, uma quebra de linha será inserida.</li>
-                <li>block: toda caixa CSS será levada em conta nos calculos de posicionamento, entretanto, o elemento será julgado na linha em que reside.</li>
+                <li>inline-block: toda caixa CSS será levada em conta nos calculos de posicionamento, entretanto, o elemento será julgado na linha em que reside.</li>
             </ul>
             <p>Atribuindo <code>block</code> à <code>display</code>:</p>
             <ul style="background-color: #fff; max-width: 30%; padding: 20px; margin: auto;">
@@ -142,7 +130,14 @@
                 <li style="display: inline-block; background-color: #ede; padding: 20px;">Products</li>
                 <li style="display: inline-block; background-color: #ede; padding: 20px;">About</li>
             </ul>
-            <p>A principal diferença entre <code>inline</code> e <code>inline-block</code> é percebida quando ampliamos nossa página. Note que quando os elementos da &lt;ul&gt; quebram, para <code>inline</code> apenas o conteúdo direto da &lt;li&gt; desloca-se uma linha para baixo respeitando a altura limite dos objetos. Já para <code>inline-bloc</code> não só o espaço denotado pelo conteúdo mas também o preenchimento, bordas e margens são levados em conta de modo que não haja sobreposições entre os blocos de cada &lt;li&gt; na lista.</p>
+            <p>A principal diferença entre <code>inline</code> e <code>inline-block</code> é percebida quando ampliamos nossa página. Note que quando os elementos da &lt;ul&gt; quebram, para <code>inline</code> apenas o conteúdo direto da &lt;li&gt; desloca-se uma linha para baixo respeitando a altura limite dos objetos. Já para <code>inline-block</code> não só o espaço denotado pelo conteúdo mas também o preenchimento, bordas e margens são levados em conta de modo que não haja sobreposições entre os blocos de cada &lt;li&gt; na lista.</p>
+
+            <h3>Observação</h3>
+            <p>Ainda podemos ser sucintos quanto aquilo que queremos avaliar como "limites de caixa". A proprieda <code>box-sizing</code> determina isso dados os seguintes valores:</p>
+            <ul>
+                <li>border-box: do conteúdo às bordas será avaliado como "limites de caixa".</li>
+                <li>margin-box: do conteúdo às margens  será avaliado como "limites de caixa".</li>
+            </ul>
             <footer>
                 <p style="text-indent: 0; font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
             </footer>

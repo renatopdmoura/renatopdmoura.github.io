@@ -1,67 +1,76 @@
 <html>
     <head>
         <title>CSS Book</title>
+        <link rel="stylesheet" href="css/common.css">
         <style>
             @font-face{
                 font-family: 'Maiandra';
                 src: url(fonts/Maiandra.TTF);
             }
-            body{
-                font-family: 'Arial', sans-serif;
-                font-size: 100%;
-                background-color: rgb(128, 128, 128);
-            }
-            p{
-                font-size: 1em;
-                text-align: justify;
-                text-indent: 50px;
+            @font-face{
+                font-family: 'OldLondon';
+                src: url(fonts/OldLondon.TTF);
             }
             #serif{
+                margin-top: 20px;
+                margin-bottom: 20px;
                 font-family: 'Times New Roman', serif;
                 font-size: 2em;
             }
             #sans-serif{
+                margin-top: 20px;
+                margin-bottom: 20px;
                 font-family: 'Arial', sans-serif;
                 font-size: 2em;
             }
             #monospace{
+                margin-top: 20px;
+                margin-bottom: 20px;
                 font-family: 'Courier New', monospace;
                 font-size: 2em;
             }
             #cursive{
+                margin-top: 20px;
+                margin-bottom: 20px;
                 font-family: 'Lucida Handwriting', cursive;
                 font-size: 2em;
             }
             #fantasy{
+                margin-top: 20px;
+                margin-bottom: 20px;
                 font-family: 'Papyrus', fantasy;
                 font-size: 2em;
             }
             .text-properties-ex{
-                display: inline-block;
                 font-family: 'Verdana', sans-serif;
                 font-size: 1.085em;
                 text-align: justify;
                 text-indent: 20px;
                 background-color: rgb(232, 232, 232);
-                width: 80%;
+                max-width: 100%;
                 padding: 20px;
                 border: 1px solid rgb(0, 0, 0); 
                 border-radius: 5px;
+                margin-top: 20px;
+                margin-bottom: 20px;
             }
-            .code-snippet{
-                overflow: auto; 
-                background-color: rgb(232, 232, 232); 
-                border-left: 6px solid rgb(32, 32 ,32);
+            .caps{
+                font-variant: small-caps;   
+            }
+            .caps::first-letter{               
+                font-size: 4em;
+                padding: 4px;
             }
         </style>
     </head>
     <body>
-        <section style="width: 50%; padding: 20px 40px 20px 40px; margin: auto; background-color: rgb(255, 255, 255);">
+        <section id="content">
             <header>
                 <h1 style="border-bottom: 1px solid #000;">CSS Book- Capítulo sobre Textos</h1>
             </header>
-            <p>Esse capítulo descreve noções essenciais para que seus paragrafos e títulos tenham uma aparência agradavel e moderna, como também um comportamento responsivo.</p>
-            <p>Textos podem ser trados dadas as seguinte propriedades:</p>
+            <p>Esse capítulo descreve noções essenciais para que seus paragrafos e títulos tenham uma aparência agradavel e moderna, como também um comportamento responsivo. Esse capítulo é dividido em duas seções principais: uma na qual as propriedades são brevemente descritas e por último, uma abordagem mais ampla sobre truques úteis para trabalhar com fontes.</p>
+            <h2>As propriedades</h2>
+            <p>Textos podem ser trados dadas as seguintes propriedades:</p>
             <ul>
                 <p>Fonte</p>
                 <li>font-family</li>
@@ -88,7 +97,8 @@
                 
                 <p>Decoração</p>
                 <li>text-decoration</li>
-                <p>Espaçamento</p>
+                <li>text-shadow</li>
+                <p>Transformação</p>
                 <li>text-transform</li>
             </ul>
             
@@ -122,7 +132,7 @@
             <p class="text-properties-ex" style="font-style: oblique;">Este é um texto que define a propriedade <code>font-style</code> para <code>oblique</code>.</p>
             <h3>font-variant</h3>
             <p>Especifica se um letra deve ou não ser exibida em versalete. Letras minúsculas são convertidas em maúsculas enquanto letras maiúsculas são ligeiramente menores que as letras convertidas em versalete.</p>
-            <p class="text-properties-ex" style="font-variant: small-caps;">Este é um texto que define <code>font-variant</code> par <code>small-caps</code>.</p>
+            <p class="text-properties-ex" style="font-variant: small-caps;">Este é um texto que define <code>font-variant</code> para <code>small-caps</code>.</p>
             <h3>font-variant-caps</h3>
             <p>A propriedade <code>fonte-variant-caps</code> controla o uso de glifos alternativos para letras maiúsculas.</p>
             <p class="text-properties-ex" style="font-variant-caps: small-caps">Esse texto define <code>font-variant-caps</code> para <code>small-caps</code></p>
@@ -297,7 +307,8 @@
             <p class="text-properties-ex" style="font-size: 2em; color: #fff; text-indent: 0; text-shadow: 2px 2px 2px #222;">CSS3</p>
 
             <h2>Tratando fontes de forma responsiva</h2>
-            <p>Uma tecnica bastante simples de fazer com que a fonte de seus textos se redimensione conforme a janela de visualização é definir a propriedade <code>font-size</code> no seletor de <code>body</code> com o valor de 100% enquanto define a medida do tamanho da fonte em seus parágafros usando a unidade <var>em</var>. Como segue:</p>
+            <p>idealmente, ao projetar uma página da web, espera-se que ele apresente um comportamento/layout padrão em todos os navegadores. No entanto, dependendo do navegador utilizado e da unidade de medida para controlar o tamanho do texto, as relações matemáticas podem não ser as mesmas. Isso é o que ocorre ao definir o tamanho de textos usando a unidade <var>em</var>. <var>1em</var> é projetado para ser equivalente a 16 pixels, o tamanho padrão para textos na web. Contudo alguns navegadores pode não conter tal equivalência levando a textos muito maiores ou muito menores do que o esperado.</p>
+            <p>Uma tecnica bastante simples de corrigir isto é definir <code>font-size</code> no seletor de <code>body</code> com o valor de 100% enquanto define a medida do tamanho da fonte em seus parágafros usando a unidade <var>em</var>. Como segue:</p>
             <div class="code-snippet">
                 <code>
                     <pre>
@@ -310,10 +321,11 @@
                     </pre>
                 </code>
             </div>
-            <p> <var>1em</var> equivale à 1/16 pontos. Na verdade <var>em</var> usa a DPI disponível pela resolução nativa do monitor. Comumente, monitores de alta DPI usam o equivalente a 16 pixels por polegada(dai a regra 1/16). Em monitores de baixa DPI, essa regra pode mudar, porém não é algo que precise de atenção por parte do desenvolvedor.</p>
+            <h3>Curiosidade</h3>
+            <p><var>1em</var> equivale à 1/16 pontos. Em termos mais técnicos, a unidade <var>em</var> usa a DPI disponível pela resolução nativa do monitor. Comumente, monitores de alta DPI usam o equivalente a 16 pixels por polegada(dai a regra 1/16). Em monitores de baixa DPI, essa regra pode mudar, entretanto, nada que deva tomar a atenção do desenvolvedor.
             <h2>Dicas</h2>
             <h3>Fontes encadeadas</h3>
-            <p>Por vezes, ao definir uma família de fontes muito especifica para a propriedade <code>font-family</code> não há garantias de que estas fontes estejam dispoíveis na máquina do usuário. Para diminuir o impacto desse problema, a propriedade <code>font-family</code> aceita uma definição encadeada de nomes de fontes. Isso é útil já que pode ser usada uma fonte similiar sempre que a primeira fonte na cadeia(lida da esquerda para direita) esteja indísponivel. Veja o exemplo no trecho de código a seguir:</p>
+            <p>Por vezes, ao definir uma família de fontes muito especifica para a propriedade <code>font-family</code> não há garantias de que estas fontes estejam dispoíveis na máquina do usuário. Para diminuir o impacto desse problema, a propriedade <code>font-family</code> aceita uma definição encadeada de nomes de fontes. Essa tecnica é chamada de <var>font fallback</var>(em tradução direta, fonte alternativa). Isso é útil já que uma fonte similiar pode ser usada sempre que a primeira fonte na cadeia(lida da esquerda para direita) esteja indísponivel. Veja o exemplo no trecho de código a seguir:</p>
             <div class="code-snippet">
                 <code>
                     <pre>
@@ -323,7 +335,7 @@
                     </pre>
                 </code>
             </div>
-            <p>Eventualmente, usar fontes alternativas para substituir uma fonte indisponível por vezes pode resultar em uma fonte substituta com uma proporção maior que a desejada. Para manter a proporção usamos a propriedade<code>font-size-adjust</code> que obtém o valor de aspecto - calculado pela diferença de tamanho entre a letra minúscula "x" e maiúscula "X" da primeira fonte indicada.</p>
+            <p>Eventualmente, usar fontes alternativas para substituir uma fonte indisponível por vezes pode resultar em uma fonte substituta com uma proporção maior que a desejada. Para manter a proporção usamos a propriedade <code>font-size-adjust</code> que obtém o valor de aspecto - calculado pela diferença de tamanho entre a letra minúscula "x" e maiúscula "X" da primeira fonte indicada.</p>
             <p>Os valores para <code>font-size-adjust</code> são:</p>
             <ul>
                 <li>none: sem auto ajuste.</li>
@@ -332,6 +344,7 @@
                 <li>inherit: o valor herdado.</li>
             </ul>
             <h3>Importando fontes</h3>
+            <p>Discutir sobre usar fontes alternativas traz uma pequena questão: quais são as origens possíveis de uma fonte alternativa?</p>
             <p>A regra CSS <code>@font-face</code> permite que você importe suas própias fontes diretamente do seu diretório de arquivos. O uso de <code>@font-face</code> deve ser tal como segue:</p>
             <div class="code-snippet">
                 <code>
@@ -357,7 +370,35 @@
                 </code>
             </div>
             <p>O trecho de código anterior resulta na seguinte fonte:</p>
-            <p style="font-family: 'Maiandra'; font-size: 2em; text-align: center;">Maiandra</p>
+            <p style="font-family: 'Maiandra'; font-size: 2em; text-align: center; margin-top: 10px; margin-bottom: 10px;">Maiandra</p>
+            <p>Por último, caso você seja daqueles programadores que da preferência de códificar tudo em uma única linha, CSS nós permite fazer isso para propriedades relativas a textos(e muitas outras). Intuitivamente, sobre a propriedade <code>text</code> definimos os valores:</p>
+            <code>text: font-style font-variant font-weight  *font-size/font-height font-family;</code>
+            <p>Onde * é um valor obrigatório.</p>
+
+            <h3>Indo além</h3>
+            <p>Essa é mais uma possibilidade de estilizar textos e requer o uso de pseudoelementos. Tenha em mente verificar o cápitulo que descreve sobre a funcionalidade de <a href="pseudo-class.html">pseudoelementos</a>.</p>
+            <div class="code-snippet">
+                <code>
+                    <pre>
+                        p{
+                            font-family: 'Arial' sans-serif;
+                            font-size: 1em;
+                            text-indent: 50px;
+                            text-align: justify;
+                            color: #000;
+                            font-variant: small-caps;
+                        }
+                        p::first-letter{
+                            font-size: 4em;
+                            padding: 4px;
+                        }
+                    </pre>
+                </code>
+            </div>
+            <p class="text-properties-ex caps">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptas, officia dolorum. Sint beatae dolorum a non. A odit tempora accusamus! Exercitationem earum iure qui accusantium sunt, placeat dignissimos fugiat saepe!</p>
+            <p>Usamos a propriedade <code>first-letter</code>, um pseudoelemento que afeta apenas a primeira letra de um parágrafo.</p>
+            <p>Há muitas formas de tratar letras, futuramente, mais exemplos podem ser trazidos aqui.</p>
+
             <footer>
                 <p style="font-size: 0.95em; color: rgb(156, 156, 156); text-align: center;">CSS Book 2022 write by Renato Moura</p>
             </footer>

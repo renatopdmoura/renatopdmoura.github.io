@@ -38,5 +38,6 @@ int main(){
 		}
 	}
 	std::cout << valueA << option << valueB << "=" << result << std::endl;
+	system("pause");
 	return 0;
 }

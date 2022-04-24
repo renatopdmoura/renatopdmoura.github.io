@@ -29,7 +29,7 @@
 		<section class="col-s-12 col-t-12 col-d-12 content">
 			<h2>Conceitos de Compilação</h2>
 			<p>Antes de começarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p>
-			<p>Um compilador é um software capaz de transformar código fonte de linguagem de alto nível em código de linguagem de baixo nível chamado de <var>código binário</var>(como código de máquina e assembly). O código então gerado é voltado ao uso em determinado tipo de arquitetura de processamento(CISC ou RISC). Um compilador possui um pipeline de estágios, onde a saída de um estágio anterior é a entrada para o próximo estágio.</p>
+			<p>Um compilador é um software capaz de transformar código fonte de linguagem de alto nível em código de linguagem de baixo nível chamado de <var>código binário</var>(como código de máquina e assembly). O código então gerado é voltado ao uso em um determinado tipo de arquitetura de processamento(CISC ou RISC). Um compilador possui um pipeline de estágios, onde a saída de um estágio anterior é a entrada para o próximo estágio.</p>
 			<p>A compilação pode ser dividida em duas fases, sendo elas:</p>
 			<h3>Análise</h3>
 				<p>Análise léxica: o código fonte original é transformado em um fluxo de caracteres que será convertido em lexemas(a menor unidade simbólica de uma linguagem) conhecidos como <var>tokens</var>. A tradução para tokens depende da linguagem de alto nível utilizada, por exemplo em C++:</p>
@@ -56,8 +56,8 @@
 			<h3>Indo por partes</h3>
 			<p>Quando estamos trabalhando em um projeto, não são poucas as séries de funções que estão disponíveis para nosso uso. Em diferentes arquivos estas funções podem ser acessadas de modo que exista apenas um lugar de declaração e implementação para elas. Isso só é possível pela existência de bibliotecas(como um conjunto de funções dispostos a resolver uma determinada área de problemas), e essas bibliotecas podem ser ditas como: estáticas ou dinâmicas.</p>
 			<h3>Bibliotecas estáticas</h3>
-			<p> As bibliotecas estáticas tem a extensão .a ou .lib(essa variação depende do compilador usado para gerá-las). Bibliotecas estáticas são feitas para serem usadas em qualquer programa apenas com a diretiva de inclusão "#include" adicionando o caminho dos arquivos de cabeçalho da biblioteca a serem acessados após serem devidamente vinculadas. O que é singular sobre uma biblioteca estática é que, para cada arquivo em seu projeto que a inclua, uma cópia em tempo de compilação dos recursos da biblioteca estática para o escopo do arquivo que a inclui será gerada. Isso tem por efeito, que uma vez criado um executável, as funçoes chamadas da biblioteca fará parte do contéudo do executavel de modo que se possíveis atualizações futuras da biblioteca forem necessárias, deve-se recompilar todo o código fonte.</p>
-			<p>A vantagem é na garantia de não corrupção dos arquivos como ocorre com as bibliotecas dinâmicas(uma biblioteca estática compilada ao código fonte só para se o executavél parar), além de suas funções serem mais rápidas de acessar, pois a busca pelos protótipos é realizada no escopo do arquivo em contrapartida a bibliotecas dinâmicas, as quais funcioanam como recurso externo.</p>
+			<p> As bibliotecas estáticas tem a extensão .a ou .lib(essa variação depende do compilador usado para gerá-las). Bibliotecas estáticas são feitas para serem usadas em qualquer programa apenas com a diretiva de inclusão "#include" adicionando o caminho dos arquivos de cabeçalho da biblioteca a serem acessados após serem devidamente vinculadas. O que é singular sobre uma biblioteca estática é que, para cada arquivo em seu projeto que a inclua, uma cópia em tempo de compilação dos recursos da biblioteca estática para o escopo do arquivo que a inclui será gerada. Isso tem por efeito, que uma vez criado um executável, as funções chamadas da biblioteca farão parte do contéudo do executável de modo que se possíveis atualizações futuras da biblioteca forem necessárias, deve-se recompilar todo o código fonte.</p>
+			<p>A vantagem é na garantia de não corrupção dos arquivos como ocorre com as bibliotecas dinâmicas(uma biblioteca estática compilada ao código fonte só para se o executavél parar), além de suas funções serem mais rápidas de acessar, pois a busca pelos protótipos é realizada no escopo do arquivo em contrapartida as bibliotecas dinâmicas, as quais funcioanam como recurso externo.</p>
 			
 			<h3>Bibliotecas dinâmicas</h3>
 			<p>As bibliotecas dinâmicas são normalmente referidas pela extensão .dll(MSVC) e têm o potêncial de serem economicas. Bibliotecas dinâmicas diferentemente das estáticas não são anexadas ao escopo dos arquivos que fazem chamadas as suas funções, pelo contrário, o programa gera apenas uma cópia em tempo de compilação de seus recursos. Como mencionado anteriormente, elas atuam como um meio externo de modo que quando as associamos aos nossos projetos, chamadas as suas funções demandariam um tempo extra para desviar o fluxo de leitura atual para fora do executável solicitando o uso de determinadas funções. O ganho de uma biblioteca dinâmica está em sua portabilidade. Usar bibliotecas dinâmicas reduz o peso do arquivo final, já que não serão feitas cópias para cada arquivo que usa seus recursos, e, do ponto de vista da eficiência, caso novas alterações sejam necessárias para a biblioteca, desde que o fluxo de trabalho não mude não há necessidade de recompilar todo código fonte do seu projeto e sim apenas substiruir a <var>dll</var> no diretório de origem.</p>
@@ -84,10 +84,10 @@
 			</div>
 			
 			<h2>Praticando</h2>
-			<p>Estamos preparados para ter alguma prática. Vamos começar gerando bibliotecas estáticas usando dois compiladores distintos, sendo o MSVC e o GCC. Os executáveis gerados pelos diferentes compiladores deverão funcionar da mesma forma. Por fim, vamos também criar uma biblioteca dinâmica como exemplo.</p>
+			<p>Estamos preparados para ter alguma prática. Vamos começar gerando bibliotecas estáticas usando o compilador da Microsoft(MSVC). Note: executáveis gerados por diferentes compiladores deverão smepre funcionar da mesma forma. Por fim, vamos também criar uma biblioteca dinâmica como exemplo.</p>
 
 			<h3>Usando o MSVC</h3>
-			<p>O MSVC é um compilador pertencente a Microsoft. Ele costuma acompanhar a IDE do Visual Studio. Você pode fazer o download da IDE <a href="https://visualstudio.microsoft.com/pt-br/downloads/">aqui</a>.</p>
+			<p>O MSVC é um compilador como ja mencionado pertencente a Microsoft. Ele costuma acompanhar a IDE do Visual Studio. Você pode fazer o download da IDE <a href="https://visualstudio.microsoft.com/pt-br/downloads/">aqui</a>.</p>
 			<p>Após instalar a IDE, navegue até encontrar a seção do Visual Studio, encontre sua pasta então escolha entre x64 Native Tools Command Prompt for VS 2019/x86 Native Tools Command Prompt for VS 2019 dependendo do seu sistema operacional(64 ou 32 bits respectivamente).</p>
 			<p>Iremos criar um simples programa para realizar cálculos de operações básicas com inteiros afim de experimentar os compiladores escolhidos. O código fonte será este:</p>
 			<code>
@@ -168,31 +168,32 @@
 			<code>CD C:/meu_diretorio</code>
 			<p>O argumento CD seguido por um caminho(no caso a localização do seu "arquivo.cpp") define em que diretório o prompt de comando deve realizar seu trabalho.</p>
 
-			<p>Ao usar o comando <var>CL</var> na linha de comando, estamos invocando o compilador CL.exe. Os argumento de linha de comando para compilação usando CL.exe seguem a seguinte regra:</p>
+			<p>Ao usar o comando <var>CL</var> na linha de comando, estamos invocando o compilador CL.exe. Os argumentos de linha de comando para compilação usando CL.exe seguem a seguinte regra:</p>
 			<code>CL [opção...] arquivo... [opção | arquivo]... [lib...] [@arquivo-de-comando] [/link opção-de-vinculador...]</code>
 			<p>Uma vez que:</p>
 			<ul>
-				<li>opção: uma ou mais opções do compilador. A tabela completa pode ser vista <a href="https://docs.microsoft.com/pt-br/cpp/build/reference/compiler-options-listed-by-category?view=msvc-170">aqui</a>. As opções também podem ser verificadas digitando <code>CL /HELP</code></li>
-				<li>arquivo: um ou mais arquivos de origem(código fonte), arquivos .obj ou bibliotecas. O CL compila os arquivos de origem e passa os .obj e bibliotecas para o vinculador.</li>
-				<li>biblioteca: uma ou mais nomes de bibliotecas. Esses nomes serão passados ao vinculador.</li>
-				<li>arquivo-de-comando: um arquivo contendo varias opções e nomes de arquivo. Arquivos de comando são úteis porque permitem definir as configurações de compilação em mais de uma linha de argumentos uma vez que a chamada ao CL.exe sem arquivos de comando aceita o limite de 1024 caractéres sem quebras de linha.</li>
-				<li>opção-de-vinculador: uma ou mais opções de vinculador. Essas opções serão passadas pelo CL ao vinculador.</li>
+				<li><var>opção</var>: uma ou mais opções do compilador. A tabela completa pode ser vista <a href="https://docs.microsoft.com/pt-br/cpp/build/reference/compiler-options-listed-by-category?view=msvc-170">aqui</a>. As opções também podem ser verificadas digitando <code>CL /HELP</code></li>
+				<li><var>arquivo</var>: um ou mais arquivos de origem(código fonte), arquivos .obj ou bibliotecas. O CL compila os arquivos de origem e passa os .obj e bibliotecas para o vinculador.</li>
+				<li><var>biblioteca</var>: uma ou mais nomes de bibliotecas. Esses nomes serão passados ao vinculador.</li>
+				<li><var>arquivo-de-comando</var>: um arquivo contendo varias opções e nomes de arquivo. Arquivos de comando são úteis porque permitem definir as configurações de compilação em mais de uma linha de argumentos uma vez que a chamada ao CL.exe sem arquivos de comando aceita o limite de 1024 caractéres sem quebras de linha.</li>
+				<li><var>opção-de-vinculador</var>: uma ou mais opções de vinculador. Essas opções serão passadas pelo CL ao vinculador.</li>
 			</ul>
 			
 			<p>Desde que estejamos no diretório onde nosso código fonte esteja armazenado, vamos chamar o compilador MSVC usando o comando CL com os seguintes comandos:</p>
 			<code>CL /EHsc calculator.cpp</code>
 			<ul>
-				<li>CL: invoca o compilador CL.exe.</li>
-				<li>/EHsc: especifica o suporte ao modelo de manipulação de exceção gerado pelo compilador. Detalhes podem ser conferidos <a href="https://docs.microsoft.com/pt-br/cpp/build/reference/eh-exception-handling-model?view=msvc-170">aqui</a>.</li>
-				<li>calculator.cpp: o arquivo do qual queremos gerar um executável. O executável(.exe) de saída possuirá o nome do primeiro arquivo carregado, nesse caso, calculator.cpp.</li>
+				<li><var>CL</var>: invoca o compilador CL.exe.</li>
+				<li><var>/EHsc</var>: especifica o suporte ao modelo de manipulação de exceção gerado pelo compilador. Detalhes podem ser conferidos <a href="https://docs.microsoft.com/pt-br/cpp/build/reference/eh-exception-handling-model?view=msvc-170">aqui</a>.</li>
+				<li><var>calculator.cpp</var>: o arquivo do qual queremos gerar um executável. O executável(.exe) de saída possuirá o nome do primeiro arquivo carregado, nesse caso, calculator.cpp.</li>
 			</ul>
-			<p>Após escrever o comando, pressione enter para compilar. Nesse ponto, você deve obter dois arquivos de saída:</p>
+			<p>Após escrever o comando, pressione "Enter" para compilar. Nesse ponto, você deve obter dois arquivos de saída:</p>
 			<ol>
 				<li>Um arquivo .obj gerado a partir do código fonte. É importante não excluí-lo, se uma recompilação for necessária uma vez que o código fonte tenha sido atualizado, o compilador será capaz de avaliar quais partes no código binário mudaram e trabalhar apenas nisso salvando tempo no processo. Podemos indicar para o compilador que desejamos armazenar os arquivos .obj gerados em uma pasta especifica com intuito de melhor organizar nossos arquivos. Veremos adiante.</li>
 				<li>O executável própriamente dito, nesses caso, calculator.exe.</li>
 			</ol>
 			<p>Com isso temos uma noção de como gerar executáveis com o compilador CL. Vamos começar a construir nossa primeira biblioteca estática.</p>
-			<p>O princípio de uma biblioteca estática é disponibilizar uma série de funções bastante usuais em um arquivo e poder inclui-las em nossos projetos sempre quando demandarmos uso de suas funções. Vamos fazer isso de modo bastante simples movendo nossas funções de operações básicas com inteiros para um arquivo separado chamado "math.cpp", também definiremos um arquivo de cabeçalho onde declaramos os protótipos de nossas funções. Note, o compilador precisa estar "preparado" para usar funções de arquivos externos, por isso usamos a diretiva "#include "math.hpp" para dizer que há funções definidas externamente sendo demandadas no arquivo atual.</p>
+			<h3>Criando uma biblioteca estática</h3>
+			<p>O princípio de uma biblioteca estática é disponibilizar uma série de funções bastante usuais em um arquivo e poder incluí-las em nossos projetos sempre quando demandarmos uso de suas funções. Vamos fazer isso de modo bastante simples movendo nossas funções de operações básicas com inteiros para um arquivo separado chamado "math.cpp". Também definiremos um arquivo de cabeçalho onde declaramos os protótipos de nossas funções. Note, o compilador precisa estar "preparado" para usar funções de arquivos externos, por isso usamos a diretiva "#include "math.hpp" para dizer que há funções definidas externamente sendo demandadas no arquivo atual.</p>
 			<code>
 				<div class="code-snippet">
 					// - math.hpp<br>
@@ -295,7 +296,55 @@
 					}<br>
 				</div>
 			</code>
+			
+			<h2>Bibliotecas dinâmicas</h2>
+			<p>Ao gerar bibliotecas dinâmicas 2 caminhos podem ser descritos:</p>
+			<ul>
+				<li>aquele por meio da geração de um arquivo .def</li>
+				<li>aquele por meio da definição da diretiva de processamento __declspec(dllexport)</li>
+			</ul>
+			<h3>A diretiva __declspec(dllexport)</h3>
+			<p>Ao criar dlls, precisamos declarar algumas coisas sobre as funções e recursos que um aplicativo que faça uso de tal dll precisa conhecer para realizar o processo de <var>exportação</var>.</p>
+			<p>Uma exportação significa que um executavel deseja obter recursos de um arquivo externo. Por coesão, as funções públicas de uma dll(aquelas acessadas por outros aplicativos), devem ter seus protótipos preceditos pela palavra chave <var>extern</var> seguida pela palavra chave como segue: "C". Isso permite que mesmo que suas funções sejam escritas em C++, ao vincular, uma transição de simbólos compativéis com simbolos C serão criadas, o que é útil para que programas escritos em diferentes linguagens possam se comunicar com uma dll.</p>
+			
+			<p>Criar nossa dll requer um pequeno trabalho no arquivo de cabeçalho <var>math.hpp</var>, é nele que deixaremos as instruções para o compilador criar a dll.</p>
+			<div class="code-snippet">
+				<code>
+					<pre>
+					#ifndef MATH_H
+					#define MATH_H
 
+					#ifdef MATHLIBRARY_EXPORTS
+					#define MATHLIBRARY_API __declspec(dllexport)
+					#else
+					#define MATHLIBRARY_API __declspec(dllimport)
+					#endif
+
+					extern "C" MATHLIBRARY_API int sum(int a, int b);
+					extern "C" MATHLIBRARY_API int subtract(int a, int b);
+					extern "C" MATHLIBRARY_API int multiply(int a, int b);
+					extern "C" MATHLIBRARY_API int division(int a, int b);
+
+					#endif
+					</pre>
+				</code>
+			</div>
+
+			<p>O comando de linha para gerar dlls é este:</p>
+			<code>CL source.cpp /link /DLL /OUT:output.dll </code>
+			<p>Em que, <var>source</var> é seu arquivo de origem que possui a implementação de suas funções e <var>output</var> a dll gerada.</p>
+			<p>Devido ao fato de usarmos a diretiva declspec(dllexport), isso é tudo o que precisamos fazer. Serão gerados três arquivos de saída:</p>
+			<ul>
+				<li><var>.lib</var>: o arquivo que contém os simbolos necessários durante a vinculação.</li>
+				<li><var>.exp</var>: o arquivo cuja finalidade será descrita adiante.</li>
+				<li><var>.dll</var>: a biblioteca de vincula dinâmico.</li>
+			</ul>
+			<p>O código em <var>calculator.cpp</var> permanece o mesmo. Para vincular, usaremos o seguinte trecho:</p>
+			<code>CL /EHsc calculator.cpp math.lib</code>
+			
+			<p>Há muitas coisas mais a serem discutidas sobre bibliotecas de vinculo dinâmico, contudo, com o que sabemos até agora, podemos trabalhar com certa liberdade produzindo nossas bibliotecas. Pratique e pratique, assim poderá seguir aprendendo cada vez mais.</p>
+
+			<br>
 			<var>Revisar texto até aqui, após escrever sobre a criação de bibliotecas dinâmicas.</var><br>
 			<var>Write at 11/04/2022</var>
 
