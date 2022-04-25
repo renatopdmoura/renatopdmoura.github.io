@@ -27,6 +27,7 @@
 			</nav>
 		</header>
 		<section class="col-s-12 col-t-12 col-d-12 content">
+			<var style="float:right; font-size: 0.875em;">Atualizado em 25/04/2022</var>
 			<h2>Conceitos de Compilação</h2>
 			<p>Antes de começarmos a desenvolver projetos em C++ é de suma importância aprender sobre o trabalho que os compiladores realizam para gerar um arquivo executável.</p>
 			<p>Um compilador é um software capaz de transformar código fonte de linguagem de alto nível em código de linguagem de baixo nível chamado de <var>código binário</var>(como código de máquina e assembly). O código então gerado é voltado ao uso em um determinado tipo de arquitetura de processamento(CISC ou RISC). Um compilador possui um pipeline de estágios, onde a saída de um estágio anterior é a entrada para o próximo estágio.</p>
@@ -188,7 +189,7 @@
 			</ul>
 			<p>Após escrever o comando, pressione "Enter" para compilar. Nesse ponto, você deve obter dois arquivos de saída:</p>
 			<ol>
-				<li>Um arquivo .obj gerado a partir do código fonte. É importante não excluí-lo, se uma recompilação for necessária uma vez que o código fonte tenha sido atualizado, o compilador será capaz de avaliar quais partes no código binário mudaram e trabalhar apenas nisso salvando tempo no processo. Podemos indicar para o compilador que desejamos armazenar os arquivos .obj gerados em uma pasta especifica com intuito de melhor organizar nossos arquivos. Veremos adiante.</li>
+				<li>Um arquivo .obj gerado a partir do código fonte. É importante não excluí-lo, se uma recompilação for necessária uma vez que o código fonte tenha sido atualizado, o compilador será capaz de avaliar quais partes no código binário mudaram e trabalhar apenas nisso salvando tempo no processo. Podemos indicar para o compilador que desejamos armazenar os arquivos .obj gerados em uma pasta especifica com intuito de melhor organizar nossos arquivos usando o argumento nas opções de compilador <code>/Fo:diretório</code> uma vez que o diretório passado deve ter sido criado previamente. Esse comando pode também renomear o arquivo .obj de saída quando trabalhamos com arquivos individuais.</li>
 				<li>O executável própriamente dito, nesses caso, calculator.exe.</li>
 			</ol>
 			<p>Com isso temos uma noção de como gerar executáveis com o compilador CL. Vamos começar a construir nossa primeira biblioteca estática.</p>
@@ -341,12 +342,24 @@
 			</ul>
 			<p>O código em <var>calculator.cpp</var> permanece o mesmo. Para vincular, usaremos o seguinte trecho:</p>
 			<code>CL /EHsc calculator.cpp math.lib</code>
+
+			<p>De forma sucinta, um comando para compilação de arquivos preferencialmente se parece com o seguinte trecho:</p>
+			<code>CL /Fo:obj_diretóro /EHsc lista_de_arquivos_de_origem /link /LIBHPATH:dir_bibliotecas /OUT:nome_do_arquivo_de_saída</code>
 			
+			<p>A seguir, algumas opções de vinculador relevantes:</p>
+			<ul>
+				<li><var>/DEBUG</var></li>
+				<li><var>/DLL</var></li>
+				<li><var>/EXPORT</var></li>
+				<li><var>/ENTRY</var></li>
+				<li><var>/MACHINE</var></li>
+				<li><var>/VERSION</var></li>
+				<li><var>/VERBOSE</var></li>
+			</ul>
+
 			<p>Há muitas coisas mais a serem discutidas sobre bibliotecas de vinculo dinâmico, contudo, com o que sabemos até agora, podemos trabalhar com certa liberdade produzindo nossas bibliotecas. Pratique e pratique, assim poderá seguir aprendendo cada vez mais.</p>
 
-			<br>
-			<var>Revisar texto até aqui, após escrever sobre a criação de bibliotecas dinâmicas.</var><br>
-			<var>Write at 11/04/2022</var>
+
 
 			<div hidden>
 			<h3>Extensões</h3>
