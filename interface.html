@@ -27,11 +27,64 @@
 			</nav>
 		</header>
 		<section class="col-s-12 col-t-12 col-d-12 content">
+			<h2>Versão 0.4.0</h2>
+			<p>Esta seção descreve o novo fluxo de trabalho mais limpo, simples e eficiente para objetos do tipo GUI.</p>
+			<p>'Box' é uma classe especializada em criar um elemento visual(um quad) cuja propriedades podem ser definidas para ser usado como um painel ou botões.</p>
+			<p>A lista de propriedades busca seguir o padrão encontrado em CSS usado para formatação de sites por ser clara e intuitiva. As propriedades são, respectivamente:</p>
+			<ul>
+				<li>Posição</li>
+				<li>Largura e Altura</li>
+				<li>Preenchimento interno</li>
+				<li>Bordas</li>
+				<li>Espessura de bordas</li>
+				<li>Cor de borda</li>
+				<li>Máscaras de bordas</li>
+				<li>Arredondamento de extremidades</li>
+				<li>Preenchimento interno</li>
+				<li>Margens</li>
+				<li>Cor de plano de fundo</li>
+				<li>Imagem de plano de fundo</li>
+			</ul>
+
+			<p>Uma instância de 'Box' disponibiliza a definição de funções para manipulação de determinados eventos(como sobrepor o mouse e selecionar) por meio de atríbutos do tipo std::function desde que tenham um retorno de chamada do tipo <var>void</var> e parêmtro de igual tipo. Os atríbutos e eventos que os manipulam são listados a baixo:</p>
+			<ul>
+				<li>initial: o atríbuto <var>initial</var> espera que dentro de seu escopo seja determinada o comportamento/formatação padrão de determinado objeto(podendo ser qualquer objeto dentro do mesmo escopo em que <var>initial</var> é definido). Esse é um atríbuto que muda o estado do objeto referido dentro de seu escopo sempre que nenhum evento
+				para o objeto chamador estiver sendo processado.</li>
+				<li>over: o atríbuto que define o comportamento para objetos referidos em seu escopo sempre que o mouse estiver sobre a instância que chama 'over'.</li>
+				<li>click: o atríbuto que define o comportamento para objetos referidos em seu escopo sempre que um clique com o botão esquerdo do mouse for detectado sobre a instância que chama 'click'</li>
+			</ul>
+
+			<p>Objetos da classe GUI mantém uma relação de herança de modo que objetos filhos possam compartilhar propriedades em comum e em relação ao seu objeto pai. As seguintes propriedades são descritas:</p>
+			<ul>
+				<li>Posição relativa a posição do objeto pai</li>
+				<li>Dimensão proporcional a dimensão do objeto pai</li>
+				<li>Visibilidade relativa a visibilidade do objeto pai</li>
+			</ul>
+
+			<p>O fluxo de renderização e processamento torna-se simples quando a biblioteca armazena toda instância(especializada) da classe GUI em um vetor de ponteiros de modo que processar todos os eventos disponíves possa ser realizado pela chamada as seguintes funções membro estáticas:</p>
+			<ul>
+				<li>GUI::RenderWithColorID(): essa função é crucial par que um objeto GUI tenha utílidade. Ao renderizar cada instância criada com uma cor especifica, a biblioteca torna-se capaz de ler do buffer de cor e determinar sobre qual objeto o mouse está para então chamar o respectivo evento esperado(note, o processamento de eventos não é tarefa de GUI::RenderWithColorID()).</li>
+				<li>GUI::ColorPicking(): como o nome sugere, a função usa a tecnica de seleção de cores para ordenar, mover, realçar(definindo <var>over</var>), ou tornar a configuração inicial(definindo <var>initial</var>). Note: objetos filhos não serão processados por esta função.</li>
+				<li>GUI::MouseEvent(): Essa função é responsável por processar e válidar o evento de seleção de um objeto pelo mouse.</li>
+			</ul> 
+			<p>Um objeto pode ter uma tecla atríbuida (como a maioria dos eventos de interface gráfica são projetados para serem disparados pelo mouse, atríbuir uma tecla é útil como um atalho para exibição do objeto, contudo, qualquer comportamento pode ser definido no escopo do atríbuto membro <var>keypress</var>. Exemplos serão apresentados). Eventos de teclado para todos objetos podem ser processado a partir de uma única chamada à GUI::KeyboardEvent().</p>
+
+			<p>A renderização real de objetos do tipo GUI é feita pela chamada única à GUI::Render(). Note: objetos podem ser renderizados e ter seus eventos processados individualmente por meio a chamadas explicitas as funções membros correspondente, contudo, faça isso apenas se for estritamente necessário remover tal objeto do vetor interno de objetos(o que raramente deve vir a acontecer. Exemplos serão apresentados posteriormente).</p>
+
+			<p>Até aqui uma visão abstraída de como funciona o fluxo de trabalhao com objetos de interface de usuário foi apresentada. Ademais, apresenta-se o real implementação, levando em conta parâmetros de funções(omitidos para diminuir o assunto técnico) e a configuração dos ativos compartilhados pelo biblioteca(como sombreadores e texturas) além de como deve ser o corpo da função principal.</p>
+
+			<ol style="background-color: #eee; padding: 30px;">
+				Próxima tarefa:
+				<li>Trazer exemplos de códigos(stack/heap).</li>
+				<p style="font-size: 0.85em;">Atualizado em 25/05/2022</p>
+			</ol>
+
+
+			<h2>Versão 0.3.0 - Legada, novas versões mudam drasticamente o fluxo de trabalho interno.</h2>
 			<h1>Interface Grágica de Usuário</h1>
 			<section id="Introduction">
 				<h2>Introdução</h2>				
 				<p>Os recursos de interface gráfica de usuário - GUI - fazem parte da biblioteca 'Imcreate' sendo inteiramente desenvolvida usando os príncipios de renderização OpenGL.</p>
-				<p>Versão atual: 0.0.0</p>
 				<p>Para começar a usar objetos do tipo GUI, deve-se fazer a inclusão do arquivo de cabeçalho em "libraries/GUI/GeneralGUI.hpp".</p>
 				<p>Todos os objetos de interface gráfica compartilham funções e dados em comum com a classe base GUI. Dado tal, cada especialização da classe possui sua lógica própria de construção.</p>
 				<p>Objetos do tipo GUI são mantidos por uma pilha interna para chamadas de renderização e processamento da fila de eventos sejam gerenciadas por uma única chamada de função sendo respectivamente:</p>
